@@ -13,7 +13,6 @@ const codeLines = [
 ]
 
 const springSmooth = { type: "spring" as const, stiffness: 60, damping: 18 }
-const springFast = { type: "spring" as const, stiffness: 100, damping: 22 }
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -42,7 +41,7 @@ export default function HeroTerminal() {
           className="absolute -right-2 -bottom-6 sm:-right-6 sm:-bottom-8 lg:-right-10 lg:-bottom-10 z-10"
         >
           <div
-            className="w-40 border-2 border-black overflow-hidden"
+            className="w-40 md:w-48 lg:w-56 xl:w-64 border-2 border-black overflow-hidden"
             style={{ boxShadow: '8px 8px 0px #000', aspectRatio: '1/1.5' }}
           >
             <img
@@ -68,52 +67,64 @@ export default function HeroTerminal() {
               ~/agiel.dev
             </span>
           </div>
-          <div className="code-terminal text-xs md:text-sm leading-relaxed p-4 md:p-5">
-            {codeLines.map((line, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -6 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ ...springFast, delay: 0.4 + i * 0.07 }}
-                className={`ct-${line.type}`}
-              >
-                {line.content || "\u00A0"}
-              </motion.div>
-            ))}
-            <motion.span
-              animate={{ opacity: [1, 0, 1] }}
-              transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
-              className="inline-block w-1.5 h-3 align-middle mt-1"
-              style={{ background: "#7DD3FC" }}
-            />
+          <div className="p-5 md:p-6 lg:p-8 xl:p-10">
+            <div className="flex flex-col gap-1.5 md:gap-2">
+              {codeLines.map((line, idx) => (
+                <motion.div
+                  key={idx}
+                  custom={idx}
+                  variants={fadeUp}
+                  initial="hidden"
+                  animate="visible"
+                  className={`font-mono text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg whitespace-pre ct-${line.type}`}
+                >
+                  {line.content || "\u00A0"}
+                </motion.div>
+              ))}
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+                className="inline-block w-1.5 h-3 md:h-4 lg:h-5 align-middle mt-1"
+                style={{ background: "#7DD3FC" }}
+              />
+            </div>
           </div>
         </div>
       </div>
 
       <motion.div
-        custom={5}
-        variants={fadeUp}
         initial="hidden"
         animate="visible"
         className="w-full grid grid-cols-2 gap-4 md:gap-5"
       >
-        {[
-          { label: "PROJECTS", value: "4+" },
-          { label: "SEMESTER", value: "4" },
-        ].map(stat => (
-          <div
-            key={stat.label}
-            className="sticker-box p-4 md:p-6 bg-white/10 w-full"
-            style={{ borderColor: "var(--color-charcoal)", boxShadow: "8px 8px 0px #000" }}
-          >
-            <div className="text-3xl md:text-4xl font-black leading-none mb-1" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
-              {stat.value}
-            </div>
-            <div className="text-xs font-bold tracking-wider opacity-80" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
-              {stat.label}
-            </div>
-          </div>
-        ))}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...springSmooth, delay: 0.8 }}
+          className="border-2 border-black flex flex-col justify-center px-4 py-4 md:py-6 lg:py-8"
+          style={{ background: "var(--color-orange)", boxShadow: "6px 6px 0px #000" }}
+        >
+          <span className="text-xs lg:text-sm xl:text-base font-bold uppercase mb-1" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
+            Projects
+          </span>
+          <span className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
+            4+
+          </span>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ ...springSmooth, delay: 0.9 }}
+          className="border-2 border-black flex flex-col justify-center px-4 py-4 md:py-6 lg:py-8"
+          style={{ background: "var(--color-lavender)", boxShadow: "6px 6px 0px #000" }}
+        >
+          <span className="text-xs lg:text-sm xl:text-base font-bold uppercase mb-1" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
+            Semester
+          </span>
+          <span className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
+            4
+          </span>
+        </motion.div>
       </motion.div>
     </motion.div>
   )
