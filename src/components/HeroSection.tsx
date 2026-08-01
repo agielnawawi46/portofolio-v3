@@ -29,19 +29,18 @@ export default function HeroSection() {
       </div>
 
       {/* Container Utama */}
-      <div className="w-full max-w-4xl mx-auto px-6 md:px-10 pt-48 pb-24 md:pt-64 md:pb-32 relative z-10 flex flex-col items-center justify-center flex-1">
+      <div className="w-full max-w-4xl mx-auto px-6 md:px-10 py-24 md:py-32 relative z-10 flex flex-col items-center justify-center flex-1">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...springSmooth }}
-          className="flex flex-col gap-8 text-center items-center z-10"
+          className="flex flex-col gap-8 text-center items-center z-10 w-full"
         >
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 items-center w-full">
             <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible">
-              {/* Judul Besar — Diperbaiki: mt-32 md:mt-0 untuk memberikan ruang ekstra yang SANGAT LEGA dari navbar */}
               <h1
-                className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-[0.95] tracking-tight mt-32 lg:mt-0"
+                className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.95] tracking-tight mt-8 md:mt-0"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
                 SOFTWARE<br />
