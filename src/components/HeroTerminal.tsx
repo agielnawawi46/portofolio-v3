@@ -47,7 +47,7 @@ export default function HeroTerminal() {
           className="absolute -right-2 -bottom-6 sm:-right-6 sm:-bottom-8 lg:-right-10 lg:-bottom-10 z-10"
         >
           <div
-            className="w-40 md:w-48 lg:w-56 xl:w-64 border-2 border-black overflow-hidden"
+            className="w-40 md:w-44 lg:w-48 border-2 border-black overflow-hidden"
             style={{ boxShadow: '8px 8px 0px #000', aspectRatio: '1/1.5' }}
           >
             <img
@@ -73,8 +73,8 @@ export default function HeroTerminal() {
               ~/agiel.dev
             </span>
           </div>
-          <div className="code-terminal p-5 md:p-6 lg:p-8 xl:p-10">
-            <div className="flex flex-col gap-1.5 md:gap-2">
+          <div className="code-terminal p-4 md:p-5 lg:p-6">
+            <div className="flex flex-col gap-1 md:gap-1.5">
               {codeLines.map((line, idx) => (
                 <motion.div
                   key={idx}
@@ -82,7 +82,7 @@ export default function HeroTerminal() {
                   variants={fadeUp}
                   initial="hidden"
                   animate="visible"
-                  className={`font-mono text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-lg whitespace-pre ct-${line.type}`}
+                  className={`font-mono text-[10px] sm:text-xs md:text-sm whitespace-pre ct-${line.type}`}
                 >
                   {line.content || "\u00A0"}
                 </motion.div>
@@ -107,13 +107,13 @@ export default function HeroTerminal() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...springSmooth, delay: 0.8 }}
-          className="border-2 border-black flex flex-col justify-center px-4 py-4 md:py-6 lg:py-8"
+          className="border-2 border-black flex flex-col justify-center px-4 py-3 sm:py-4 md:py-5"
           style={{ background: "var(--color-orange)", boxShadow: "6px 6px 0px #000" }}
         >
-          <span className="text-xs lg:text-sm xl:text-base font-bold uppercase mb-1" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
+          <span className="text-xs lg:text-sm font-bold uppercase mb-1" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
             Projects
           </span>
-          <span className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
+          <span className="text-2xl md:text-3xl lg:text-4xl font-black" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
             4+
           </span>
         </motion.div>
@@ -121,13 +121,13 @@ export default function HeroTerminal() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ ...springSmooth, delay: 0.9 }}
-          className="border-2 border-black flex flex-col justify-center px-4 py-4 md:py-6 lg:py-8"
-          style={{ background: "var(--color-lavender)", boxShadow: "6px 6px 0px #000" }}
+          className="border-2 border-black flex flex-col justify-center px-4 py-3 sm:py-4 md:py-5"
+          style={{ background: "var(--color-canvas)", boxShadow: "6px 6px 0px #000" }}
         >
-          <span className="text-xs lg:text-sm xl:text-base font-bold uppercase mb-1" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
+          <span className="text-xs lg:text-sm font-bold uppercase mb-1" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
             Semester
           </span>
-          <span className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-black" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
+          <span className="text-2xl md:text-3xl lg:text-4xl font-black" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
             4
           </span>
         </motion.div>
