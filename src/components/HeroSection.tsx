@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
-import HeroTerminal from './HeroTerminal'
 
 const { personal, skills } = portfolioData
 
@@ -36,13 +35,13 @@ export default function HeroSection() {
       </div>
 
       {/* Container Utama */}
-      <div className="w-full max-w-7xl mx-auto px-10 md:px-16 pt-64 pb-24 sm:pt-72 lg:pt-64 md:pb-32 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start lg:items-center flex-1">
+      <div className="w-full max-w-4xl mx-auto px-6 md:px-10 pt-48 pb-24 md:pt-64 md:pb-32 relative z-10 flex flex-col items-center justify-center flex-1">
 
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ ...springSmooth }}
-          className="flex flex-col gap-8 text-center lg:text-left items-center lg:items-start z-10"
+          className="flex flex-col gap-8 text-center items-center z-10"
         >
           <div className="flex flex-col gap-5">
             <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible">
@@ -74,7 +73,7 @@ export default function HeroSection() {
               <p className="text-[0.65rem] tracking-widest mb-2 opacity-70 uppercase font-bold" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
                 Core Stack:
               </p>
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-2 justify-center">
                 {topSkills.map(skill => (
                   <span key={skill.name} className="tech-tag text-xs px-2.5 py-1.5" style={{ background: "var(--color-canvas)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }}>
                     {skill.name}
@@ -89,7 +88,7 @@ export default function HeroSection() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 w-full lg:w-auto"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
           >
             <a href="#projects" className="sticker-btn text-xs md:text-sm px-5 py-3" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
               LIHAT PROYEK <ArrowRight size={15} />
@@ -100,15 +99,6 @@ export default function HeroSection() {
           </motion.div>
         </motion.div>
 
-        <div className="hidden lg:block w-full">
-          <HeroTerminal />
-        </div>
-
-      </div>
-
-      {/* Terminal Block khusus Mobile, diletakkan di luar grid agar membuat halaman bertambah panjang ke bawah */}
-      <div className="lg:hidden w-full max-w-xl mx-auto px-10 pb-24 relative z-10">
-        <HeroTerminal />
       </div>
     </section>
   )
