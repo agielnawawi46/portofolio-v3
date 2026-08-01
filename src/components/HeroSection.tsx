@@ -1,4 +1,4 @@
-﻿import { motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
 
@@ -34,10 +34,10 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex items-center justify-center overflow-hidden border-b-2 border-black"
+      className="relative min-h-screen w-full flex flex-col border-b-2 border-black"
       aria-label="Hero section"
     >
-      <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 pointer-events-none" style={{ zIndex: 0 }}>
+      <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         <div className="relative border-r-2 border-black hidden md:block" style={{ background: "var(--color-lavender)" }}>
           <div className="absolute inset-0 grid-bg opacity-40" />
         </div>
@@ -47,8 +47,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Container Utama — Diperbaiki: px-6 md:px-12 menjadi px-10 md:px-16, gap-10 menjadi gap-16 lg:gap-20 */}
-      <div className="w-full max-w-7xl mx-auto px-10 md:px-16 py-24 md:py-32 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+      {/* Container Utama */}
+      <div className="w-full max-w-7xl mx-auto px-10 md:px-16 pt-32 pb-20 sm:pt-36 md:pt-40 md:pb-32 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center flex-1">
 
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -116,16 +116,16 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ ...springSmooth, delay: 0.12 }}
-          className="hidden lg:flex flex-col gap-5 w-full"
+          className="flex flex-col gap-5 w-full mt-8 lg:mt-0"
         >
           {/* Terminal + Foto overlay */}
           <div className="relative">
-            {/* Foto — Diperbaiki: -right-10 -bottom-10 z-10 w-40, aspectRatio diperbaiki agar tidak gepeng */}
+            {/* Foto — Posisi disesuaikan per ukuran layar agar tidak terlalu meluap di mobile */}
             <motion.div
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ ...springSmooth, delay: 0.6 }}
-              className="absolute -right-10 -bottom-10 z-10"
+              className="absolute -right-2 -bottom-6 sm:-right-6 sm:-bottom-8 lg:-right-10 lg:-bottom-10 z-10"
             >
               <div
                 className="w-40 border-2 border-black overflow-hidden"
