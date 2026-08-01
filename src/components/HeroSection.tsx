@@ -54,7 +54,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ ...springSmooth }}
-          className="flex flex-col gap-8 text-left z-10"
+          className="flex flex-col gap-8 text-center lg:text-left items-center lg:items-start z-10"
         >
           <div className="flex flex-col gap-5">
             <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible">
@@ -86,7 +86,7 @@ export default function HeroSection() {
               <p className="text-[0.65rem] tracking-widest mb-2 opacity-70 uppercase font-bold" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
                 Core Stack:
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
                 {topSkills.map(skill => (
                   <span key={skill.name} className="tech-tag text-xs px-2.5 py-1.5" style={{ background: "var(--color-canvas)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }}>
                     {skill.name}
@@ -101,7 +101,7 @@ export default function HeroSection() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-3"
+            className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 w-full lg:w-auto"
           >
             <a href="#projects" className="sticker-btn text-xs md:text-sm px-5 py-3" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
               LIHAT PROYEK <ArrowRight size={15} />
