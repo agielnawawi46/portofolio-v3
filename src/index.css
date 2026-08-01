@@ -1,0 +1,229 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────── */
+/* Design Tokens */
+/* ─────────────────────────────────────────────── */
+:root {
+  --color-lavender: #DDD6FE;
+  --color-lavender-dark: #B8B2E6;
+  --color-orange: #F97316;
+  --color-orange-light: #FF8A00;
+  --color-canvas: #F8F8F6;
+  --color-charcoal: #0F172A;
+  --color-border: #0F172A;
+  --shadow-offset: 4px 4px 0px #000;
+  --shadow-offset-lg: 8px 8px 0px #000;
+  --border-thick: 2px solid #000;
+  --border-thicker: 2px solid #000;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --navbar-h: 72px;
+}
+
+
+
+/* ─────────────────────────────────────────────── */
+/* Base Reset */
+/* ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  /* Offset anchor scroll for fixed navbar */
+  scroll-padding-top: var(--navbar-h);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-canvas);
+  color: var(--color-charcoal);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* ─────────────────────────────────────────────── */
+/* Typography utilities */
+/* ─────────────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+.font-body    { font-family: var(--font-body); }
+.font-mono    { font-family: var(--font-mono); }
+
+/* ─────────────────────────────────────────────── */
+/* Sticker UI */
+/* ─────────────────────────────────────────────── */
+.sticker-box {
+  border: var(--border-thick);
+  box-shadow: var(--shadow-offset);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.sticker-box:hover {
+  box-shadow: var(--shadow-offset-lg);
+  transform: translate(-2px, -2px);
+}
+
+.sticker-box-lg {
+  border: var(--border-thicker);
+  box-shadow: var(--shadow-offset-lg);
+}
+
+.sticker-btn {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: var(--border-thicker);
+  box-shadow: var(--shadow-offset);
+  cursor: pointer;
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.sticker-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-offset-lg);
+}
+
+.sticker-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px #0F172A;
+}
+
+.sticker-btn-primary {
+  background-color: var(--color-charcoal);
+  color: var(--color-canvas);
+}
+
+.sticker-btn-secondary {
+  background-color: var(--color-orange);
+  color: var(--color-charcoal);
+}
+
+/* ─────────────────────────────────────────────── */
+/* Grid Background */
+/* ─────────────────────────────────────────────── */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(15,23,42,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15,23,42,0.12) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+
+
+/* ─────────────────────────────────────────────── */
+/* Labels */
+/* ─────────────────────────────────────────────── */
+.section-number {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  opacity: 0.3;
+}
+
+.section-badge {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  border: 1.5px solid currentColor;
+  padding: 0.28em 0.8em;
+  display: inline-block;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────── */
+/* Scrollbar */
+/* ─────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.35);
+  border-radius: 4px;
+}
+
+/* ─────────────────────────────────────────────── */
+/* Reduced Motion */
+/* ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ─────────────────────────────────────────────── */
+/* Code Terminal */
+/* ─────────────────────────────────────────────── */
+.code-terminal {
+  font-family: var(--font-mono);
+  font-size: 0.77rem;
+  line-height: 1.8;
+  background: #0F172A;
+  color: #7DD3FC;
+  padding: 1.25rem 1.5rem;
+  overflow: hidden;
+}
+
+.code-terminal .ct-green   { color: #86EFAC; }
+.code-terminal .ct-orange  { color: #FCA5A5; }
+.code-terminal .ct-yellow  { color: #FDE68A; }
+.code-terminal .ct-purple  { color: #C4B5FD; }
+.code-terminal .ct-comment { color: #475569; }
+
+/* ─────────────────────────────────────────────── */
+/* Tech Tag */
+/* ─────────────────────────────────────────────── */
+.tech-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--color-charcoal);
+  color: var(--color-canvas);
+  padding: 0.28em 0.7em;
+  border: 1.5px solid var(--color-border);
+  display: inline-block;
+  line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────── */
+/* Speech Bubble — no triangle to avoid overlap  */
+/* ─────────────────────────────────────────────── */
+.speech-bubble {
+  position: relative;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-offset);
+  background: var(--color-canvas);
+  padding: 1.25rem 1.5rem;
+  /* Left accent bar instead of triangle */
+  border-left: 5px solid var(--color-orange);
+}
+
+/* ─────────────────────────────────────────────── */
+/* Focus States */
+/* ─────────────────────────────────────────────── */
+:focus-visible {
+  outline: 3px solid var(--color-orange);
+  outline-offset: 3px;
+}
