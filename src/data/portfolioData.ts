@@ -98,7 +98,7 @@ export const portfolioData = {
       image: "/projects/nekoshop.png",
       liveDemoUrl: "#",
       githubUrl: "https://github.com/agielnawawi46",
-      category: "E-Commerce",
+      category: "Web App",
     },
     {
       id: "proj-003",
@@ -109,7 +109,7 @@ export const portfolioData = {
       image: "/projects/datasphere.png",
       liveDemoUrl: "#",
       githubUrl: "https://github.com/agielnawawi46",
-      category: "Dashboard",
+      category: "Web App",
     },
     {
       id: "proj-004",
