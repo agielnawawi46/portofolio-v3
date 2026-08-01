@@ -48,7 +48,7 @@ export default function HeroSection() {
       </div>
 
       {/* Container Utama */}
-      <div className="w-full max-w-7xl mx-auto px-10 md:px-16 pt-32 pb-20 sm:pt-36 md:pt-40 md:pb-32 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center flex-1">
+      <div className="w-full max-w-7xl mx-auto px-10 md:px-16 pt-36 pb-24 sm:pt-40 lg:pt-48 md:pb-32 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start lg:items-center flex-1">
 
         <motion.div
           initial={{ opacity: 0, x: -20 }}
