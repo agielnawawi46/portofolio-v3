@@ -9,7 +9,7 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
     // Set timer untuk menyelesaikan splash screen
     const timer = setTimeout(() => {
       onComplete();
-    }, 2000); // 2 detik
+    }, 2800); // 2.8 detik agar teks yang lebih panjang sempat terbaca
 
     return () => {
       // Kembalikan scroll saat komponen dilepas
@@ -30,10 +30,18 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         initial={{ opacity: 0, scale: 0.85 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-        className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tight text-center leading-[0.95]"
-        style={{ fontFamily: 'var(--font-display)', color: 'var(--color-canvas)' }}
+        className="flex flex-col items-center justify-center text-center gap-3 md:gap-4"
+        style={{ color: 'var(--color-canvas)' }}
       >
-        AGIEL<br />NAWAWI
+        <span className="text-lg md:text-2xl tracking-[0.2em] font-bold opacity-90" style={{ fontFamily: 'var(--font-mono)' }}>
+          PORTOFOLIO
+        </span>
+        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tight leading-[0.95]" style={{ fontFamily: 'var(--font-display)' }}>
+          AGIEL NAWAWI
+        </h1>
+        <span className="text-sm md:text-lg tracking-[0.3em] font-bold opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
+          WEB DEVELOPMENT
+        </span>
       </motion.div>
     </motion.div>
   );
