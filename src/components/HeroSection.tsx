@@ -6,7 +6,6 @@ import HeroTerminal from './HeroTerminal'
 const { personal, skills } = portfolioData
 
 const springSmooth = { type: "spring" as const, stiffness: 60, damping: 18 }
-const springFast = { type: "spring" as const, stiffness: 100, damping: 22 }
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
