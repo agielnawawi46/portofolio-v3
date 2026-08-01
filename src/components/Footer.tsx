@@ -16,8 +16,8 @@ export default function Footer() {
       <div className="w-full px-6 md:px-12 lg:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 justify-between items-start">
 
-          {/* Brand - Rata Kiri */}
-          <div className="flex flex-col items-start text-left">
+          {/* Brand - Rata Tengah di Mobile, Kiri di Desktop */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <div className="flex items-center gap-2 mb-5">
               <span
                 className="px-2.5 py-1 text-sm font-bold"
@@ -38,12 +38,12 @@ export default function Footer() {
           </div>
 
 
-          {/* Social - Rata Kanan (di Desktop) */}
-          <div className="flex flex-col items-start md:items-end text-left md:text-right">
+          {/* Social - Rata Tengah di Mobile, Kanan di Desktop */}
+          <div className="flex flex-col items-center md:items-end text-center md:text-right">
             <h3 className="text-sm md:text-base font-bold tracking-widest uppercase mb-6" style={{ fontFamily: 'var(--font-mono)' }}>
               CONNECT
             </h3>
-            <div className="flex justify-start md:justify-end gap-3 mb-8">
+            <div className="flex justify-center md:justify-end gap-3 mb-8">
               {[
                 { icon: GitFork, href: personal.github, id: 'footer-github', label: 'GitHub' },
                 { icon: Link2, href: personal.linkedin, id: 'footer-linkedin', label: 'LinkedIn' },
