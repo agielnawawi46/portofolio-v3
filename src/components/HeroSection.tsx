@@ -38,7 +38,7 @@ export default function HeroSection() {
           className="flex flex-col gap-8 text-center items-center z-10 w-full"
         >
           <div className="flex flex-col gap-5 items-center w-full">
-            <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible">
+            <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-col items-center w-full">
               <h1
                 className="text-4xl sm:text-5xl lg:text-7xl font-black uppercase leading-[0.95] tracking-tight mt-8 md:mt-0"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
@@ -48,7 +48,7 @@ export default function HeroSection() {
               </h1>
             </motion.div>
 
-            <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible">
+            <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-col items-center w-full">
               <div
                 className="inline-block px-3 py-1 mb-2 sticker-box w-max"
                 style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)" }}
@@ -62,7 +62,7 @@ export default function HeroSection() {
               </p>
             </motion.div>
 
-            <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible">
+            <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-col items-center w-full">
               <p className="text-[0.65rem] tracking-widest mb-2 opacity-70 uppercase font-bold" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
                 Core Stack:
               </p>
