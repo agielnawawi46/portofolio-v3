@@ -67,7 +67,7 @@ export default function HeroTerminal() {
               ~/agiel.dev
             </span>
           </div>
-          <div className="p-5 md:p-6 lg:p-8 xl:p-10">
+          <div className="code-terminal p-5 md:p-6 lg:p-8 xl:p-10">
             <div className="flex flex-col gap-1.5 md:gap-2">
               {codeLines.map((line, idx) => (
                 <motion.div
