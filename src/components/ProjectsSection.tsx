@@ -21,10 +21,6 @@ export default function ProjectsSection() {
 
   const springBase = { type: 'spring' as const, stiffness: 65, damping: 18 }
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [filter, setFilter] = useState<string>('ALL')
-
-  const categories = ['ALL', ...Array.from(new Set(projects.map(p => p.category)))]
-  const filtered = filter === 'ALL' ? projects : projects.filter(p => p.category === filter)
 
   return (
     <>
@@ -60,39 +56,9 @@ export default function ProjectsSection() {
             </h2>
           </motion.div>
 
-          {/* Filters - REVISI: Mengatur margin bottom (mb-12 md:mb-16) & gap tombol */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={inView ? { ...springBase, delay: 0.08 } : {}}
-            className="flex flex-wrap justify-center gap-3 md:gap-4 mb-12 md:mb-16"
-          >
-            {categories.map(cat => (
-              <button
-                key={cat}
-                id={`filter-${cat.toLowerCase().replace(/\s/g, '-')}`}
-                onClick={() => setFilter(cat)}
-                className="sticker-btn"
-                style={{
-                  background: filter === cat ? 'var(--color-orange)' : 'rgba(226,232,240,0.06)',
-                  color: filter === cat ? 'var(--color-charcoal)' : 'var(--color-canvas)',
-                  borderColor: filter === cat ? 'var(--color-orange)' : 'rgba(226,232,240,0.2)',
-                  boxShadow: filter === cat ? '5px 5px 0px rgba(249,115,22,0.35)' : '5px 5px 0px rgba(226,232,240,0.12)',
-                  padding: '0.5rem 1.1rem',
-                  fontSize: '0.75rem',
-                  fontWeight: 'bold',
-                  letterSpacing: '0.05em'
-                }}
-                aria-pressed={filter === cat}
-              >
-                {cat}
-              </button>
-            ))}
-          </motion.div>
-
           {/* Grid Proyek - REVISI: Memperbesar gap menjadi gap-8 md:gap-10 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {filtered.map((project, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-6 md:mt-8">
+            {projects.map((project, i) => (
               <motion.article
                 key={project.id}
                 initial={{ opacity: 0, y: 28 }}
