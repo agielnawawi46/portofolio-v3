@@ -15,7 +15,7 @@ function App() {
   const [showSplash, setShowSplash] = useState(true)
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}>
+    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}>
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>

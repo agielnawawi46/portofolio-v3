@@ -44,7 +44,7 @@ export default function HeroSection() {
             {/* Judul Utama */}
             <motion.div custom={1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full text-center">
               <h1
-                className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-[0.95] tracking-tight text-center"
+                className="text-3xl sm:text-5xl lg:text-7xl xl:text-8xl font-black uppercase leading-[0.95] tracking-tight text-center"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
                 SOFTWARE<br />
@@ -89,7 +89,7 @@ export default function HeroSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
-            className="flex flex-row items-center justify-center gap-3 w-full"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
           >
             <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
               LIHAT PROYEK <ArrowRight size={18} />

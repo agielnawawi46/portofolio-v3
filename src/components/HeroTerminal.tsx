@@ -46,10 +46,10 @@ export default function HeroTerminal() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: false, amount: 0.1 }}
           transition={{ ...springSmooth, delay: 0.6 }}
-          className="absolute -right-2 -bottom-6 sm:-right-6 sm:-bottom-8 lg:-right-10 lg:-bottom-10 z-10"
+          className="absolute -right-2 -bottom-4 sm:-right-4 sm:-bottom-6 md:-right-6 md:-bottom-8 lg:-right-10 lg:-bottom-10 z-10"
         >
           <div
-            className="w-40 md:w-44 lg:w-48 border-2 border-black overflow-hidden"
+            className="w-28 sm:w-36 md:w-44 lg:w-48 border-2 border-black overflow-hidden"
             style={{ boxShadow: '8px 8px 0px #000', aspectRatio: '1/1.5' }}
           >
             <img
