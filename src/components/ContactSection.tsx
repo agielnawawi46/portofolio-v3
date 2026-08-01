@@ -15,7 +15,7 @@ const contactItems = [
 
 export default function ContactSection() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const inView = useInView(ref, { once: false, margin: '-60px' })
 
   const springBase = { type: 'spring' as const, stiffness: 65, damping: 18 }
 
@@ -50,10 +50,10 @@ export default function ContactSection() {
 
         {/* Header - REVISI 2: Menggunakan margin-bottom yang konsisten (mb-12 md:mb-16 lg:mb-20) */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, x: -40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={inView ? { ...springBase } : {}}
-          className="mb-12 md:mb-16 lg:mb-20 flex flex-col items-center text-center"
+          className="mb-14 md:mb-20 flex flex-col items-center text-center w-full"
         >
           <h2
             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase leading-tight tracking-tight"
@@ -87,13 +87,16 @@ export default function ContactSection() {
 
             {/* Contact items */}
             <div className="flex flex-col gap-3">
-              {contactItems.map(item => (
-                <a
+              {contactItems.map((item, idx) => (
+                <motion.a
                   key={item.id}
                   id={item.id}
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  initial={{ opacity: 0, x: (idx % 2 === 0 ? -30 : 30) }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={inView ? { ...springBase, delay: 0.1 + idx * 0.1 } : {}}
                   className="flex items-center gap-5 border-2 border-black p-6 md:p-8 shadow-[6px_6px_0px_#000] hover:-translate-y-1 transition-transform"
                   style={{ background: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}
                   aria-label={`${item.label}: ${item.value}`}
@@ -102,14 +105,14 @@ export default function ContactSection() {
                     <item.icon size={20} />
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[0.65rem] md:text-xs font-bold tracking-widest opacity-60 uppercase" style={{ fontFamily: 'var(--font-mono)' }}>
+                    <p className="text-[0.65rem] md:text-xs font-bold tracking-widest uppercase opacity-60" style={{ fontFamily: 'var(--font-mono)' }}>
                       {item.label}
                     </p>
                     <p className="text-sm md:text-base font-bold truncate" style={{ fontFamily: 'var(--font-body)' }}>
                       {item.value}
                     </p>
                   </div>
-                </a>
+                </motion.a>
               ))}
             </div>
           </motion.div>

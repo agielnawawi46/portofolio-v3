@@ -17,7 +17,7 @@ const categoryColors: Record<string, string> = {
 
 export default function ProjectsSection() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const inView = useInView(ref, { once: false, margin: '-60px' })
 
   const springBase = { type: 'spring' as const, stiffness: 65, damping: 18 }
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
@@ -43,8 +43,8 @@ export default function ProjectsSection() {
 
           {/* Header - REVISI: Mengurangi mb-20 menjadi mb-8 md:mb-10 */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, x: -40 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={inView ? { ...springBase } : {}}
             className="mb-8 md:mb-10 flex flex-col items-center text-center"
           >
@@ -61,9 +61,9 @@ export default function ProjectsSection() {
             {projects.map((project, i) => (
               <motion.article
                 key={project.id}
-                initial={{ opacity: 0, y: 28 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={inView ? { ...springBase, delay: 0.1 + i * 0.06 } : {}}
+                initial={{ opacity: 0, y: 40, x: (i % 2 === 0 ? -20 : 20) }}
+                animate={inView ? { opacity: 1, y: 0, x: 0 } : {}}
+                transition={inView ? { ...springBase, delay: i * 0.1 } : {}}
                 whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
                 className="group cursor-pointer h-full"
                 onClick={() => setSelectedProject(project)}

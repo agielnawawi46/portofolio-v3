@@ -8,7 +8,7 @@ const categories = ['Frontend', 'Backend', 'Tools']
 
 export default function AboutSkillSection() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const inView = useInView(ref, { once: false, margin: '-60px' })
 
   const springBase  = { type: 'spring' as const, stiffness: 65, damping: 18 }
   const springScale = { type: 'spring' as const, stiffness: 200, damping: 22 }
@@ -29,10 +29,10 @@ export default function AboutSkillSection() {
 
         {/* Section Header - REVISI 2: Ubah mb-28 menjadi mb-10 md:mb-14 */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, x: -40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={inView ? { ...springBase } : {}}
-          className="mb-10 md:mb-14 flex flex-col items-center text-center"
+          className="mb-10 md:mb-14 flex flex-col items-center text-center w-full"
         >
           <h2
             className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-tight"
@@ -48,7 +48,7 @@ export default function AboutSkillSection() {
 
           {/* Bio Card */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={inView ? { ...springBase, delay: 0.1 } : {}}
             className="lg:col-span-7 flex"
@@ -80,7 +80,7 @@ export default function AboutSkillSection() {
 
           {/* Stats Cards - REVISI 4: Memperbesar gap internal ke gap-5 md:gap-6 */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
+            initial={{ opacity: 0, x: 40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={inView ? { ...springBase, delay: 0.15 } : {}}
             className="lg:col-span-5 grid grid-cols-2 gap-5 md:gap-6"

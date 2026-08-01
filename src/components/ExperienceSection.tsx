@@ -6,7 +6,7 @@ const { experiences } = portfolioData
 
 export default function ExperienceSection() {
   const ref = useRef(null)
-  const inView = useInView(ref, { once: true, margin: '-60px' })
+  const inView = useInView(ref, { once: false, margin: '-60px' })
 
   const springBase = { type: 'spring' as const, stiffness: 65, damping: 18 }
 
@@ -24,10 +24,10 @@ export default function ExperienceSection() {
 
         {/* Section Header - REVISI: Mengubah mb-28 menjadi mb-12 md:mb-16 */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, x: 40 }}
+          animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={inView ? { ...springBase } : {}}
-          className="mb-12 md:mb-16 flex flex-col items-center text-center"
+          className="mb-14 md:mb-20 flex flex-col items-center text-center w-full"
         >
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
@@ -40,12 +40,12 @@ export default function ExperienceSection() {
 
         {/* Timeline items - REVISI: Menghapus mt-6 agar tidak menambah spacing berlebih */}
         <div className="flex flex-col gap-6 w-full">
-          {experiences.map((exp, i) => (
+          {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={inView ? { ...springBase, delay: 0.15 + i * 0.1 } : {}}
+              initial={{ opacity: 0, x: (idx % 2 === 0 ? -40 : 40), y: 20 }}
+              animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
+              transition={inView ? { ...springBase, delay: 0.15 + idx * 0.1 } : {}}
               className="border-2 border-black bg-white p-6 md:p-7 relative transition-transform hover:-translate-y-1 hover:-translate-x-1"
               style={{
                 boxShadow: '8px 8px 0px #000',
