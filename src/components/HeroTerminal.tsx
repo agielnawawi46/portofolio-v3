@@ -32,8 +32,9 @@ const fadeUp = {
 export default function HeroTerminal() {
   return (
     <motion.div
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, x: 40 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: false, amount: 0.1 }}
       transition={{ ...springSmooth, delay: 0.12 }}
       className="flex flex-col gap-5 w-full mt-8 lg:mt-0"
     >
@@ -42,7 +43,8 @@ export default function HeroTerminal() {
         {/* Foto — Posisi disesuaikan per ukuran layar agar tidak terlalu meluap di mobile */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ ...springSmooth, delay: 0.6 }}
           className="absolute -right-2 -bottom-6 sm:-right-6 sm:-bottom-8 lg:-right-10 lg:-bottom-10 z-10"
         >
@@ -81,7 +83,8 @@ export default function HeroTerminal() {
                   custom={idx}
                   variants={fadeUp}
                   initial="hidden"
-                  animate="visible"
+                  whileInView="visible"
+                  viewport={{ once: false, amount: 0.1 }}
                   className={`font-mono text-[10px] sm:text-xs md:text-sm whitespace-pre ct-${line.type}`}
                 >
                   {line.content || "\u00A0"}
@@ -100,12 +103,14 @@ export default function HeroTerminal() {
 
       <motion.div
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.1 }}
         className="w-full grid grid-cols-2 gap-4 md:gap-5"
       >
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, x: -30 }}
+          whileInView={{ opacity: 1, y: 0, x: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ ...springSmooth, delay: 0.8 }}
           className="border-2 border-black flex flex-col justify-center px-4 py-3 sm:py-4 md:py-5"
           style={{ background: "var(--color-orange)", boxShadow: "6px 6px 0px #000" }}
@@ -118,8 +123,9 @@ export default function HeroTerminal() {
           </span>
         </motion.div>
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20, x: 30 }}
+          whileInView={{ opacity: 1, y: 0, x: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ ...springSmooth, delay: 0.9 }}
           className="border-2 border-black flex flex-col justify-center px-4 py-3 sm:py-4 md:py-5"
           style={{ background: "var(--color-canvas)", boxShadow: "6px 6px 0px #000" }}

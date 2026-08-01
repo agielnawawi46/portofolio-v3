@@ -34,14 +34,15 @@ export default function HeroSection() {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
           transition={{ ...springSmooth }}
           className="flex flex-col items-center justify-center gap-8 text-center w-full"
         >
           <div className="flex flex-col items-center gap-6 w-full">
 
             {/* Judul Utama */}
-            <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="w-full text-center">
+            <motion.div custom={1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full text-center">
               <h1
                 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-[0.95] tracking-tight text-center"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
@@ -52,7 +53,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Handle & Bio */}
-            <motion.div custom={2} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-col items-center text-center w-full">
+            <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full">
               <div
                 className="inline-block px-4 py-2 mb-3 sticker-box"
                 style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)" }}
@@ -67,7 +68,7 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Core Stack */}
-            <motion.div custom={3} variants={fadeUp} initial="hidden" animate="visible" className="flex flex-col items-center text-center w-full mt-2">
+            <motion.div custom={3} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full mt-2">
               <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-70 uppercase font-bold text-center" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
                 Core Stack:
               </p>
@@ -86,7 +87,8 @@ export default function HeroSection() {
             custom={4}
             variants={fadeUp}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
             className="flex flex-row items-center justify-center gap-3 w-full"
           >
             <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
