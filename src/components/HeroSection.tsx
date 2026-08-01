@@ -24,14 +24,8 @@ export default function HeroSection() {
       className="relative min-h-screen w-full flex flex-col border-b-2 border-black"
       aria-label="Hero section"
     >
-      <div className="absolute inset-0 grid grid-cols-1 md:grid-cols-2 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-        <div className="relative border-r-2 border-black hidden md:block" style={{ background: "var(--color-lavender)" }}>
-          <div className="absolute inset-0 grid-bg opacity-40" />
-        </div>
-        <div className="relative" style={{ background: "var(--color-orange)" }}>
-          <div className="absolute inset-0 grid-bg opacity-25" />
-          <div className="absolute inset-0 md:hidden grid-bg opacity-40" style={{ background: "var(--color-lavender)" }} />
-        </div>
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0, background: "var(--color-lavender)" }}>
+        <div className="absolute inset-0 grid-bg opacity-40" />
       </div>
 
       {/* Container Utama */}
