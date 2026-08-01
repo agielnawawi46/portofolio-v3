@@ -43,7 +43,7 @@ export default function HeroSection() {
             {/* Judul Utama */}
             <motion.div custom={1} variants={fadeUp} initial="hidden" animate="visible" className="w-full text-center">
               <h1
-                className="text-4xl sm:text-6xl lg:text-8xl xl:text-[8rem] font-black uppercase leading-[0.95] tracking-tight text-center"
+                className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-[0.95] tracking-tight text-center"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
                 SOFTWARE<br />
