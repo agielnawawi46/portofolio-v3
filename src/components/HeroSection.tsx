@@ -57,14 +57,6 @@ export default function HeroSection() {
 
             {/* Handle & Bio */}
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full">
-              <div
-                className="inline-block px-4 py-2 mb-3 sticker-box"
-                style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)" }}
-              >
-                <span className="font-bold text-xs md:text-sm lg:text-base tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
-                  {personal.handle}
-                </span>
-              </div>
               <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                 {personal.bio}
               </p>
