@@ -286,14 +286,12 @@ export default function AboutSkillSection() {
               </h3>
 
               {/* Category Tabs */}
-              <div className="flex gap-2 flex-wrap justify-center" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
+              <div className="flex gap-3 md:gap-4 flex-wrap justify-center" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
                 {categories.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-4 py-2 text-xs font-bold uppercase tracking-widest border-2 border-black transition-all duration-200 ${
-                      activeCategory === cat ? '-translate-y-1 -translate-x-1' : 'hover:-translate-y-1 hover:-translate-x-1'
-                    }`}
+                    className="px-5 md:px-8 py-2.5 md:py-3.5 text-xs md:text-sm font-black uppercase tracking-widest border-2 border-black transition-transform duration-200 hover:-translate-y-1 hover:-translate-x-1"
                     style={{
                       fontFamily: 'var(--font-mono)',
                       background: activeCategory === cat ? 'var(--color-orange)' : 'var(--color-canvas)',
