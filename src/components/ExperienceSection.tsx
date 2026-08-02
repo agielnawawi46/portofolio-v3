@@ -20,7 +20,7 @@ export default function ExperienceSection() {
     >
       <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
 
-      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
+      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center">
 
         {/* Section Header - REVISI: Mengubah mb-28 menjadi mb-12 md:mb-16 */}
         <motion.div
@@ -28,6 +28,7 @@ export default function ExperienceSection() {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={inView ? { ...springBase } : {}}
           className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
+          style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
         >
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
