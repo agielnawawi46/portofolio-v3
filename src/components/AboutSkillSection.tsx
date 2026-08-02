@@ -88,9 +88,9 @@ export default function AboutSkillSection() {
               style={{ boxShadow: '6px 6px 0px #000', aspectRatio: '1/1.2' }}
             >
               <img
-                src="/fot.jpg"
+                src="/foto.jpg"
                 alt="Agiel Nawawi"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-top"
               />
             </div>
           </motion.div>
@@ -121,7 +121,7 @@ export default function AboutSkillSection() {
                   <img
                     src="/fot.jpg"
                     alt="Agiel Nawawi"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
               </motion.div>
