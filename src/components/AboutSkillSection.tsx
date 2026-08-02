@@ -286,7 +286,7 @@ export default function AboutSkillSection() {
               </h3>
 
               {/* Category Tabs */}
-              <div className="flex gap-2 flex-wrap justify-center">
+              <div className="flex gap-2 flex-wrap justify-center" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
                 {categories.map(cat => (
                   <button
                     key={cat}

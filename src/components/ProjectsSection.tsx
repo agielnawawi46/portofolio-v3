@@ -318,7 +318,8 @@ export default function ProjectsSection() {
             initial={{ opacity: 0, y: 30 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={inView ? { ...spring } : {}}
-            className="mb-12 md:mb-16 flex flex-col items-center text-center"
+            className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
+            style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
