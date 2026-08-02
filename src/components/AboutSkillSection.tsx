@@ -303,8 +303,8 @@ export default function AboutSkillSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={vp}
               transition={{ ...spring }}
-              className="flex flex-col items-center text-center mb-12 md:mb-16"
-              style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
+              className="flex flex-col items-center text-center"
+              style={{ marginTop: '2.5rem', marginBottom: '1.5rem' }}
             >
               <h3
                 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-none text-white"
@@ -318,7 +318,7 @@ export default function AboutSkillSection() {
               <div className="mt-3 h-1.5 w-16 bg-white" />
 
               {/* Category Tabs */}
-              <div className="flex gap-3 md:gap-4 flex-wrap justify-center" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
+              <div className="flex gap-3 md:gap-4 flex-wrap justify-center" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
                 {categories.map(cat => (
                   <button
                     key={cat}
