@@ -25,15 +25,15 @@ const codeLines = [
   { content: "export default developer;", type: "green" },
 ]
 
-const spring  = { type: 'spring' as const, stiffness: 65, damping: 18 }
+const spring = { type: 'spring' as const, stiffness: 65, damping: 18 }
 const springScale = { type: 'spring' as const, stiffness: 200, damping: 22 }
 const vp = { once: false, amount: 0.1 }
 
 const statItems = [
-  { value: '4+',  label: 'Projects',   bg: '#F97316', tc: '#0F172A' },
-  { value: '4',   label: 'Semester',   bg: '#DDD6FE', tc: '#0F172A' },
+  { value: '4+', label: 'Projects', bg: '#F97316', tc: '#0F172A' },
+  { value: '4', label: 'Semester', bg: '#DDD6FE', tc: '#0F172A' },
   { value: '16+', label: 'Tech Stack', bg: '#0F172A', tc: '#FFFFFF' },
-  { value: '2+',  label: 'Databases',  bg: '#FFFFFF', tc: '#0F172A' },
+  { value: '2+', label: 'Databases', bg: '#FFFFFF', tc: '#0F172A' },
 ]
 
 export default function AboutSkillSection() {
@@ -65,7 +65,7 @@ export default function AboutSkillSection() {
             className="mb-10 md:mb-14 flex flex-col items-center text-center w-full"
           >
             <h2
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-none"
+              className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"
               style={{ fontFamily: 'var(--font-display)' }}
             >
               ABOUT <span style={{ color: 'var(--color-orange)' }}>ME</span>
@@ -271,11 +271,11 @@ export default function AboutSkillSection() {
                     onClick={() => setActiveCategory(cat)}
                     className="px-4 py-2 text-xs font-bold uppercase tracking-widest border-2 transition-all duration-200"
                     style={{
-                      fontFamily:  'var(--font-mono)',
-                      background:  activeCategory === cat ? 'var(--color-orange)' : 'transparent',
-                      color:       activeCategory === cat ? 'var(--color-charcoal)' : 'white',
+                      fontFamily: 'var(--font-mono)',
+                      background: activeCategory === cat ? 'var(--color-orange)' : 'transparent',
+                      color: activeCategory === cat ? 'var(--color-charcoal)' : 'white',
                       borderColor: activeCategory === cat ? 'var(--color-orange)' : 'rgba(255,255,255,0.2)',
-                      boxShadow:   activeCategory === cat ? '4px 4px 0px rgba(0,0,0,0.5)' : 'none',
+                      boxShadow: activeCategory === cat ? '4px 4px 0px rgba(0,0,0,0.5)' : 'none',
                     }}
                   >
                     {cat}
@@ -301,9 +301,9 @@ export default function AboutSkillSection() {
                   transition={{ ...spring, delay: si * 0.05 }}
                   className="group border-2 p-4 relative overflow-hidden cursor-default"
                   style={{
-                    background:  '#1E293B',
+                    background: '#1E293B',
                     borderColor: 'rgba(255,255,255,0.1)',
-                    boxShadow:   '5px 5px 0px rgba(0,0,0,0.5)',
+                    boxShadow: '5px 5px 0px rgba(0,0,0,0.5)',
                   }}
                 >
                   {/* Hover orange fill */}
