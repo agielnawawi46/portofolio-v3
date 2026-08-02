@@ -55,7 +55,7 @@ export default function HeroTerminal() {
             <img
               src="/fot.jpg"
               alt="Agiel Nawawi"
-              className="w-full h-full object-cover object-top"
+              className="w-full h-full object-cover object-center"
             />
           </div>
         </motion.div>
