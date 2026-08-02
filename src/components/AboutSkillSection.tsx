@@ -221,7 +221,7 @@ export default function AboutSkillSection() {
                   </div>
 
                   <h3
-                    className="text-lg md:text-xl font-black mb-1 uppercase shrink-0"
+                    className="text-xl md:text-2xl font-black mb-1 uppercase shrink-0"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     {language === 'en' ? 'WHO AM I?' : 'SIAPA SAYA?'}
@@ -229,7 +229,7 @@ export default function AboutSkillSection() {
                   <div className="w-10 h-1 bg-black mb-4 shrink-0" />
                   <div className="flex-1 flex flex-col justify-center mb-5">
                     <p
-                      className="text-sm md:text-base leading-relaxed text-gray-800"
+                      className="text-base md:text-lg leading-relaxed text-gray-800"
                       style={{ fontFamily: 'var(--font-body)' }}
                     >
                       {personal.bio}
