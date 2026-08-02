@@ -149,7 +149,7 @@ export default function AboutSkillSection() {
                   <img
                     src="/foto.jpg"
                     alt="Agiel Nawawi"
-                    className="w-full h-full object-cover object-[center_30%] lg:object-[center_15%]"
+                    className="w-full h-full object-cover object-[center_30%] lg:object-top"
                   />
                 </div>
               </motion.div>
