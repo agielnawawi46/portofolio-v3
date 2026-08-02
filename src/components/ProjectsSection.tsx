@@ -41,12 +41,12 @@ export default function ProjectsSection() {
 
         <div className="relative max-w-6xl mx-auto px-6 md:px-10 w-full z-10 flex flex-col justify-center">
 
-          {/* Header - REVISI: Mengurangi mb-20 menjadi mb-8 md:mb-10 */}
+          {/* Header */}
           <motion.div
             initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={inView ? { ...springBase } : {}}
-            className="mb-8 md:mb-10 flex flex-col items-center text-center"
+            className="mb-12 md:mb-16 flex flex-col items-center text-center"
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
@@ -56,8 +56,8 @@ export default function ProjectsSection() {
             </h2>
           </motion.div>
 
-          {/* Grid Proyek - REVISI: Memperbesar gap menjadi gap-8 md:gap-10 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10 mt-6 md:mt-8">
+          {/* Grid Proyek */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             {projects.map((project, i) => (
               <motion.article
                 key={project.id}

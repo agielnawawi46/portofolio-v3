@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
-import IdentitySection from './components/IdentitySection'
+
 import AboutSkillSection from './components/AboutSkillSection'
 import ProjectsSection from './components/ProjectsSection'
 import ExperienceSection from './components/ExperienceSection'
@@ -22,7 +22,7 @@ function App() {
       <Navbar />
       <main>
         <HeroSection />
-        <IdentitySection />
+
         <AboutSkillSection />
         <ProjectsSection />
         <ExperienceSection />
