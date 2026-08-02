@@ -81,7 +81,7 @@ export default function ContactSection() {
                 GET IN TOUCH
               </h3>
               <p className="text-sm md:text-base leading-relaxed opacity-80" style={{ fontFamily: 'var(--font-body)' }}>
-                Tertarik berkolaborasi atau punya proyek menarik? Kirimkan pesan dan saya akan merespons dalam 1–2 hari kerja.
+                Interested in collaborating or have an interesting project? Send a message and I will respond within 1-2 business days.
               </p>
             </div>
 

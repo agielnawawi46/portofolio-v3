@@ -92,10 +92,10 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
           >
             <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
-              LIHAT PROYEK <ArrowRight size={18} />
+              VIEW PROJECTS <ArrowRight size={18} />
             </a>
             <a href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-orange)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-contact">
-              HUBUNGI <Mail size={18} />
+              CONTACT ME <Mail size={18} />
             </a>
           </motion.div>
 

@@ -33,13 +33,13 @@ export default function SplashScreen({ onComplete }: { onComplete: () => void })
         className="flex flex-col items-center justify-center text-center gap-3 md:gap-4"
         style={{ color: 'var(--color-canvas)' }}
       >
-        <span className="text-lg md:text-2xl tracking-[0.2em] font-bold opacity-90" style={{ fontFamily: 'var(--font-mono)' }}>
-          PORTOFOLIO
+        <span className="text-sm md:text-lg tracking-[0.2em] font-bold opacity-90 uppercase" style={{ fontFamily: 'var(--font-mono)' }}>
+          Agiel Nawawi
         </span>
-        <h1 className="text-4xl md:text-6xl lg:text-8xl font-black uppercase tracking-tight leading-[0.95]" style={{ fontFamily: 'var(--font-display)' }}>
-          AGIEL NAWAWI
+        <h1 className="text-3xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-tight" style={{ fontFamily: 'var(--font-display)' }}>
+          WELCOME TO MY<br />PORTFOLIO
         </h1>
-        <span className="text-sm md:text-lg tracking-[0.3em] font-bold opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
+        <span className="text-xs md:text-sm tracking-[0.3em] font-bold opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
           WEB DEVELOPMENT
         </span>
       </motion.div>
