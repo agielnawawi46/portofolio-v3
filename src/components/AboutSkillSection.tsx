@@ -212,7 +212,7 @@ export default function AboutSkillSection() {
                 transition={{ ...spring, delay: 0.2 }}
               >
                 <div
-                  className="border-2 border-black bg-white p-6 md:p-8 relative min-h-[250px] md:min-h-[300px] flex flex-col"
+                  className="border-2 border-black bg-white p-6 md:p-8 relative min-h-[220px] md:min-h-[270px] flex flex-col"
                   style={{ boxShadow: '8px 8px 0px #000' }}
                 >
                   {/* Corner accent */}
