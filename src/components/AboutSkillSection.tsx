@@ -79,7 +79,8 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={vp}
             transition={{ ...spring, delay: 0.1 }}
-            className="lg:hidden flex justify-center w-full mb-14"
+            className="lg:hidden flex justify-center w-full"
+            style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
           >
             <div
               className="w-40 sm:w-48 border-2 border-black overflow-hidden"
