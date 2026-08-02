@@ -198,7 +198,7 @@ export default function AboutSkillSection() {
                     className="text-lg md:text-xl font-black mb-1 uppercase"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
-                    Welcome to my portfolio
+                    WHO AM I?
                   </h3>
                   <div className="h-0.5 w-10 bg-orange-500 mb-4" />
                   <p
@@ -288,7 +288,7 @@ export default function AboutSkillSection() {
               </h3>
 
               {/* Category Tabs */}
-              <div className="flex gap-3 md:gap-4 flex-wrap justify-center" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
+              <div className="flex gap-3 md:gap-4 flex-wrap justify-center">
                 {categories.map(cat => (
                   <button
                     key={cat}
