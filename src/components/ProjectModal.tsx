@@ -30,41 +30,46 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     <AnimatePresence>
       {project && (
         <>
-          {/* Backdrop + centering wrapper */}
+          {/* Backdrop */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 lg:p-16"
+            className="fixed inset-0 z-50"
             style={{ background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(4px)' }}
             aria-hidden="true"
           />
 
-          {/* Modal — auto height, fits content */}
+          {/* Scroll container — allows modal to scroll on small screens */}
           <motion.div
             key="modal"
             role="dialog"
             aria-modal="true"
             aria-label={`${project.title} details`}
-            initial={{ opacity: 0, scale: 0.92, y: 30 }}
+            initial={{ opacity: 0, scale: 0.93, y: 24 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.92, y: 30 }}
+            exit={{ opacity: 0, scale: 0.93, y: 24 }}
             transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 lg:p-16 pointer-events-none"
+            className="fixed inset-0 z-50 overflow-y-auto"
           >
+            {/* Centering wrapper */}
             <div
-              className="w-full pointer-events-auto overflow-y-auto"
-              style={{
-                background: 'var(--color-canvas)',
-                border: '3px solid var(--color-border)',
-                boxShadow: '8px 8px 0px var(--color-border)',
-                maxWidth: '900px',
-                maxHeight: 'calc(100vh - 64px)',
-              }}
-              onClick={e => e.stopPropagation()}
+              className="flex min-h-full items-center justify-center p-4 sm:p-8"
+              onClick={onClose}
             >
+              {/* Modal box — height is purely auto / fit-content */}
+              <div
+                className="relative w-full"
+                style={{
+                  background: 'var(--color-canvas)',
+                  border: '3px solid var(--color-border)',
+                  boxShadow: '8px 8px 0px var(--color-border)',
+                  maxWidth: '900px',
+                }}
+                onClick={e => e.stopPropagation()}
+              >
             {/* Modal Header */}
             <div
               className="sticky top-0 z-10 flex items-center justify-between px-6 py-4"
@@ -232,7 +237,8 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
               </div>
             </div>
-            </div>{/* end modal content wrapper */}
+              </div>{/* end modal box */}
+            </div>{/* end centering wrapper */}
           </motion.div>
         </>
       )}
