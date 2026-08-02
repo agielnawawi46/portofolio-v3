@@ -302,7 +302,7 @@ export default function ProjectsSection() {
       <section
         id="projects"
         ref={ref}
-        className="relative min-h-screen w-full flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 border-b-2 border-black"
+        className="relative w-full flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 border-b-2 border-black"
         style={{ background: 'var(--color-charcoal)', color: 'var(--color-canvas)' }}
         aria-label="Projects section"
       >

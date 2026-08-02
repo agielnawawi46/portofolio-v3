@@ -40,7 +40,7 @@ export default function ContactSection() {
       id="contact"
       ref={ref}
       /* REVISI 1: Menyesuaikan padding & flex layout agar jarak elemen seimbang */
-      className="relative min-h-screen w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 overflow-hidden border-b-2 border-black"
+      className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-lavender)' }}
       aria-label="Contact section"
     >

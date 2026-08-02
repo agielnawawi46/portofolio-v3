@@ -53,7 +53,7 @@ export default function AboutSkillSection() {
       {/* ══════════════════════════════════════════
           PART 1 — IDENTITY + BIO
       ══════════════════════════════════════════ */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center w-full py-28 md:py-36">
+      <div className="relative z-10 flex flex-col justify-center items-center w-full py-28 md:py-36">
         <div className="w-full max-w-6xl mx-auto px-6 md:px-10" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
 
           {/* Section header — centered */}

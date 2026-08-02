@@ -14,7 +14,7 @@ export default function ExperienceSection() {
     <section
       id="experience"
       ref={ref}
-      className="relative min-h-screen w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 overflow-hidden border-b-2 border-black"
+      className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-canvas)' }}
       aria-label="Experience section"
     >
