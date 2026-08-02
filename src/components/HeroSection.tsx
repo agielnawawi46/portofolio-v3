@@ -65,7 +65,7 @@ export default function HeroSection() {
                   {personal.handle}
                 </span>
               </div>
-              <p className="text-sm md:text-base lg:text-lg xl:text-xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
+              <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                 {personal.bio}
               </p>
             </motion.div>
