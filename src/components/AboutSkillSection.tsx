@@ -54,7 +54,7 @@ export default function AboutSkillSection() {
           PART 1 — IDENTITY + BIO
       ══════════════════════════════════════════ */}
       <div className="relative z-10 flex flex-col justify-center items-center w-full py-28 md:py-36">
-        <div className="w-full max-w-6xl mx-auto px-6 md:px-10" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
+        <div className="w-full max-w-6xl mx-auto px-6 md:px-10">
 
           {/* Section header — centered */}
           <motion.div
@@ -63,6 +63,7 @@ export default function AboutSkillSection() {
             viewport={vp}
             transition={{ ...spring }}
             className="mb-12 lg:mb-16 flex flex-col items-center text-center w-full"
+            style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"
@@ -268,7 +269,7 @@ export default function AboutSkillSection() {
         }} />
 
         <div className="relative flex flex-col justify-center items-center w-full py-28 md:py-36">
-          <div className="w-full max-w-6xl mx-auto px-6 md:px-10" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
+          <div className="w-full max-w-6xl mx-auto px-6 md:px-10">
 
             {/* Title + Filter Tabs — centered stack */}
             <motion.div
@@ -277,6 +278,7 @@ export default function AboutSkillSection() {
               viewport={vp}
               transition={{ ...spring }}
               className="flex flex-col items-center text-center gap-6 mb-12 md:mb-16"
+              style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
             >
               <h3
                 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-none text-white"
