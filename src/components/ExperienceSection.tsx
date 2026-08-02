@@ -1,10 +1,12 @@
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { portfolioData } from '../data/portfolioData'
-
-const { experiences } = portfolioData
+import { useLanguage } from '../context/LanguageContext'
 
 export default function ExperienceSection() {
+  const { language } = useLanguage()
+  const { experiences } = portfolioData[language]
+
   const ref = useRef(null)
   const inView = useInView(ref, { once: false, margin: '-60px' })
 
@@ -34,7 +36,10 @@ export default function ExperienceSection() {
             className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
             style={{ fontFamily: 'var(--font-display)' }}
           >
-            MY <span style={{ color: 'var(--color-orange)' }}>JOURNEY</span>
+            {language === 'en' ? 'MY ' : 'PERJALANAN '}
+            <span style={{ color: 'var(--color-orange)' }}>
+              {language === 'en' ? 'JOURNEY' : 'SAYA'}
+            </span>
           </h2>
           <div className="mt-3 h-1.5 w-16 bg-black" />
         </motion.div>

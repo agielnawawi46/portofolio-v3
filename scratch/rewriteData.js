@@ -1,4 +1,5 @@
-export interface Project {
+const fs = require("fs");
+const content = `export interface Project {
   id: string;
   title: string;
   description: string;
@@ -136,7 +137,7 @@ export const portfolioData = {
       {
         id: "exp-002",
         role: "Senior High School",
-        company: "SMAIT Imam Syafi'i",
+        company: "SMAIT Imam Syafi\\'i",
         period: "2018 — 2021",
         description: "Completed senior high school education with a focus on science and general studies.",
         highlights: [],
@@ -145,14 +146,13 @@ export const portfolioData = {
       {
         id: "exp-003",
         role: "Junior High School",
-        company: "SMPIT Imam Syafi'i",
+        company: "SMPIT Imam Syafi\\'i",
         period: "2015 — 2018",
         description: "Completed junior high school education at an Islamic integrated school.",
         highlights: [],
         type: "education",
       },
     ] as Experience[],
-    testimonials: [] as Testimonial[],
   },
   id: {
     personal: {
@@ -252,7 +252,7 @@ export const portfolioData = {
       {
         id: "exp-002",
         role: "Sekolah Menengah Atas",
-        company: "SMAIT Imam Syafi'i",
+        company: "SMAIT Imam Syafi\\'i",
         period: "2018 — 2021",
         description: "Menyelesaikan pendidikan sekolah menengah atas dengan fokus pada ilmu pengetahuan alam dan studi umum.",
         highlights: [],
@@ -261,13 +261,14 @@ export const portfolioData = {
       {
         id: "exp-003",
         role: "Sekolah Menengah Pertama",
-        company: "SMPIT Imam Syafi'i",
+        company: "SMPIT Imam Syafi\\'i",
         period: "2015 — 2018",
         description: "Menyelesaikan pendidikan sekolah menengah pertama di sekolah Islam terpadu.",
         highlights: [],
         type: "education",
       },
     ] as Experience[],
-    testimonials: [] as Testimonial[],
   }
 };
+\`;
+fs.writeFileSync('src/data/portfolioData.ts', content);

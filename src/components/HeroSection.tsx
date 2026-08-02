@@ -1,8 +1,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Mail } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
-
-const { personal, skills } = portfolioData
+import { useLanguage } from '../context/LanguageContext'
 
 const springSmooth = { type: "spring" as const, stiffness: 60, damping: 18 }
 
@@ -16,6 +15,9 @@ const fadeUp = {
 }
 
 export default function HeroSection() {
+  const { language } = useLanguage()
+  const { personal, skills } = portfolioData[language]
+  
   const topSkills = skills.filter(s => s.category === "Frontend").slice(0, 4)
 
   return (
@@ -70,7 +72,7 @@ export default function HeroSection() {
             {/* Core Stack */}
             <motion.div custom={3} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full mt-2">
               <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-70 uppercase font-bold text-center" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
-                Core Stack:
+                {language === 'en' ? 'Core Stack:' : 'Teknologi Utama:'}
               </p>
               <div className="flex flex-wrap gap-2 md:gap-3 justify-center items-center">
                 {topSkills.map(skill => (
@@ -92,10 +94,10 @@ export default function HeroSection() {
             className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
           >
             <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
-              VIEW PROJECTS <ArrowRight size={18} />
+              {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={18} />
             </a>
             <a href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-orange)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-contact">
-              CONTACT ME <Mail size={18} />
+              {language === 'en' ? 'CONTACT ME' : 'HUBUNGI SAYA'} <Mail size={18} />
             </a>
           </motion.div>
 

@@ -1,9 +1,11 @@
 import { GitFork, Link2, Mail, ArrowUp } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
-
-const { personal } = portfolioData
+import { useLanguage } from '../context/LanguageContext'
 
 export default function Footer() {
+  const { language } = useLanguage()
+  const { personal } = portfolioData[language]
+  
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
 
   return (
@@ -30,7 +32,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-sm md:text-base leading-relaxed max-w-sm mb-7" style={{ fontFamily: 'var(--font-body)' }}>
-              Mahasiswa Teknik Informatika yang berfokus pada Web Development dan Software Engineering.
+              {language === 'en' ? 'Informatics Engineering student focusing on Web Development and Software Engineering.' : 'Mahasiswa Teknik Informatika yang berfokus pada Web Development dan Software Engineering.'}
             </p>
             <div className="text-4xl md:text-5xl font-black uppercase leading-none select-none" style={{ fontFamily: 'var(--font-display)', opacity: 0.05 }} aria-hidden>
               AGIEL<br />NAWAWI
@@ -41,7 +43,7 @@ export default function Footer() {
           {/* Social - Rata Tengah di Mobile, Kanan di Desktop */}
           <div className="flex flex-col items-center md:items-end text-center md:text-right">
             <h3 className="text-sm md:text-base font-bold tracking-widest uppercase mb-6" style={{ fontFamily: 'var(--font-mono)' }}>
-              CONNECT
+              {language === 'en' ? 'CONNECT' : 'HUBUNGI'}
             </h3>
             <div className="flex justify-center md:justify-end gap-3 mb-8">
               {[
@@ -71,7 +73,7 @@ export default function Footer() {
       <div className="border-t-2 border-slate-800 w-full">
         <div className="w-full px-6 md:px-12 lg:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs md:text-sm text-center md:text-left" style={{ fontFamily: 'var(--font-mono)' }}>
-            © {new Date().getFullYear()} Agiel Nawawi — Built with React + ❤️
+            © {new Date().getFullYear()} Agiel Nawawi — {language === 'en' ? 'Built with React + ❤️' : 'Dibuat dengan React + ❤️'}
           </p>
           <div className="flex items-center gap-4">
             <span className="text-xs md:text-sm" style={{ fontFamily: 'var(--font-mono)' }}>{personal.dateStamp}</span>

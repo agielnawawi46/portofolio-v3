@@ -1,42 +1,67 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { portfolioData } from '../data/portfolioData'
-
-const { skills, personal } = portfolioData
+import { useLanguage } from '../context/LanguageContext'
 
 const categories = ['Frontend', 'Backend', 'Tools']
 
 // --- Terminal Data ---
-const codeLines = [
-  { content: "// agiel.dev — Portfolio v3.0", type: "comment" },
-  { content: "const developer = {", type: "default" },
-  { content: `  name: "${personal.name}",`, type: "green" },
-  { content: `  role: "Web Developer",`, type: "green" },
-  { content: `  education: "Politeknik Negeri Batam",`, type: "purple" },
-  { content: `  location: "${personal.location}",`, type: "orange" },
-  { content: "  skills: [", type: "default" },
-  { content: `    "Laravel", "Django", "Node.js",`, type: "yellow" },
-  { content: `    "React", "TypeScript", "MySQL"`, type: "yellow" },
-  { content: "  ],", type: "default" },
-  { content: `  contact: "${personal.email}",`, type: "green" },
-  { content: "  available: true,", type: "orange" },
-  { content: "};", type: "default" },
-  { content: "", type: "default" },
-  { content: "export default developer;", type: "green" },
-]
+const getCodeLines = (personal: any, language: 'en' | 'id') => {
+  if (language === 'en') {
+    return [
+      { content: "// agiel.dev — Portfolio v3.0", type: "comment" },
+      { content: "const developer = {", type: "default" },
+      { content: `  name: "${personal.name}",`, type: "green" },
+      { content: `  role: "Web Developer",`, type: "green" },
+      { content: `  education: "Politeknik Negeri Batam",`, type: "purple" },
+      { content: `  location: "${personal.location}",`, type: "orange" },
+      { content: "  skills: [", type: "default" },
+      { content: `    "Laravel", "Django", "Node.js",`, type: "yellow" },
+      { content: `    "React", "TypeScript", "MySQL"`, type: "yellow" },
+      { content: "  ],", type: "default" },
+      { content: `  contact: "${personal.email}",`, type: "green" },
+      { content: "  available: true,", type: "orange" },
+      { content: "};", type: "default" },
+      { content: "", type: "default" },
+      { content: "export default developer;", type: "green" },
+    ]
+  } else {
+    return [
+      { content: "// agiel.dev — Portofolio v3.0", type: "comment" },
+      { content: "const pengembang = {", type: "default" },
+      { content: `  nama: "${personal.name}",`, type: "green" },
+      { content: `  peran: "Web Developer",`, type: "green" },
+      { content: `  pendidikan: "Politeknik Negeri Batam",`, type: "purple" },
+      { content: `  lokasi: "${personal.location}",`, type: "orange" },
+      { content: "  keahlian: [", type: "default" },
+      { content: `    "Laravel", "Django", "Node.js",`, type: "yellow" },
+      { content: `    "React", "TypeScript", "MySQL"`, type: "yellow" },
+      { content: "  ],", type: "default" },
+      { content: `  kontak: "${personal.email}",`, type: "green" },
+      { content: "  tersedia: true,", type: "orange" },
+      { content: "};", type: "default" },
+      { content: "", type: "default" },
+      { content: "export default pengembang;", type: "green" },
+    ]
+  }
+}
 
 const spring = { type: 'spring' as const, stiffness: 65, damping: 18 }
 const springScale = { type: 'spring' as const, stiffness: 200, damping: 22 }
 const vp = { once: false, amount: 0.1 }
 
-const statItems = [
-  { value: '4+', label: 'Projects', bg: '#F97316', tc: '#0F172A' },
+const getStatItems = (language: 'en' | 'id') => [
+  { value: '4+', label: language === 'en' ? 'Projects' : 'Proyek', bg: '#F97316', tc: '#0F172A' },
   { value: '4', label: 'Semester', bg: '#DDD6FE', tc: '#0F172A' },
   { value: '16+', label: 'Tech Stack', bg: '#0F172A', tc: '#FFFFFF' },
-  { value: '2+', label: 'Databases', bg: '#FFFFFF', tc: '#0F172A' },
+  { value: '2+', label: language === 'en' ? 'Databases' : 'Basis Data', bg: '#FFFFFF', tc: '#0F172A' },
 ]
 
 export default function AboutSkillSection() {
+  const { language } = useLanguage()
+  const { personal, skills } = portfolioData[language]
+  const codeLines = getCodeLines(personal, language)
+  
   const [activeCategory, setActiveCategory] = useState('Frontend')
   const filteredSkills = skills.filter(s => s.category === activeCategory)
 
@@ -69,7 +94,10 @@ export default function AboutSkillSection() {
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"
               style={{ fontFamily: 'var(--font-display)' }}
             >
-              ABOUT <span style={{ color: 'var(--color-orange)' }}>ME</span>
+              {language === 'en' ? 'ABOUT ' : 'TENTANG '}
+              <span style={{ color: 'var(--color-orange)' }}>
+                {language === 'en' ? 'ME' : 'SAYA'}
+              </span>
             </h2>
             <div className="mt-3 h-1.5 w-16 bg-black" />
           </motion.div>
@@ -196,19 +224,17 @@ export default function AboutSkillSection() {
                     className="text-lg md:text-xl font-black mb-1 uppercase"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
-                    WHO AM I?
+                    {language === 'en' ? 'WHO AM I?' : 'SIAPA SAYA?'}
                   </h3>
-                  <div className="h-0.5 w-10 bg-orange-500 mb-4" />
+                  <div className="w-10 h-1 bg-black mb-4" />
                   <p
                     className="text-sm md:text-base leading-relaxed text-gray-800 mb-5"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
-                    I am an Informatics Engineering Diploma student at Politeknik Negeri Batam, focusing on <strong>Web Development</strong> and <strong>Software Engineering</strong>.
-                    <br /><br />
-                    I have experience building projects using <strong>Laravel, Django, Node.js, PHP, Python, MySQL, and REST APIs</strong>, with a strong emphasis on accessibility and system integration.
+                    {personal.bio}
                   </p>
                   <div className="pt-4 border-t-2 border-dashed border-gray-200 flex flex-wrap gap-2">
-                    {['Batam, Indonesia', 'Web Development', 'Open to Work'].map(tag => (
+                    {[personal.location, 'Web Development', language === 'en' ? 'Open to Work' : 'Siap Bekerja'].map(tag => (
                       <span
                         key={tag}
                         className="section-badge text-xs py-1 px-3"
@@ -223,7 +249,7 @@ export default function AboutSkillSection() {
 
               {/* Stats Grid — 2 cols on mobile, 4 on sm+ */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
-                {statItems.map((s, i) => (
+                {getStatItems(language).map((s, i) => (
                   <motion.div
                     key={s.label}
                     initial={{ opacity: 0, y: 20, scale: 0.9 }}
@@ -282,7 +308,10 @@ export default function AboutSkillSection() {
                 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-none text-white"
                 style={{ fontFamily: 'var(--font-display)' }}
               >
-                THE <span style={{ color: 'var(--color-orange)' }}>TOOLKIT</span>
+                {language === 'en' ? 'THE ' : 'ALAT '}
+                <span style={{ color: 'var(--color-orange)' }}>
+                  {language === 'en' ? 'TOOLKIT' : 'KERJA'}
+                </span>
               </h3>
               <div className="mt-3 h-1.5 w-16 bg-white" />
 

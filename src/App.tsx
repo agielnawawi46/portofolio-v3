@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
+import { LanguageProvider } from './context/LanguageContext'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 
@@ -15,7 +16,8 @@ function App() {
   const [showSplash, setShowSplash] = useState(true)
 
   return (
-    <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}>
+    <LanguageProvider>
+      <div className="min-h-screen overflow-x-hidden" style={{ backgroundColor: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}>
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
@@ -29,7 +31,8 @@ function App() {
         <ContactSection />
       </main>
       <Footer />
-    </div>
+      </div>
+    </LanguageProvider>
   )
 }
 

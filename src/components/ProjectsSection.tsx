@@ -2,9 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { ExternalLink, GitFork, ChevronLeft, ChevronRight } from 'lucide-react'
 import { portfolioData, type Project } from '../data/portfolioData'
+import { useLanguage } from '../context/LanguageContext'
 import ProjectModal from './ProjectModal'
-
-const { projects } = portfolioData
 
 const MOBILE_PER_PAGE  = 2
 const DESKTOP_PER_PAGE = 6
@@ -138,11 +137,13 @@ function ProjectCard({
   globalIndex,
   onOpen,
   delay = 0,
+  language,
 }: {
   project: Project
   globalIndex: number
   onOpen: (p: Project) => void
   delay?: number
+  language: 'en' | 'id'
 }) {
   return (
     <motion.article
@@ -190,7 +191,7 @@ function ProjectCard({
               className="px-3.5 py-2 text-[0.7rem] font-bold tracking-wider"
               style={{ background: 'var(--color-charcoal)', color: 'white', fontFamily: 'var(--font-display)', border: '2px solid rgba(255,255,255,0.7)' }}
             >
-              VIEW DETAILS
+              {language === 'en' ? 'VIEW DETAILS' : 'LIHAT DETAIL'}
             </span>
           </div>
         </div>
@@ -236,7 +237,7 @@ function ProjectCard({
                 style={{ color: 'var(--color-canvas)', fontFamily: 'var(--font-mono)' }}
                 id={`project-github-${project.id}`}
               >
-                <GitFork size={12} /> CODE
+                <GitFork size={12} /> {language === 'en' ? 'CODE' : 'KODE'}
               </a>
               <a
                 href={project.liveDemoUrl}
@@ -257,6 +258,9 @@ function ProjectCard({
 
 // ── Main Section ────────────────────────────────────────
 export default function ProjectsSection() {
+  const { language } = useLanguage()
+  const { projects } = portfolioData[language]
+
   const ref    = useRef(null)
   const inView = useInView(ref, { once: false, margin: '-60px' })
 
@@ -325,7 +329,10 @@ export default function ProjectsSection() {
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
               style={{ fontFamily: 'var(--font-display)', color: 'var(--color-canvas)' }}
             >
-              WHAT I'VE <span style={{ color: 'var(--color-orange)' }}>BUILT</span>
+              {language === 'en' ? "WHAT I'VE " : 'YANG SAYA '}
+              <span style={{ color: 'var(--color-orange)' }}>
+                {language === 'en' ? 'BUILT' : 'BANGUN'}
+              </span>
             </h2>
             <div className="mt-3 h-1.5 w-16 bg-white" />
           </motion.div>
@@ -352,6 +359,7 @@ export default function ProjectsSection() {
                         globalIndex={mobilePage * MOBILE_PER_PAGE + i}
                         onOpen={setSelectedProject}
                         delay={i * 0.08}
+                        language={language}
                       />
                     ))}
                   </motion.div>
@@ -393,6 +401,7 @@ export default function ProjectsSection() {
                         globalIndex={desktopPage * DESKTOP_PER_PAGE + i}
                         onOpen={setSelectedProject}
                         delay={i * 0.07}
+                        language={language}
                       />
                     ))}
                   </motion.div>

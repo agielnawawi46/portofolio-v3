@@ -1,22 +1,43 @@
 import { motion } from 'framer-motion'
 
-const codeLines = [
-  { content: "// agiel.dev — Portfolio v3.0", type: "comment" },
-  { content: "const developer = {", type: "default" },
-  { content: "  name: \"Agiel Nawawi\",", type: "green" },
-  { content: "  role: \"Web Developer\",", type: "green" },
-  { content: "  education: \"Politeknik Negeri Batam\",", type: "purple" },
-  { content: "  location: \"Batam, Indonesia\",", type: "orange" },
-  { content: "  skills: [", type: "default" },
-  { content: "    \"Laravel\", \"Django\", \"Node.js\",", type: "yellow" },
-  { content: "    \"React\", \"TypeScript\", \"MySQL\"", type: "yellow" },
-  { content: "  ],", type: "default" },
-  { content: "  contact: \"agielnawawi46@gmail.com\",", type: "green" },
-  { content: "  available: true,", type: "orange" },
-  { content: "};", type: "default" },
-  { content: "", type: "default" },
-  { content: "export default developer;", type: "green" },
-]
+import { useLanguage } from '../context/LanguageContext'
+
+const codeLinesData = {
+  en: [
+    { content: "// agiel.dev — Portfolio v3.0", type: "comment" },
+    { content: "const developer = {", type: "default" },
+    { content: "  name: \"Agiel Nawawi\",", type: "green" },
+    { content: "  role: \"Web Developer\",", type: "green" },
+    { content: "  education: \"Politeknik Negeri Batam\",", type: "purple" },
+    { content: "  location: \"Batam, Indonesia\",", type: "orange" },
+    { content: "  skills: [", type: "default" },
+    { content: "    \"Laravel\", \"Django\", \"Node.js\",", type: "yellow" },
+    { content: "    \"React\", \"TypeScript\", \"MySQL\"", type: "yellow" },
+    { content: "  ],", type: "default" },
+    { content: "  contact: \"agielnawawi46@gmail.com\",", type: "green" },
+    { content: "  available: true,", type: "orange" },
+    { content: "};", type: "default" },
+    { content: "", type: "default" },
+    { content: "export default developer;", type: "green" },
+  ],
+  id: [
+    { content: "// agiel.dev — Portofolio v3.0", type: "comment" },
+    { content: "const pengembang = {", type: "default" },
+    { content: "  nama: \"Agiel Nawawi\",", type: "green" },
+    { content: "  peran: \"Web Developer\",", type: "green" },
+    { content: "  pendidikan: \"Politeknik Negeri Batam\",", type: "purple" },
+    { content: "  lokasi: \"Batam, Indonesia\",", type: "orange" },
+    { content: "  keahlian: [", type: "default" },
+    { content: "    \"Laravel\", \"Django\", \"Node.js\",", type: "yellow" },
+    { content: "    \"React\", \"TypeScript\", \"MySQL\"", type: "yellow" },
+    { content: "  ],", type: "default" },
+    { content: "  kontak: \"agielnawawi46@gmail.com\",", type: "green" },
+    { content: "  tersedia: true,", type: "orange" },
+    { content: "};", type: "default" },
+    { content: "", type: "default" },
+    { content: "export default pengembang;", type: "green" },
+  ]
+}
 
 const springSmooth = { type: "spring" as const, stiffness: 60, damping: 18 }
 
@@ -30,6 +51,9 @@ const fadeUp = {
 }
 
 export default function HeroTerminal() {
+  const { language } = useLanguage()
+  const codeLines = codeLinesData[language]
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 40 }}
@@ -115,7 +139,7 @@ export default function HeroTerminal() {
           style={{ background: "var(--color-orange)", boxShadow: "6px 6px 0px #000" }}
         >
           <span className="text-xs lg:text-sm font-bold uppercase mb-1" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
-            Projects
+            {language === 'en' ? 'Projects' : 'Proyek'}
           </span>
           <span className="text-2xl md:text-3xl lg:text-4xl font-black" style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}>
             4+

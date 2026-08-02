@@ -1,7 +1,8 @@
 import { useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, ExternalLink, GitFork, Tag } from 'lucide-react'
+import { Tag, ExternalLink, GitFork, X } from 'lucide-react'
 import type { Project } from '../data/portfolioData'
+import { useLanguage } from '../context/LanguageContext'
 
 interface ProjectModalProps {
   project: Project | null
@@ -9,6 +10,8 @@ interface ProjectModalProps {
 }
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
+  const { language } = useLanguage()
+  
   useEffect(() => {
     if (project) {
       document.body.style.overflow = 'hidden'
@@ -83,7 +86,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   className="text-xs tracking-widest font-bold"
                   style={{ fontFamily: 'var(--font-mono)', color: 'rgba(226,232,240,0.5)' }}
                 >
-                  PROJECT DETAIL
+                  {language === 'en' ? 'PROJECT DETAIL' : 'DETAIL PROYEK'}
                 </span>
                 <span
                   className="h-4 w-px"
@@ -159,7 +162,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         className="text-xs font-bold tracking-widest uppercase"
                         style={{ fontFamily: 'var(--font-mono)' }}
                       >
-                        Tech Stack
+                        {language === 'en' ? 'Tech Stack' : 'Teknologi'}
                       </span>
                     </div>
                     <div className="flex flex-wrap gap-2">
@@ -183,7 +186,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                       className="text-xs font-bold tracking-widest mb-3 uppercase opacity-50"
                       style={{ fontFamily: 'var(--font-mono)' }}
                     >
-                      Links
+                      {language === 'en' ? 'Links' : 'Tautan'}
                     </p>
                     <div className="flex flex-col gap-2">
                       <a
@@ -194,7 +197,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         className="sticker-btn sticker-btn-secondary w-full justify-center"
                         style={{ textAlign: 'center' }}
                       >
-                        <ExternalLink size={14} /> LIVE DEMO
+                        <ExternalLink size={14} /> DEMO
                       </a>
                       <a
                         href={project.githubUrl}
@@ -203,7 +206,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         id={`modal-github-${project.id}`}
                         className="sticker-btn sticker-btn-primary w-full justify-center"
                       >
-                        <GitFork size={14} /> SOURCE CODE
+                        <GitFork size={14} /> {language === 'en' ? 'SOURCE CODE' : 'KODE SUMBER'}
                       </a>
                     </div>
                   </div>
@@ -221,15 +224,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                     </p>
                     <div className="space-y-2">
                       <div>
-                        <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>Category</span>
+                        <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>
+                          {language === 'en' ? 'Category' : 'Kategori'}
+                        </span>
                         <p className="text-sm font-bold mt-0.5" style={{ fontFamily: 'var(--font-display)' }}>
                           {project.category}
                         </p>
                       </div>
                       <div>
-                        <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>Stack Count</span>
+                        <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>
+                          {language === 'en' ? 'Stack Count' : 'Jumlah Teknologi'}
+                        </span>
                         <p className="text-sm font-bold mt-0.5" style={{ fontFamily: 'var(--font-display)' }}>
-                          {project.techStack.length} Technologies
+                          {project.techStack.length} {language === 'en' ? 'Technologies' : 'Teknologi'}
                         </p>
                       </div>
                     </div>

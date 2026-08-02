@@ -2,18 +2,21 @@ import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { Send, MapPin, Mail, GitFork, Link2, Check, Phone } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
+import { useLanguage } from '../context/LanguageContext'
 
-const { personal } = portfolioData
-
-const contactItems = [
+const getContactItems = (personal: any, language: 'en' | 'id') => [
   { id: 'contact-email', icon: Mail, label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-  { id: 'contact-phone', icon: Phone, label: 'Phone', value: (personal as any).phone as string, href: `tel:${(personal as any).phone}` },
-  { id: 'contact-location', icon: MapPin, label: 'Location', value: personal.location, href: '#' },
+  { id: 'contact-phone', icon: Phone, label: language === 'en' ? 'Phone' : 'Telepon', value: (personal as any).phone as string, href: `tel:${(personal as any).phone}` },
+  { id: 'contact-location', icon: MapPin, label: language === 'en' ? 'Location' : 'Lokasi', value: personal.location, href: '#' },
   { id: 'contact-github', icon: GitFork, label: 'GitHub', value: 'agielnawawi46', href: personal.github },
   { id: 'contact-linkedin', icon: Link2, label: 'LinkedIn', value: 'agielnawawi46', href: personal.linkedin },
 ]
 
 export default function ContactSection() {
+  const { language } = useLanguage()
+  const { personal } = portfolioData[language]
+  const contactItems = getContactItems(personal, language)
+
   const ref = useRef(null)
   const inView = useInView(ref, { once: false, margin: '-60px' })
 
@@ -60,9 +63,9 @@ export default function ContactSection() {
             className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
             style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
           >
-            LET'S WORK<br />
+            {language === 'en' ? "LET'S WORK" : 'MARI BEKERJA'}<br />
             <span className="text-white" style={{ textShadow: '3px 3px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000' }}>
-              TOGETHER
+              {language === 'en' ? 'TOGETHER' : 'SAMA-SAMA'}
             </span>
           </h2>
           <div className="mt-3 h-1.5 w-16 bg-black" />
@@ -80,10 +83,10 @@ export default function ContactSection() {
             {/* Intro box */}
             <div className="border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_#000]" style={{ background: 'var(--color-canvas)' }}>
               <h3 className="text-xl font-black uppercase mb-3" style={{ fontFamily: 'var(--font-display)' }}>
-                GET IN TOUCH
+                {language === 'en' ? 'GET IN TOUCH' : 'HUBUNGI SAYA'}
               </h3>
               <p className="text-sm md:text-base leading-relaxed opacity-80" style={{ fontFamily: 'var(--font-body)' }}>
-                Interested in collaborating or have an interesting project? Send a message and I will respond within 1-2 business days.
+                {language === 'en' ? 'Interested in collaborating or have an interesting project? Send a message and I will respond within 1-2 business days.' : 'Tertarik untuk berkolaborasi atau memiliki proyek menarik? Kirim pesan dan saya akan merespons dalam 1-2 hari kerja.'}
               </p>
             </div>
 
@@ -133,7 +136,7 @@ export default function ContactSection() {
                   {/* Name field */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="name" className="text-[0.7rem] font-bold tracking-widest uppercase opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
-                      Name
+                      {language === 'en' ? 'Name' : 'Nama'}
                     </label>
                     <input
                       id="name"
@@ -168,7 +171,7 @@ export default function ContactSection() {
                 {/* Message field */}
                 <div className="flex flex-col gap-1.5 flex-1">
                   <label htmlFor="message" className="text-[0.7rem] font-bold tracking-widest uppercase opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
-                    Message
+                    {language === 'en' ? 'Message' : 'Pesan'}
                   </label>
                   <textarea
                     id="message"
@@ -178,7 +181,7 @@ export default function ContactSection() {
                     onChange={e => setFormState(s => ({ ...s, message: e.target.value }))}
                     className="w-full flex-1 bg-white border-2 border-black p-4 md:p-5 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-orange-500 transition-shadow resize-none"
                     style={{ fontFamily: 'var(--font-body)', minHeight: '120px' }}
-                    placeholder="Tell me about your project..."
+                    placeholder={language === 'en' ? "Tell me about your project..." : "Ceritakan tentang proyek Anda..."}
                   />
                 </div>
 
@@ -195,7 +198,7 @@ export default function ContactSection() {
                   aria-live="polite"
                 >
                   <span className="font-black text-sm md:text-base tracking-widest uppercase" style={{ fontFamily: 'var(--font-display)' }}>
-                    {isSubmitting ? 'SENDING...' : isSuccess ? 'SENT SUCCESSFULLY' : 'SEND MESSAGE'}
+                    {isSubmitting ? (language === 'en' ? 'SENDING...' : 'MENGIRIM...') : isSuccess ? (language === 'en' ? 'SENT SUCCESSFULLY' : 'BERHASIL DIKIRIM') : (language === 'en' ? 'SEND MESSAGE' : 'KIRIM PESAN')}
                   </span>
                   {!isSubmitting && (
                     isSuccess ? <Check size={20} /> : <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
