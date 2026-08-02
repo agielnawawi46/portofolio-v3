@@ -1,4 +1,3 @@
-const fs = require("fs");
 const content = `export interface Project {
   id: string;
   title: string;
@@ -270,5 +269,6 @@ export const portfolioData = {
     ] as Experience[],
   }
 };
-\`;
+`;
+import fs from 'fs';
 fs.writeFileSync('src/data/portfolioData.ts', content);

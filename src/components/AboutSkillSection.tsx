@@ -212,7 +212,7 @@ export default function AboutSkillSection() {
                 transition={{ ...spring, delay: 0.2 }}
               >
                 <div
-                  className="border-2 border-black bg-white p-6 md:p-8 relative min-h-[250px] md:min-h-[300px] flex flex-col justify-center"
+                  className="border-2 border-black bg-white p-6 md:p-8 relative min-h-[250px] md:min-h-[300px] flex flex-col"
                   style={{ boxShadow: '8px 8px 0px #000' }}
                 >
                   {/* Corner accent */}
@@ -221,19 +221,21 @@ export default function AboutSkillSection() {
                   </div>
 
                   <h3
-                    className="text-lg md:text-xl font-black mb-1 uppercase"
+                    className="text-lg md:text-xl font-black mb-1 uppercase shrink-0"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
                     {language === 'en' ? 'WHO AM I?' : 'SIAPA SAYA?'}
                   </h3>
-                  <div className="w-10 h-1 bg-black mb-4" />
-                  <p
-                    className="text-sm md:text-base leading-relaxed text-gray-800 mb-5"
-                    style={{ fontFamily: 'var(--font-body)' }}
-                  >
-                    {personal.bio}
-                  </p>
-                  <div className="pt-4 border-t-2 border-dashed border-gray-200 flex flex-wrap gap-2">
+                  <div className="w-10 h-1 bg-black mb-4 shrink-0" />
+                  <div className="flex-1 flex flex-col justify-center mb-5">
+                    <p
+                      className="text-sm md:text-base leading-relaxed text-gray-800"
+                      style={{ fontFamily: 'var(--font-body)' }}
+                    >
+                      {personal.bio}
+                    </p>
+                  </div>
+                  <div className="pt-4 border-t-2 border-dashed border-gray-200 flex flex-wrap gap-2 shrink-0">
                     {[personal.location, 'Web Development', language === 'en' ? 'Open to Work' : 'Siap Bekerja'].map(tag => (
                       <span
                         key={tag}
