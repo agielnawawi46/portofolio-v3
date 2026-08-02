@@ -62,7 +62,7 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={vp}
             transition={{ ...spring }}
-            className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
+            className="mb-8 lg:mb-16 flex flex-col items-center text-center w-full"
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"
@@ -71,6 +71,27 @@ export default function AboutSkillSection() {
               ABOUT <span style={{ color: 'var(--color-orange)' }}>ME</span>
             </h2>
             <div className="mt-3 h-1.5 w-16 bg-black" />
+          </motion.div>
+
+          {/* Photo for Mobile — hidden on desktop, shown below title on mobile */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={vp}
+            transition={{ ...spring, delay: 0.1 }}
+            className="lg:hidden flex justify-center w-full mb-10"
+          >
+            <div
+              className="w-40 sm:w-48 border-2 border-black overflow-hidden"
+              style={{ boxShadow: '6px 6px 0px #000', aspectRatio: '1/1.2' }}
+            >
+              <img
+                src="/foto.jpg"
+                alt="Agiel Nawawi"
+                className="w-full h-full object-cover object-top"
+                style={{ background: 'var(--color-lavender)' }}
+              />
+            </div>
           </motion.div>
 
           {/* Two-column grid: Terminal | Bio + Stats */}
