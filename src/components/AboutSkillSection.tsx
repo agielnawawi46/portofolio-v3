@@ -286,7 +286,7 @@ export default function AboutSkillSection() {
               >
                 THE <span style={{ color: 'var(--color-orange)' }}>TOOLKIT</span>
               </h3>
-              <div className="mt-3 h-1.5 w-16 bg-white" />
+              <div className="mt-3 mb-10 h-1.5 w-16 bg-white" />
 
               {/* Category Tabs */}
               <div className="flex gap-3 md:gap-4 flex-wrap justify-center mt-8">
