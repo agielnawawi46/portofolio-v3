@@ -62,7 +62,7 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={vp}
             transition={{ ...spring }}
-            className="mb-8 lg:mb-16 flex flex-col items-center text-center w-full"
+            className="mb-12 lg:mb-16 flex flex-col items-center text-center w-full"
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"
@@ -79,7 +79,7 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={vp}
             transition={{ ...spring, delay: 0.1 }}
-            className="lg:hidden flex justify-center w-full mb-10"
+            className="lg:hidden flex justify-center w-full mb-14"
           >
             <div
               className="w-40 sm:w-48 border-2 border-black overflow-hidden"
