@@ -289,7 +289,7 @@ export default function AboutSkillSection() {
               <div className="mt-3 mb-10 h-1.5 w-16 bg-white" />
 
               {/* Category Tabs */}
-              <div className="flex gap-3 md:gap-4 flex-wrap justify-center mt-8">
+              <div className="flex gap-3 md:gap-4 flex-wrap justify-center" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
                 {categories.map(cat => (
                   <button
                     key={cat}
