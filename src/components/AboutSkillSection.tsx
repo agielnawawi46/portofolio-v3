@@ -120,7 +120,7 @@ export default function AboutSkillSection() {
                   style={{ boxShadow: '8px 8px 0px #000', aspectRatio: '1/1.5' }}
                 >
                   <img
-                    src="/fot.jpg"
+                    src="/foto.jpg"
                     alt="Agiel Nawawi"
                     className="w-full h-full object-cover object-top"
                     style={{ background: 'var(--color-lavender)' }}
@@ -286,7 +286,7 @@ export default function AboutSkillSection() {
               >
                 THE <span style={{ color: 'var(--color-orange)' }}>TOOLKIT</span>
               </h3>
-              <div className="mt-3 mb-10 h-1.5 w-16 bg-white" />
+              <div className="mt-3 h-1.5 w-16 bg-white" />
 
               {/* Category Tabs */}
               <div className="flex gap-3 md:gap-4 flex-wrap justify-center" style={{ marginTop: '3rem', marginBottom: '3rem' }}>
