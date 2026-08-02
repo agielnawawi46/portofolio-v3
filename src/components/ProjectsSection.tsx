@@ -6,6 +6,9 @@ import ProjectModal from './ProjectModal'
 
 const { projects } = portfolioData
 
+const MOBILE_PER_PAGE  = 2
+const DESKTOP_PER_PAGE = 6
+
 const categoryColors: Record<string, string> = {
   'Web App':    'var(--color-lavender)',
   'E-Commerce': 'var(--color-orange)',
@@ -18,8 +21,118 @@ const categoryColors: Record<string, string> = {
 const spring = { type: 'spring' as const, stiffness: 65, damping: 18 }
 const vp     = { once: false, amount: 0.1 }
 
-const MOBILE_PER_PAGE = 2
+const slideVariants = {
+  enter:  (d: number) => ({ opacity: 0, x: d > 0 ?  60 : -60 }),
+  center: { opacity: 1, x: 0 },
+  exit:   (d: number) => ({ opacity: 0, x: d > 0 ? -60 :  60 }),
+}
 
+// ── Shared Nav Controls ─────────────────────────────────
+function PaginationControls({
+  page,
+  totalPages,
+  onPrev,
+  onNext,
+  onDot,
+}: {
+  page: number
+  totalPages: number
+  onPrev: () => void
+  onNext: () => void
+  onDot: (i: number) => void
+}) {
+  const btnBase: React.CSSProperties = {
+    display:       'flex',
+    alignItems:    'center',
+    gap:           '8px',
+    padding:       '10px 18px',
+    border:        '2px solid',
+    fontFamily:    'var(--font-mono)',
+    fontSize:      '11px',
+    fontWeight:    '700',
+    letterSpacing: '0.1em',
+    textTransform: 'uppercase' as const,
+    transition:    'all 0.2s',
+  }
+
+  const prevDisabled = page === 0
+  const nextDisabled = page === totalPages - 1
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', marginTop: '40px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        {/* PREV */}
+        <button
+          onClick={onPrev}
+          disabled={prevDisabled}
+          style={{
+            ...btnBase,
+            cursor:      prevDisabled ? 'not-allowed' : 'pointer',
+            opacity:     prevDisabled ? 0.3 : 1,
+            background:  prevDisabled ? 'transparent' : 'var(--color-orange)',
+            color:       prevDisabled ? 'rgba(255,255,255,0.5)' : '#0F172A',
+            borderColor: prevDisabled ? 'rgba(255,255,255,0.2)' : 'var(--color-orange)',
+            boxShadow:   prevDisabled ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
+          }}
+          aria-label="Previous page"
+        >
+          <ChevronLeft size={14} /> PREV
+        </button>
+
+        {/* Dots */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => onDot(i)}
+              style={{
+                width:      i === page ? '28px' : '10px',
+                height:     '10px',
+                background: i === page ? 'var(--color-orange)' : 'rgba(255,255,255,0.3)',
+                border:     'none',
+                cursor:     'pointer',
+                transition: 'all 0.2s',
+                padding:    0,
+              }}
+              aria-label={`Page ${i + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* NEXT */}
+        <button
+          onClick={onNext}
+          disabled={nextDisabled}
+          style={{
+            ...btnBase,
+            cursor:      nextDisabled ? 'not-allowed' : 'pointer',
+            opacity:     nextDisabled ? 0.3 : 1,
+            background:  nextDisabled ? 'transparent' : 'var(--color-orange)',
+            color:       nextDisabled ? 'rgba(255,255,255,0.5)' : '#0F172A',
+            borderColor: nextDisabled ? 'rgba(255,255,255,0.2)' : 'var(--color-orange)',
+            boxShadow:   nextDisabled ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
+          }}
+          aria-label="Next page"
+        >
+          NEXT <ChevronRight size={14} />
+        </button>
+      </div>
+
+      {/* Counter */}
+      <p style={{
+        fontSize:     '11px',
+        opacity:      0.4,
+        fontFamily:   'var(--font-mono)',
+        color:        'var(--color-canvas)',
+        letterSpacing: '0.1em',
+      }}>
+        {page + 1} / {totalPages}
+      </p>
+    </div>
+  )
+}
+
+// ── Project Card ────────────────────────────────────────
 function ProjectCard({
   project,
   globalIndex,
@@ -142,16 +255,19 @@ function ProjectCard({
   )
 }
 
+// ── Main Section ────────────────────────────────────────
 export default function ProjectsSection() {
   const ref    = useRef(null)
   const inView = useInView(ref, { once: false, margin: '-60px' })
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isMobile, setIsMobile]               = useState(false)
-  const [page, setPage]                       = useState(0)
-  const [direction, setDirection]             = useState(1)
 
-  // Detect mobile on mount and resize
+  // Separate page state per mode
+  const [mobilePage,  setMobilePage]  = useState(0)
+  const [desktopPage, setDesktopPage] = useState(0)
+  const [direction,   setDirection]   = useState(1)
+
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640)
     check()
@@ -159,20 +275,26 @@ export default function ProjectsSection() {
     return () => window.removeEventListener('resize', check)
   }, [])
 
-  const totalPages      = Math.ceil(projects.length / MOBILE_PER_PAGE)
-  const visibleProjects = projects.slice(page * MOBILE_PER_PAGE, page * MOBILE_PER_PAGE + MOBILE_PER_PAGE)
+  // Mobile config
+  const mTotalPages = Math.ceil(projects.length / MOBILE_PER_PAGE)
+  const mVisible    = projects.slice(mobilePage * MOBILE_PER_PAGE, mobilePage * MOBILE_PER_PAGE + MOBILE_PER_PAGE)
 
-  function goNext() {
-    if (page < totalPages - 1) { setDirection(1); setPage(p => p + 1) }
-  }
-  function goPrev() {
-    if (page > 0) { setDirection(-1); setPage(p => p - 1) }
-  }
+  // Desktop config
+  const dTotalPages     = Math.ceil(projects.length / DESKTOP_PER_PAGE)
+  const dNeedsPagination = projects.length > DESKTOP_PER_PAGE
+  const dVisible        = projects.slice(desktopPage * DESKTOP_PER_PAGE, desktopPage * DESKTOP_PER_PAGE + DESKTOP_PER_PAGE)
 
-  const slideVariants = {
-    enter:  (d: number) => ({ opacity: 0, x: d > 0 ?  60 : -60 }),
-    center: { opacity: 1, x: 0 },
-    exit:   (d: number) => ({ opacity: 0, x: d > 0 ? -60 :  60 }),
+  function navigate(
+    current: number,
+    total: number,
+    delta: number,
+    setter: (p: number) => void,
+  ) {
+    const next = current + delta
+    if (next >= 0 && next < total) {
+      setDirection(delta)
+      setter(next)
+    }
   }
 
   return (
@@ -206,16 +328,13 @@ export default function ProjectsSection() {
             </h2>
           </motion.div>
 
-          {/* ──────────────────────────────────────────
-              MOBILE  (<640px): 2 cards + Prev/Next
-          ────────────────────────────────────────── */}
           {isMobile ? (
+            /* ── MOBILE: 2 per page ──────────── */
             <div>
-              {/* Sliding cards */}
               <div style={{ overflow: 'hidden' }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
-                    key={page}
+                    key={mobilePage}
                     custom={direction}
                     variants={slideVariants}
                     initial="enter"
@@ -224,11 +343,11 @@ export default function ProjectsSection() {
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
                   >
-                    {visibleProjects.map((project, i) => (
+                    {mVisible.map((project, i) => (
                       <ProjectCard
                         key={project.id}
                         project={project}
-                        globalIndex={page * MOBILE_PER_PAGE + i}
+                        globalIndex={mobilePage * MOBILE_PER_PAGE + i}
                         onOpen={setSelectedProject}
                         delay={i * 0.08}
                       />
@@ -237,121 +356,59 @@ export default function ProjectsSection() {
                 </AnimatePresence>
               </div>
 
-              {/* Pagination */}
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '32px' }}>
-                {/* PREV button */}
-                <button
-                  onClick={goPrev}
-                  disabled={page === 0}
-                  style={{
-                    display:      'flex',
-                    alignItems:   'center',
-                    gap:          '8px',
-                    padding:      '10px 16px',
-                    border:       '2px solid',
-                    fontFamily:   'var(--font-mono)',
-                    fontSize:     '11px',
-                    fontWeight:   '700',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    cursor:       page === 0 ? 'not-allowed' : 'pointer',
-                    opacity:      page === 0 ? 0.3 : 1,
-                    background:   page === 0 ? 'transparent' : 'var(--color-orange)',
-                    color:        page === 0 ? 'rgba(255,255,255,0.5)' : '#0F172A',
-                    borderColor:  page === 0 ? 'rgba(255,255,255,0.2)' : 'var(--color-orange)',
-                    boxShadow:    page === 0 ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
-                    transition:   'all 0.2s',
-                  }}
-                >
-                  <ChevronLeft size={14} /> PREV
-                </button>
-
-                {/* Dot indicators */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                  {Array.from({ length: totalPages }).map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => { setDirection(i > page ? 1 : -1); setPage(i) }}
-                      style={{
-                        width:      i === page ? '28px' : '10px',
-                        height:     '10px',
-                        background: i === page ? 'var(--color-orange)' : 'rgba(255,255,255,0.3)',
-                        border:     'none',
-                        cursor:     'pointer',
-                        transition: 'all 0.2s',
-                        padding:    0,
-                      }}
-                      aria-label={`Page ${i + 1}`}
-                    />
-                  ))}
-                </div>
-
-                {/* NEXT button */}
-                <button
-                  onClick={goNext}
-                  disabled={page === totalPages - 1}
-                  style={{
-                    display:       'flex',
-                    alignItems:    'center',
-                    gap:           '8px',
-                    padding:       '10px 16px',
-                    border:        '2px solid',
-                    fontFamily:    'var(--font-mono)',
-                    fontSize:      '11px',
-                    fontWeight:    '700',
-                    letterSpacing: '0.1em',
-                    textTransform: 'uppercase',
-                    cursor:        page === totalPages - 1 ? 'not-allowed' : 'pointer',
-                    opacity:       page === totalPages - 1 ? 0.3 : 1,
-                    background:    page === totalPages - 1 ? 'transparent' : 'var(--color-orange)',
-                    color:         page === totalPages - 1 ? 'rgba(255,255,255,0.5)' : '#0F172A',
-                    borderColor:   page === totalPages - 1 ? 'rgba(255,255,255,0.2)' : 'var(--color-orange)',
-                    boxShadow:     page === totalPages - 1 ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
-                    transition:    'all 0.2s',
-                  }}
-                >
-                  NEXT <ChevronRight size={14} />
-                </button>
-              </div>
-
-              {/* Page counter */}
-              <p style={{
-                textAlign:    'center',
-                marginTop:    '12px',
-                fontSize:     '11px',
-                opacity:      0.4,
-                fontFamily:   'var(--font-mono)',
-                color:        'var(--color-canvas)',
-                letterSpacing: '0.1em',
-              }}>
-                {page + 1} / {totalPages}
-              </p>
+              <PaginationControls
+                page={mobilePage}
+                totalPages={mTotalPages}
+                onPrev={() => navigate(mobilePage, mTotalPages, -1, setMobilePage)}
+                onNext={() => navigate(mobilePage, mTotalPages,  1, setMobilePage)}
+                onDot={i  => { setDirection(i > mobilePage ? 1 : -1); setMobilePage(i) }}
+              />
             </div>
 
           ) : (
-          /* ──────────────────────────────────────────
-              TABLET/DESKTOP (≥640px): full grid
-              3 kolom × N baris, semua proyek tampil
-          ────────────────────────────────────────── */
-            <div
-              style={{
-                display:             'grid',
-                gridTemplateColumns: 'repeat(3, 1fr)',
-                gap:                 '32px',
-              }}
-            >
-              {projects.map((project, i) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  globalIndex={i}
-                  onOpen={setSelectedProject}
-                  delay={i * 0.08}
+            /* ── DESKTOP: 6 per page, paginate only if > 6 ── */
+            <div>
+              <div style={{ overflow: 'hidden' }}>
+                <AnimatePresence mode="wait" custom={direction}>
+                  <motion.div
+                    key={desktopPage}
+                    custom={direction}
+                    variants={dNeedsPagination ? slideVariants : undefined}
+                    initial={dNeedsPagination ? 'enter' : { opacity: 0, y: 20 }}
+                    animate={dNeedsPagination ? 'center' : { opacity: 1, y: 0 }}
+                    exit={dNeedsPagination ? 'exit' : { opacity: 0, y: -20 }}
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    style={{
+                      display:             'grid',
+                      gridTemplateColumns: 'repeat(3, 1fr)',
+                      gap:                 '32px',
+                    }}
+                  >
+                    {dVisible.map((project, i) => (
+                      <ProjectCard
+                        key={project.id}
+                        project={project}
+                        globalIndex={desktopPage * DESKTOP_PER_PAGE + i}
+                        onOpen={setSelectedProject}
+                        delay={i * 0.07}
+                      />
+                    ))}
+                  </motion.div>
+                </AnimatePresence>
+              </div>
+
+              {/* Pagination controls: hanya tampil jika proyek > 6 */}
+              {dNeedsPagination && (
+                <PaginationControls
+                  page={desktopPage}
+                  totalPages={dTotalPages}
+                  onPrev={() => navigate(desktopPage, dTotalPages, -1, setDesktopPage)}
+                  onNext={() => navigate(desktopPage, dTotalPages,  1, setDesktopPage)}
+                  onDot={i  => { setDirection(i > desktopPage ? 1 : -1); setDesktopPage(i) }}
                 />
-              ))}
+              )}
             </div>
           )}
-
         </div>
       </section>
 
