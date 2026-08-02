@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Globe } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
 
 const navLinksData = {
@@ -133,7 +133,7 @@ export default function Navbar() {
               {/* Language Toggle */}
               <button
                 onClick={toggleLanguage}
-                className="hidden md:flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold transition-all duration-200"
+                className="flex w-9 h-9 items-center justify-center sticker-box font-bold text-xs"
                 style={{
                   background: 'var(--color-canvas)',
                   border: '2px solid var(--color-border)',
@@ -142,7 +142,6 @@ export default function Navbar() {
                 }}
                 aria-label="Toggle Language"
               >
-                <Globe size={14} />
                 {language === 'en' ? 'EN' : 'ID'}
               </button>
 
@@ -207,27 +206,6 @@ export default function Navbar() {
                   </a>
                 )
               })}
-              
-              {/* Mobile Language Toggle */}
-              <button
-                onClick={() => {
-                  toggleLanguage()
-                  setMenuOpen(false)
-                }}
-                className="px-8 py-4 text-xs font-bold tracking-widest flex items-center justify-between"
-                style={{
-                  fontFamily: 'var(--font-mono)',
-                  color: 'var(--color-charcoal)',
-                }}
-              >
-                <div className="flex items-center gap-2">
-                  <Globe size={16} />
-                  {language === 'en' ? 'ENGLISH (EN)' : 'INDONESIAN (ID)'}
-                </div>
-                <span className="text-xs" style={{ color: 'var(--color-orange)' }}>
-                  {language === 'en' ? 'SWITCH TO ID' : 'SWITCH TO EN'}
-                </span>
-              </button>
             </nav>
           </motion.div>
         )}
