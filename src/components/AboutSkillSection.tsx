@@ -62,7 +62,7 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={vp}
             transition={{ ...spring }}
-            className="mb-10 md:mb-14 flex flex-col items-center text-center w-full"
+            className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"

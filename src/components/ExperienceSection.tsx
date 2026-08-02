@@ -14,7 +14,7 @@ export default function ExperienceSection() {
     <section
       id="experience"
       ref={ref}
-      className="relative min-h-screen w-full flex flex-col justify-center items-center py-16 md:py-24 px-6 overflow-hidden border-b-2 border-black"
+      className="relative min-h-screen w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-canvas)' }}
       aria-label="Experience section"
     >
@@ -27,7 +27,7 @@ export default function ExperienceSection() {
           initial={{ opacity: 0, x: 40 }}
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={inView ? { ...springBase } : {}}
-          className="mb-14 md:mb-20 flex flex-col items-center text-center w-full"
+          className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
         >
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
