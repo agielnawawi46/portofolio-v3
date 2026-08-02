@@ -327,6 +327,7 @@ export default function ProjectsSection() {
             >
               WHAT I'VE <span style={{ color: 'var(--color-orange)' }}>BUILT</span>
             </h2>
+            <div className="mt-3 h-1.5 w-16 bg-white" />
           </motion.div>
 
           {isMobile ? (

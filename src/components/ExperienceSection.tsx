@@ -36,7 +36,7 @@ export default function ExperienceSection() {
           >
             MY <span style={{ color: 'var(--color-orange)' }}>JOURNEY</span>
           </h2>
-          <div className="mt-3 h-1 w-12 mx-auto" style={{ background: 'var(--color-charcoal)' }} />
+          <div className="mt-3 h-1.5 w-16 bg-black" />
         </motion.div>
 
         {/* Timeline items - REVISI: Menghapus mt-6 agar tidak menambah spacing berlebih */}

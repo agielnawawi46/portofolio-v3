@@ -277,7 +277,7 @@ export default function AboutSkillSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={vp}
               transition={{ ...spring }}
-              className="flex flex-col items-center text-center gap-6 mb-12 md:mb-16"
+              className="flex flex-col items-center text-center mb-12 md:mb-16"
               style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
             >
               <h3
@@ -286,9 +286,10 @@ export default function AboutSkillSection() {
               >
                 THE <span style={{ color: 'var(--color-orange)' }}>TOOLKIT</span>
               </h3>
+              <div className="mt-3 h-1.5 w-16 bg-white" />
 
               {/* Category Tabs */}
-              <div className="flex gap-3 md:gap-4 flex-wrap justify-center">
+              <div className="flex gap-3 md:gap-4 flex-wrap justify-center mt-8">
                 {categories.map(cat => (
                   <button
                     key={cat}

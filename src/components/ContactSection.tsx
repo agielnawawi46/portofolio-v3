@@ -65,6 +65,7 @@ export default function ContactSection() {
               TOGETHER
             </span>
           </h2>
+          <div className="mt-3 h-1.5 w-16 bg-black" />
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch">
