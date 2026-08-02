@@ -18,7 +18,8 @@ export default function HeroSection() {
   const { language } = useLanguage()
   const { personal, skills } = portfolioData[language]
   
-  const topSkills = skills.filter(s => s.category === "Frontend").slice(0, 4)
+  const coreStackNames = ['Laravel', 'Django', 'Node.js', 'Next.js', 'MySQL']
+  const topSkills = skills.filter(s => coreStackNames.includes(s.name))
 
   return (
     <section
