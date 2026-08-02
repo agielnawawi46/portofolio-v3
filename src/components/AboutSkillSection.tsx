@@ -53,7 +53,7 @@ export default function AboutSkillSection() {
       {/* ══════════════════════════════════════════
           PART 1 — IDENTITY + BIO
       ══════════════════════════════════════════ */}
-      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center w-full py-24 md:py-32">
+      <div className="relative z-10 min-h-screen flex flex-col justify-center items-center w-full py-20 md:py-28">
         <div className="w-full max-w-6xl mx-auto px-6 md:px-10">
 
           {/* Section header — centered */}
@@ -62,7 +62,7 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={vp}
             transition={{ ...spring }}
-            className="mb-14 md:mb-20 flex flex-col items-center text-center w-full"
+            className="mb-10 md:mb-14 flex flex-col items-center text-center w-full"
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"
@@ -74,7 +74,7 @@ export default function AboutSkillSection() {
           </motion.div>
 
           {/* Two-column grid: Terminal | Bio + Stats */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
 
             {/* ── LEFT: Terminal ── */}
             <motion.div
@@ -172,19 +172,19 @@ export default function AboutSkillSection() {
                   </div>
 
                   <h3
-                    className="text-xl md:text-2xl font-black uppercase mb-1"
+                    className="text-lg md:text-xl font-black mb-1 uppercase"
                     style={{ fontFamily: 'var(--font-display)' }}
                   >
-                    WHO AM I?
+                    Welcome to my portfolio
                   </h3>
                   <div className="h-0.5 w-10 bg-orange-500 mb-4" />
                   <p
                     className="text-sm md:text-base leading-relaxed text-gray-800 mb-5"
                     style={{ fontFamily: 'var(--font-body)' }}
                   >
-                    Saya adalah mahasiswa D3 Teknik Informatika di Politeknik Negeri Batam yang berfokus pada <strong>Web Development</strong> dan <strong>Software Engineering</strong>.
+                    I am an Informatics Engineering Diploma student at Politeknik Negeri Batam, focusing on <strong>Web Development</strong> and <strong>Software Engineering</strong>.
                     <br /><br />
-                    Saya berpengalaman membangun proyek menggunakan <strong>Laravel, Django, Node.js, PHP, Python, MySQL, dan REST APIs</strong>, dengan fokus pada aksesibilitas dan integrasi sistem.
+                    I have experience building projects using <strong>Laravel, Django, Node.js, PHP, Python, MySQL, and REST APIs</strong>, with a strong emphasis on accessibility and system integration.
                   </p>
                   <div className="pt-4 border-t-2 border-dashed border-gray-200 flex flex-wrap gap-2">
                     {['Batam, Indonesia', 'Web Development', 'Open to Work'].map(tag => (
@@ -245,7 +245,7 @@ export default function AboutSkillSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative flex flex-col justify-center items-center w-full py-24 md:py-32">
+        <div className="relative flex flex-col justify-center items-center w-full py-20 md:py-28">
           <div className="w-full max-w-6xl mx-auto px-6 md:px-10">
 
             {/* Title + Filter Tabs — centered stack */}
@@ -254,7 +254,7 @@ export default function AboutSkillSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={vp}
               transition={{ ...spring }}
-              className="flex flex-col items-center text-center gap-6 mb-14 md:mb-16"
+              className="flex flex-col items-center text-center gap-6 mb-12 md:mb-16"
             >
               <h3
                 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-none text-white"
