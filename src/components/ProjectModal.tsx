@@ -30,19 +30,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
     <AnimatePresence>
       {project && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop + centering wrapper */}
           <motion.div
             key="backdrop"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 z-50"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 lg:p-16"
             style={{ background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(4px)' }}
             aria-hidden="true"
           />
 
-          {/* Modal */}
+          {/* Modal — auto height, fits content */}
           <motion.div
             key="modal"
             role="dialog"
@@ -52,15 +52,19 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 30 }}
             transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-            className="fixed inset-4 sm:inset-8 lg:inset-16 z-50 overflow-auto"
-            style={{
-              background: 'var(--color-canvas)',
-              border: '3px solid var(--color-border)',
-              boxShadow: '8px 8px 0px var(--color-border)',
-              maxWidth: '900px',
-              margin: 'auto',
-            }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8 lg:p-16 pointer-events-none"
           >
+            <div
+              className="w-full pointer-events-auto overflow-y-auto"
+              style={{
+                background: 'var(--color-canvas)',
+                border: '3px solid var(--color-border)',
+                boxShadow: '8px 8px 0px var(--color-border)',
+                maxWidth: '900px',
+                maxHeight: 'calc(100vh - 64px)',
+              }}
+              onClick={e => e.stopPropagation()}
+            >
             {/* Modal Header */}
             <div
               className="sticky top-0 z-10 flex items-center justify-between px-6 py-4"
@@ -228,6 +232,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                 </div>
               </div>
             </div>
+            </div>{/* end modal content wrapper */}
           </motion.div>
         </>
       )}
