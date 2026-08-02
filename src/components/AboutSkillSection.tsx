@@ -91,7 +91,6 @@ export default function AboutSkillSection() {
                 src="/fot.jpg"
                 alt="Agiel Nawawi"
                 className="w-full h-full object-cover object-top"
-                style={{ background: 'var(--color-lavender)' }}
               />
             </div>
           </motion.div>
@@ -120,10 +119,9 @@ export default function AboutSkillSection() {
                   style={{ boxShadow: '8px 8px 0px #000', aspectRatio: '1/1.5' }}
                 >
                   <img
-                    src="/foto.jpg"
+                    src="/fot.jpg"
                     alt="Agiel Nawawi"
                     className="w-full h-full object-cover object-top"
-                    style={{ background: 'var(--color-lavender)' }}
                   />
                 </div>
               </motion.div>

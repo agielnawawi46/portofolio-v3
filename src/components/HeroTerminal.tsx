@@ -56,7 +56,6 @@ export default function HeroTerminal() {
               src="/fot.jpg"
               alt="Agiel Nawawi"
               className="w-full h-full object-cover object-top"
-              style={{ background: 'var(--color-lavender)' }}
             />
           </div>
         </motion.div>
