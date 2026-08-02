@@ -46,7 +46,7 @@ export default function ContactSection() {
     >
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center">
+      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center" style={{ marginBottom: '3.5rem' }}>
 
         {/* Header - REVISI 2: Menggunakan margin-bottom yang konsisten (mb-12 md:mb-16 lg:mb-20) */}
         <motion.div

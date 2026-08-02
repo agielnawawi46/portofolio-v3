@@ -311,7 +311,7 @@ export default function ProjectsSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative max-w-6xl mx-auto px-6 md:px-10 w-full z-10" style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}>
+        <div className="relative max-w-6xl mx-auto px-6 md:px-10 w-full z-10" style={{ marginBottom: '3.5rem' }}>
 
           {/* Header */}
           <motion.div

@@ -20,7 +20,7 @@ export default function ExperienceSection() {
     >
       <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
 
-      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center">
+      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center" style={{ marginBottom: '3.5rem' }}>
 
         {/* Section Header - REVISI: Mengubah mb-28 menjadi mb-12 md:mb-16 */}
         <motion.div
