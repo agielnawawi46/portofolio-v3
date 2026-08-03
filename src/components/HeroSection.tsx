@@ -53,7 +53,7 @@ export default function HeroSection() {
       {/* Container Utama */}
       <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10">
         
-        <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-center lg:items-center lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
           
           {/* KOLOM KIRI: Headline + Bio */}
           <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2">
@@ -98,8 +98,8 @@ export default function HeroSection() {
             </div>
 
             {/* Terminal Content */}
-            <div className="flex flex-col items-center lg:items-end gap-8 md:gap-12 p-6 md:p-8 w-full h-full">
-              <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-end">
+            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 p-6 md:p-8 w-full h-full">
+              <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center">
                 <div
                   className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
                   style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
@@ -110,11 +110,11 @@ export default function HeroSection() {
                 </div>
               </motion.div>
 
-              <motion.div custom={5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-end">
-                <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-90 uppercase font-bold text-center lg:text-right" style={{ fontFamily: "var(--font-mono)", color: "#7DD3FC" }}>
+              <motion.div custom={5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center">
+                <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-90 uppercase font-bold text-center" style={{ fontFamily: "var(--font-mono)", color: "#7DD3FC" }}>
                   {language === 'en' ? 'Core Stack:' : 'Teknologi Utama:'}
                 </p>
-                <div className="flex flex-wrap gap-2 md:gap-3 justify-center lg:justify-end">
+                <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
                   {topSkills.map(skill => (
                     <span key={skill.name} className="tech-tag text-xs md:text-sm lg:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold" style={{ background: "#1E293B", color: "white", border: "2px solid #7DD3FC" }}>
                       {skill.name}
@@ -129,7 +129,7 @@ export default function HeroSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.1 }}
-                className="flex flex-col sm:flex-row items-center lg:items-end justify-center lg:justify-end gap-3 w-full mt-auto"
+                className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
               >
                 <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "#7DD3FC", color: "#0F172A", border: "2px solid #7DD3FC" }} id="hero-cta-projects">
                   {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={18} />
