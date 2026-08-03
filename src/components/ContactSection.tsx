@@ -189,7 +189,7 @@ export default function ContactSection() {
                 <button
                   type="submit"
                   disabled={isSubmitting || isSuccess}
-                  className="group relative w-full border-2 border-black py-4 md:py-5 px-5 flex items-center justify-center gap-2.5 transition-all disabled:opacity-80 mt-1"
+                  className="group relative w-full border-2 border-black py-6 md:py-7 px-5 flex items-center justify-center gap-2.5 transition-all disabled:opacity-80 mt-1"
                   style={{
                     background: isSuccess ? '#22C55E' : 'var(--color-orange)',
                     color: 'var(--color-charcoal)',
