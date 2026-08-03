@@ -3,6 +3,27 @@ import { motion } from 'framer-motion'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 
+const deviconMap: Record<string, string> = {
+  'HTML': 'devicon-html5-plain',
+  'CSS': 'devicon-css3-plain',
+  'JavaScript': 'devicon-javascript-plain',
+  'Next.js': 'devicon-nextjs-plain',
+  'Tailwind CSS': 'devicon-tailwindcss-original',
+  'Bootstrap': 'devicon-bootstrap-plain',
+  'Blade': 'devicon-laravel-plain',
+  'PHP': 'devicon-php-plain',
+  'Laravel': 'devicon-laravel-plain',
+  'Python': 'devicon-python-plain',
+  'Django': 'devicon-django-plain',
+  'Node.js': 'devicon-nodejs-plain',
+  'Express.js': 'devicon-express-original',
+  'REST API': 'devicon-chrome-plain',
+  'MySQL': 'devicon-mysql-plain',
+  'Git & GitHub': 'devicon-github-original',
+  'Postman': 'devicon-postman-plain',
+  'VS Code': 'devicon-vscode-plain'
+}
+
 const categories = ['Frontend', 'Backend', 'Tools']
 
 // --- Terminal Data ---
@@ -372,9 +393,10 @@ export default function AboutSkillSection() {
                   <div className="relative z-10 w-full">
                     <div className="flex justify-between items-center mb-3 gap-1">
                       <span
-                        className="text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tight group-hover:text-black transition-colors duration-200 truncate min-w-0"
+                        className="text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tight group-hover:text-black transition-colors duration-200 truncate min-w-0 flex items-center gap-2"
                         style={{ fontFamily: 'var(--font-display)', color: 'white' }}
                       >
+                        {deviconMap[skill.name] && <i className={`${deviconMap[skill.name]} text-lg md:text-xl`}></i>}
                         {skill.name}
                       </span>
                       <span
