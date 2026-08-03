@@ -7,6 +7,8 @@ const deviconMap: Record<string, string> = {
   'HTML': 'devicon-html5-plain',
   'CSS': 'devicon-css3-plain',
   'JavaScript': 'devicon-javascript-plain',
+  'TypeScript': 'devicon-typescript-plain',
+  'React': 'devicon-react-original',
   'Next.js': 'devicon-nextjs-plain',
   'Tailwind CSS': 'devicon-tailwindcss-original',
   'Bootstrap': 'devicon-bootstrap-plain',
