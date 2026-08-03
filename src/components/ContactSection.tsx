@@ -100,8 +100,8 @@ export default function ContactSection() {
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                   initial={{ opacity: 0, x: (idx % 2 === 0 ? -40 : 40) }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: false, margin: "-50px" }}
-                  transition={springBase}
+                  viewport={vp}
+                  transition={{ ...springBase, delay: 0.1 + idx * 0.1 }}
                   className="flex items-center gap-5 border-2 border-black p-6 md:p-8 shadow-[6px_6px_0px_#000] hover:-translate-y-1 transition-transform"
                   style={{ background: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}
                   aria-label={`${item.label}: ${item.value}`}

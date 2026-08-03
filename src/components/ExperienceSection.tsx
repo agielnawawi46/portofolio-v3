@@ -48,8 +48,8 @@ export default function ExperienceSection() {
               key={exp.id}
               initial={{ opacity: 0, x: (idx % 2 === 0 ? -50 : 50) }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: false, margin: "-100px" }}
-              transition={springBase}
+              viewport={vp}
+              transition={{ ...springBase, delay: 0.1 + idx * 0.1 }}
               className="border-2 border-black bg-white p-6 md:p-7 relative transition-transform hover:-translate-y-1 hover:-translate-x-1"
               style={{
                 boxShadow: '8px 8px 0px #000',
