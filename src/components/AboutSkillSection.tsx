@@ -261,7 +261,7 @@ export default function AboutSkillSection() {
                     whileInView={{ opacity: 1, y: 0, scale: 1 }}
                     viewport={vp}
                     transition={{ ...springScale, delay: 0.3 + i * 0.08 }}
-                    className="border-2 border-black p-4 flex flex-col justify-center items-center gap-1 min-h-[90px]"
+                    className="border-2 border-black p-2 sm:p-4 flex flex-col justify-center items-center gap-1 min-h-[80px] md:min-h-[90px] w-full"
                     style={{ background: s.bg, boxShadow: '6px 6px 0px #000' }}
                   >
                     <span
@@ -271,7 +271,7 @@ export default function AboutSkillSection() {
                       {s.value}
                     </span>
                     <span
-                      className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-center"
+                      className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-center break-words w-full"
                       style={{ fontFamily: 'var(--font-mono)', color: s.tc, opacity: 0.8 }}
                     >
                       {s.label}
@@ -355,7 +355,7 @@ export default function AboutSkillSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={vp}
                   transition={{ ...spring, delay: si * 0.05 }}
-                  className="group border-2 p-4 relative overflow-hidden cursor-default"
+                  className="group border-2 p-3 sm:p-4 relative overflow-hidden cursor-default w-full"
                   style={{
                     background: '#1E293B',
                     borderColor: 'rgba(255,255,255,0.1)',
@@ -368,16 +368,16 @@ export default function AboutSkillSection() {
                     style={{ background: 'var(--color-orange)', zIndex: 0 }}
                   />
 
-                  <div className="relative z-10">
-                    <div className="flex justify-between items-start mb-3">
+                  <div className="relative z-10 w-full">
+                    <div className="flex justify-between items-center mb-3 gap-1">
                       <span
-                        className="text-xs md:text-sm font-black uppercase tracking-tight group-hover:text-black transition-colors duration-200"
+                        className="text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tight group-hover:text-black transition-colors duration-200 truncate min-w-0"
                         style={{ fontFamily: 'var(--font-display)', color: 'white' }}
                       >
                         {skill.name}
                       </span>
                       <span
-                        className="text-xs font-bold group-hover:text-black transition-colors duration-200"
+                        className="text-[10px] sm:text-xs font-bold group-hover:text-black transition-colors duration-200 shrink-0"
                         style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-orange)' }}
                       >
                         {skill.level}%
