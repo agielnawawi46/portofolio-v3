@@ -55,18 +55,17 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.93, y: 24 }}
             transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8"
+            className="fixed inset-0 z-50 overflow-y-auto p-4 py-8 sm:p-8 sm:py-12 flex justify-center"
             onClick={onClose}
           >
             {/* Modal box */}
             <div
-              className="relative w-full overflow-y-auto flex flex-col"
+              className="relative w-full my-auto flex flex-col"
               style={{
                 background: 'var(--color-canvas)',
                 border: '3px solid var(--color-border)',
                 boxShadow: '8px 8px 0px var(--color-border)',
                 maxWidth: '900px',
-                maxHeight: '90vh',
               }}
               onClick={e => e.stopPropagation()}
             >
