@@ -148,7 +148,7 @@ export default function AboutSkillSection() {
           </motion.div>
 
           {/* Two-column grid: Terminal | Bio + Stats */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 xl:gap-24 items-start">
 
             {/* ── LEFT: Terminal ── */}
             <motion.div
