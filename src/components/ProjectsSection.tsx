@@ -388,11 +388,7 @@ export default function ProjectsSection() {
                     animate={dNeedsPagination ? 'center' : { opacity: 1, y: 0 }}
                     exit={dNeedsPagination ? 'exit' : { opacity: 0, y: -20 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    style={{
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap: '32px',
-                    }}
+                    className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
                   >
                     {dVisible.map((project, i) => (
                       <ProjectCard
