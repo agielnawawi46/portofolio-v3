@@ -1,13 +1,22 @@
+import { useState, useEffect } from 'react'
 import { GitFork, Link2, Mail, ArrowUp } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
-
+import { motion, AnimatePresence } from 'framer-motion'
 export default function Footer() {
   const { language } = useLanguage()
   const { personal } = portfolioData[language]
+  const [showScrollTop, setShowScrollTop] = useState(false)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
   
   const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth' })
-
   return (
     <footer
       className="border-t-2 border-black w-full"
@@ -77,18 +86,34 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <span className="text-xs md:text-sm" style={{ fontFamily: 'var(--font-mono)' }}>{personal.dateStamp}</span>
-            <button
-              id="scroll-to-top"
-              onClick={scrollTop}
-              className="w-9 h-9 flex items-center justify-center hover:-translate-y-1 transition-transform"
-              style={{ border: '2px solid rgba(226,232,240,0.15)', color: 'var(--color-canvas)', background: 'transparent', cursor: 'pointer' }}
-              aria-label="Scroll to top"
-            >
-              <ArrowUp size={16} />
-            </button>
           </div>
         </div>
       </div>
+
+      {/* Floating Scroll-to-Top Button */}
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            id="floating-scroll-to-top"
+            onClick={scrollTop}
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-12 h-12 flex items-center justify-center hover:-translate-y-1 hover:shadow-lg transition-transform sticker-box"
+            style={{ 
+              border: '2px solid black', 
+              color: 'var(--color-charcoal)', 
+              background: 'var(--color-orange)', 
+              cursor: 'pointer',
+              boxShadow: '4px 4px 0px #000'
+            }}
+            aria-label="Scroll to top"
+          >
+            <ArrowUp size={24} strokeWidth={3} />
+          </motion.button>
+        )}
+      </AnimatePresence>
+
     </footer>
   )
 }
