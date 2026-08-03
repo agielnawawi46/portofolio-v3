@@ -50,13 +50,21 @@ export default function HeroSection() {
                 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase leading-[0.95] tracking-tight text-center"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
-                SOFTWARE<br />
-                DEVELOPER
+                AGIEL<br />
+                NAWAWI
               </h1>
             </motion.div>
 
-            {/* Handle & Bio */}
+            {/* Sub-headline & Bio */}
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full">
+              <div
+                className="inline-block px-4 py-2 mb-4 sticker-box"
+                style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
+              >
+                <span className="font-bold text-xs md:text-sm lg:text-base tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
+                  {personal.tagline}
+                </span>
+              </div>
               <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                 {personal.shortBio}
               </p>
