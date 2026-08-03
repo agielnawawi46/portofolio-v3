@@ -7,6 +7,7 @@ const navLinksData = {
   en: [
     { href: '#hero', label: 'HOME' },
     { href: '#about', label: 'ABOUT' },
+    { href: '#skills', label: 'SKILLS' },
     { href: '#projects', label: 'PROJECTS' },
     { href: '#experience', label: 'EXPERIENCE' },
     { href: '#contact', label: 'CONTACT' },
@@ -14,6 +15,7 @@ const navLinksData = {
   id: [
     { href: '#hero', label: 'BERANDA' },
     { href: '#about', label: 'TENTANG' },
+    { href: '#skills', label: 'KEAHLIAN' },
     { href: '#projects', label: 'PROYEK' },
     { href: '#experience', label: 'PENGALAMAN' },
     { href: '#contact', label: 'KONTAK' },

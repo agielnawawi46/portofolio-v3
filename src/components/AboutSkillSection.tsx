@@ -289,6 +289,7 @@ export default function AboutSkillSection() {
           PART 2 — TOOLKIT (dark panel)
       ══════════════════════════════════════════ */}
       <div
+        id="skills"
         className="relative z-10 w-full border-t-2 border-black"
         style={{ background: 'var(--color-charcoal)' }}
       >
