@@ -68,7 +68,7 @@ export default function AboutSkillSection() {
   return (
     <section
       id="about"
-      className="relative w-full flex flex-col border-b-2 border-black overflow-hidden"
+      className="relative w-full flex flex-col border-b-2 border-black overflow-hidden px-6 sm:px-10 md:px-12"
       style={{ background: 'var(--color-canvas)' }}
       aria-label="About and Skills section"
     >
@@ -79,7 +79,7 @@ export default function AboutSkillSection() {
           PART 1 — IDENTITY + BIO
       ══════════════════════════════════════════ */}
       <div className="relative z-10 flex flex-col justify-center items-center w-full py-28 md:py-36">
-        <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
+        <div className="w-full max-w-6xl mx-auto" style={{ marginBottom: '3.5rem' }}>
 
           {/* Section header — centered */}
           <motion.div
@@ -297,8 +297,8 @@ export default function AboutSkillSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative flex flex-col justify-center items-center w-full py-28 md:py-36">
-          <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
+        <div className="relative z-10 flex flex-col justify-center items-center w-full px-4 py-24 md:py-36">
+          <div className="w-full max-w-6xl mx-auto" style={{ marginBottom: '3.5rem' }}>
 
             {/* Title + Filter Tabs — centered stack */}
             <motion.div

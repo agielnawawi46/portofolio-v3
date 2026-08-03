@@ -24,7 +24,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen w-full flex flex-col items-center justify-center border-b-2 border-black overflow-hidden"
+      className="px-6 sm:px-10 md:px-12 relative min-h-screen w-full flex flex-col items-center justify-center border-b-2 border-black overflow-hidden"
       aria-label="Hero section"
     >
       {/* Background Lavender */}
@@ -33,7 +33,7 @@ export default function HeroSection() {
       </div>
 
       {/* Container Utama Centered */}
-      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto px-4 sm:px-8 md:px-12 pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10 flex flex-col items-center justify-center text-center">
+      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10 flex flex-col items-center justify-center text-center">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

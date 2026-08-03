@@ -3,11 +3,12 @@ import HeroTerminal from './HeroTerminal'
 
 export default function IdentitySection() {
   return (
-    <section id="identity" className="relative w-full min-h-screen flex flex-col items-center justify-center border-b-2 border-black" style={{ background: "var(--color-orange)" }}>
+    <section
+      id="identity" className="px-6 sm:px-10 md:px-12 relative w-full min-h-screen flex flex-col items-center justify-center border-b-2 border-black" style={{ background: "var(--color-orange)" }}>
       {/* Background Grid Pattern */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none" />
 
-      <div className="w-full max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-8 md:px-12 py-24 md:py-32 relative z-10 flex flex-col items-center w-full">
+      <div className="w-full max-w-6xl xl:max-w-7xl mx-auto py-24 md:py-32 relative z-10 flex flex-col items-center w-full">
         <motion.div
           initial={{ opacity: 0, x: -40 }}
           whileInView={{ opacity: 1, x: 0 }}

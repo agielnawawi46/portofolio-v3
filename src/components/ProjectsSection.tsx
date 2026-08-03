@@ -306,7 +306,7 @@ export default function ProjectsSection() {
       <section
         id="projects"
         ref={ref}
-        className="relative w-full flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 border-b-2 border-black"
+        className="relative w-full flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 border-b-2 border-black px-6 sm:px-10 md:px-12"
         style={{ background: 'var(--color-charcoal)', color: 'var(--color-canvas)' }}
         aria-label="Projects section"
       >
@@ -315,7 +315,7 @@ export default function ProjectsSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-8 md:px-12 w-full z-10" style={{ marginBottom: '3.5rem' }}>
+        <div className="relative max-w-6xl mx-auto w-full z-10" style={{ marginBottom: '3.5rem' }}>
 
           {/* Header */}
           <motion.div
