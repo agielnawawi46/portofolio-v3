@@ -58,14 +58,14 @@ export default function HeroSection() {
             {/* Sub-headline & Bio */}
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full">
               <div
-                className="inline-block px-4 py-2 mb-6 md:mb-8 sticker-box"
+                className="inline-block px-4 py-2 mb-10 md:mb-14 sticker-box"
                 style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
               >
                 <span className="font-bold text-xs md:text-sm lg:text-base tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
                   {personal.tagline}
                 </span>
               </div>
-              <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto mt-4 md:mt-6" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
+              <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto mt-8 md:mt-10" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                 {personal.shortBio}
               </p>
             </motion.div>
