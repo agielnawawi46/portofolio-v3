@@ -63,7 +63,7 @@ export default function HeroSection() {
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
                 AGIEL<br />
-                <span style={{ color: 'var(--color-orange)' }}>
+                <span style={{ color: 'var(--color-orange)', textShadow: '4px 4px 0px #000' }}>
                   NAWAWI
                 </span>
               </h1>

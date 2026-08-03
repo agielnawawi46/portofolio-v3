@@ -64,7 +64,7 @@ export default function ContactSection() {
             style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
           >
             {language === 'en' ? "LET'S WORK" : 'MARI BEKERJA'}<br />
-            <span style={{ color: 'var(--color-orange)' }}>
+            <span style={{ color: 'var(--color-orange)', textShadow: '4px 4px 0px #000' }}>
               {language === 'en' ? 'TOGETHER' : 'SAMA-SAMA'}
             </span>
           </h2>
