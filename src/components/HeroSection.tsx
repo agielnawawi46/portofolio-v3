@@ -53,7 +53,7 @@ export default function HeroSection() {
       {/* Container Utama */}
       <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10">
         
-        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
           
           {/* KOLOM KIRI: Headline + Bio */}
           <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2">
@@ -75,13 +75,13 @@ export default function HeroSection() {
           </div>
 
           {/* KOLOM KANAN: Sub-headline + Core Stack + Buttons */}
-          <div className="flex flex-col items-center lg:items-start gap-8 md:gap-12 w-full lg:w-1/2">
+          <div className="flex flex-col items-center lg:items-start justify-between gap-8 md:gap-12 w-full lg:w-1/2">
             <motion.div custom={3} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-start">
               <div
-                className="inline-block px-4 py-2 sticker-box"
+                className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
                 style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
               >
-                <span className="font-bold text-xs md:text-sm lg:text-base tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
+                <span className="font-bold text-sm md:text-base lg:text-xl tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
                   {personal.tagline}
                 </span>
               </div>
