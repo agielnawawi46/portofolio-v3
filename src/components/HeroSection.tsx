@@ -81,19 +81,25 @@ export default function HeroSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
-            className="w-full lg:w-1/2 flex flex-col border-2 border-black overflow-hidden sticker-box"
-            style={{ background: "var(--color-canvas)", boxShadow: "8px 8px 0px var(--color-charcoal)" }}
+            className="w-full lg:w-1/2 flex flex-col border-2 border-black overflow-hidden"
+            style={{ background: "#0F172A", boxShadow: "10px 10px 0px #000" }}
           >
             {/* Terminal Top Bar */}
-            <div className="w-full h-10 border-b-2 border-black flex items-center px-4 gap-2" style={{ background: "var(--color-lavender)" }}>
-              <div className="w-3.5 h-3.5 rounded-full border-2 border-black bg-red-400"></div>
-              <div className="w-3.5 h-3.5 rounded-full border-2 border-black bg-yellow-400"></div>
-              <div className="w-3.5 h-3.5 rounded-full border-2 border-black bg-green-400"></div>
+            <div className="w-full h-10 border-b-2 flex items-center px-4 gap-2" style={{ background: "#1E293B", borderColor: "#0F172A" }}>
+              <div className="w-3.5 h-3.5 rounded-full border border-black bg-red-500"></div>
+              <div className="w-3.5 h-3.5 rounded-full border border-black bg-yellow-500"></div>
+              <div className="w-3.5 h-3.5 rounded-full border border-black bg-green-500"></div>
+              <span className="ml-2 text-xs opacity-80" style={{ fontFamily: 'var(--font-mono)', color: 'white' }}>
+                ~/agiel.dev
+              </span>
+              <span className="ml-auto text-[10px] opacity-60" style={{ fontFamily: 'var(--font-mono)', color: '#7DD3FC' }}>
+                hero.tsx
+              </span>
             </div>
 
             {/* Terminal Content */}
-            <div className="flex flex-col items-center lg:items-start gap-8 md:gap-12 p-6 md:p-8 w-full h-full">
-              <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-start">
+            <div className="flex flex-col items-center lg:items-end gap-8 md:gap-12 p-6 md:p-8 w-full h-full">
+              <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-end">
                 <div
                   className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
                   style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
@@ -104,13 +110,13 @@ export default function HeroSection() {
                 </div>
               </motion.div>
 
-              <motion.div custom={5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-start">
-                <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-70 uppercase font-bold" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
+              <motion.div custom={5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-end">
+                <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-90 uppercase font-bold text-center lg:text-right" style={{ fontFamily: "var(--font-mono)", color: "#7DD3FC" }}>
                   {language === 'en' ? 'Core Stack:' : 'Teknologi Utama:'}
                 </p>
-                <div className="flex flex-wrap gap-2 md:gap-3 justify-center lg:justify-start">
+                <div className="flex flex-wrap gap-2 md:gap-3 justify-center lg:justify-end">
                   {topSkills.map(skill => (
-                    <span key={skill.name} className="tech-tag text-xs md:text-sm lg:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold" style={{ background: "var(--color-orange)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }}>
+                    <span key={skill.name} className="tech-tag text-xs md:text-sm lg:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold" style={{ background: "#1E293B", color: "white", border: "2px solid #7DD3FC" }}>
                       {skill.name}
                     </span>
                   ))}
@@ -123,12 +129,12 @@ export default function HeroSection() {
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: false, amount: 0.1 }}
-                className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 w-full mt-auto"
+                className="flex flex-col sm:flex-row items-center lg:items-end justify-center lg:justify-end gap-3 w-full mt-auto"
               >
-                <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
+                <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "#7DD3FC", color: "#0F172A", border: "2px solid #7DD3FC" }} id="hero-cta-projects">
                   {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={18} />
                 </a>
-                <a href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "var(--color-canvas)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-contact">
+                <a href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "transparent", color: "white", border: "2px solid white" }} id="hero-cta-contact">
                   {language === 'en' ? 'CONTACT ME' : 'HUBUNGI SAYA'} <Mail size={18} />
                 </a>
               </motion.div>
