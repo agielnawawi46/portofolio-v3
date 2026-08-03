@@ -66,7 +66,7 @@ export default function ContactSection() {
             {language === 'en' ? "LET'S WORK" : 'MARI BEKERJA'}<br />
             <span className="text-white" style={{ 
               color: 'white',
-              textShadow: '3px 3px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
+              textShadow: '4px 4px 0px #000'
             }}>
               {language === 'en' ? 'TOGETHER' : 'SAMA-SAMA'}
             </span>
