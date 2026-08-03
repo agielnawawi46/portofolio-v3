@@ -21,16 +21,20 @@ function App() {
       <AnimatePresence>
         {showSplash && <SplashScreen onComplete={() => setShowSplash(false)} />}
       </AnimatePresence>
-      <Navbar />
-      <main>
-        <HeroSection />
-
-        <AboutSkillSection />
-        <ProjectsSection />
-        <ExperienceSection />
-        <ContactSection />
-      </main>
-      <Footer />
+      
+      {!showSplash && (
+        <>
+          <Navbar />
+          <main>
+            <HeroSection />
+            <AboutSkillSection />
+            <ProjectsSection />
+            <ExperienceSection />
+            <ContactSection />
+          </main>
+          <Footer />
+        </>
+      )}
       </div>
     </LanguageProvider>
   )
