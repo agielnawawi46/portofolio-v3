@@ -42,14 +42,23 @@ export default function ExperienceSection() {
         </motion.div>
 
         {/* Timeline items - REVISI: Menghapus mt-6 agar tidak menambah spacing berlebih */}
-        <div className="flex flex-col gap-6 w-full">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={vp}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+          className="flex flex-col gap-6 w-full"
+        >
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}
-              initial={{ opacity: 0, x: (idx % 2 === 0 ? -50 : 50) }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={vp}
-              transition={{ ...springBase, delay: 0.1 + idx * 0.1 }}
+              variants={{
+                hidden: { opacity: 0, x: (idx % 2 === 0 ? -50 : 50) },
+                visible: { opacity: 1, x: 0, transition: springBase }
+              }}
               className="border-2 border-black bg-white p-6 md:p-7 relative transition-transform hover:-translate-y-1 hover:-translate-x-1"
               style={{
                 boxShadow: '8px 8px 0px #000',
@@ -80,7 +89,7 @@ export default function ExperienceSection() {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
       </div>
     </section>
