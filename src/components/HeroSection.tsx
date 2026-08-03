@@ -65,8 +65,7 @@ export default function HeroSection() {
                 AGIEL<br />
                 <span className="text-white" style={{ 
                   color: 'white',
-                  WebkitTextStroke: '2px black',
-                  textShadow: '4px 4px 0px #000'
+                  textShadow: '3px 3px 0px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000'
                 }}>
                   NAWAWI
                 </span>
