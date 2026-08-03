@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import type { Variants } from 'framer-motion'
-import { ArrowRight, Mail, Star, Sparkles } from 'lucide-react'
+import { ArrowRight, Mail } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -29,17 +29,7 @@ const marqueeVariants: Variants = {
   },
 }
 
-const floatingVariants: Variants = {
-  animate: (i: number) => ({
-    y: ["-5%", "5%", "-5%"],
-    rotate: [0, i % 2 === 0 ? 10 : -10, 0],
-    transition: {
-      duration: 4 + (i * 0.5),
-      repeat: Infinity,
-      ease: "easeInOut",
-    }
-  })
-}
+
 
 export default function HeroSection() {
   const { language } = useLanguage()
@@ -59,24 +49,11 @@ export default function HeroSection() {
         <div className="absolute inset-0 grid-bg opacity-40" />
       </div>
 
-      {/* Floating Neo-Brutalist Shapes */}
-      <motion.div custom={1} variants={floatingVariants} animate="animate" className="absolute top-[15%] left-[5%] md:left-[10%] hidden md:block opacity-60 z-0 pointer-events-none">
-        <Star size={64} strokeWidth={2.5} fill="var(--color-yellow)" color="var(--color-charcoal)" />
-      </motion.div>
-      <motion.div custom={2} variants={floatingVariants} animate="animate" className="absolute top-[60%] left-[8%] hidden lg:block opacity-60 z-0 pointer-events-none">
-        <div className="w-16 h-16 rounded-full border-4" style={{ background: "var(--color-blue)", borderColor: "var(--color-charcoal)", boxShadow: "4px 4px 0px var(--color-charcoal)" }} />
-      </motion.div>
-      <motion.div custom={3} variants={floatingVariants} animate="animate" className="absolute top-[20%] right-[10%] hidden md:block opacity-60 z-0 pointer-events-none">
-        <Sparkles size={72} strokeWidth={2} fill="var(--color-pink)" color="var(--color-charcoal)" />
-      </motion.div>
-      <motion.div custom={4} variants={floatingVariants} animate="animate" className="absolute bottom-[25%] right-[8%] hidden lg:block opacity-60 z-0 pointer-events-none">
-        <div className="w-12 h-12 rotate-45 border-4" style={{ background: "var(--color-green)", borderColor: "var(--color-charcoal)", boxShadow: "4px 4px 0px var(--color-charcoal)" }} />
-      </motion.div>
 
       {/* Container Utama */}
       <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10">
         
-        <div className="flex flex-col lg:flex-row items-center lg:items-center lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
           
           {/* KOLOM KIRI: Headline + Bio */}
           <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2">
