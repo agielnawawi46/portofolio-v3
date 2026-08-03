@@ -351,12 +351,12 @@ export default function AboutSkillSection() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className="px-5 md:px-12 py-2.5 md:py-5 text-xs md:text-base font-black uppercase tracking-widest border-2 border-black transition-transform duration-200 hover:-translate-y-1 hover:-translate-x-1"
+                    className="px-6 sm:px-10 md:px-14 py-3 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg lg:text-xl font-black uppercase tracking-widest border-2 md:border-4 border-black transition-transform duration-200 hover:-translate-y-1.5 hover:-translate-x-1.5"
                     style={{
                       fontFamily: 'var(--font-mono)',
                       background: activeCategory === cat ? 'var(--color-orange)' : 'var(--color-canvas)',
                       color: 'var(--color-charcoal)',
-                      boxShadow: '4px 4px 0px #000',
+                      boxShadow: '6px 6px 0px #000',
                     }}
                   >
                     {cat}
