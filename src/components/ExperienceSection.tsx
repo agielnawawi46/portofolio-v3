@@ -16,7 +16,7 @@ export default function ExperienceSection() {
     <section
       id="experience"
       ref={ref}
-      className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-8 md:px-12 overflow-hidden border-b-2 border-black"
+      className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-4 sm:px-4 sm:px-8 md:px-12 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-canvas)' }}
       aria-label="Experience section"
     >
@@ -45,7 +45,7 @@ export default function ExperienceSection() {
         </motion.div>
 
         {/* Timeline items - REVISI: Menghapus mt-6 agar tidak menambah spacing berlebih */}
-        <div className="flex flex-col gap-6 w-full px-4 sm:px-0">
+        <div className="flex flex-col gap-6 w-full">
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}

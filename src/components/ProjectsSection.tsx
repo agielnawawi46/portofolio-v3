@@ -315,7 +315,7 @@ export default function ProjectsSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative max-w-6xl mx-auto px-8 md:px-12 w-full z-10" style={{ marginBottom: '3.5rem' }}>
+        <div className="relative max-w-6xl mx-auto px-4 sm:px-8 md:px-12 w-full z-10" style={{ marginBottom: '3.5rem' }}>
 
           {/* Header */}
           <motion.div
@@ -350,7 +350,6 @@ export default function ProjectsSection() {
                     animate="center"
                     exit="exit"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-                    className="px-4 sm:px-0"
                     style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
                   >
                     {mVisible.map((project, i) => (

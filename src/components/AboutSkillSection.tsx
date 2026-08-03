@@ -79,7 +79,7 @@ export default function AboutSkillSection() {
           PART 1 — IDENTITY + BIO
       ══════════════════════════════════════════ */}
       <div className="relative z-10 flex flex-col justify-center items-center w-full py-28 md:py-36">
-        <div className="w-full max-w-6xl mx-auto px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
 
           {/* Section header — centered */}
           <motion.div
@@ -253,7 +253,7 @@ export default function AboutSkillSection() {
               </motion.div>
 
               {/* Stats Grid — 2 cols on mobile, 4 on sm+ */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 px-4 sm:px-0">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
                 {getStatItems(language).map((s, i) => (
                   <motion.div
                     key={s.label}
@@ -298,7 +298,7 @@ export default function AboutSkillSection() {
         }} />
 
         <div className="relative flex flex-col justify-center items-center w-full py-28 md:py-36">
-          <div className="w-full max-w-6xl mx-auto px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
+          <div className="w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
 
             {/* Title + Filter Tabs — centered stack */}
             <motion.div
@@ -346,7 +346,7 @@ export default function AboutSkillSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4 sm:px-0"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
             >
               {filteredSkills.map((skill, si) => (
                 <motion.div
