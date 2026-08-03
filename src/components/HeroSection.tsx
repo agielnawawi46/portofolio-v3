@@ -17,7 +17,7 @@ const fadeUp = {
 export default function HeroSection() {
   const { language } = useLanguage()
   const { personal, skills } = portfolioData[language]
-  
+
   const coreStackNames = ['Laravel', 'Django', 'Node.js', 'Next.js', 'MySQL']
   const topSkills = skills.filter(s => coreStackNames.includes(s.name))
 

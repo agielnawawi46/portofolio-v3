@@ -188,7 +188,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="px-8 py-4 text-xs font-bold tracking-widest border-b flex items-center gap-2"
+                    className="px-8 py-5 text-base font-bold tracking-widest border-b flex items-center gap-2"
                     style={{
                       fontFamily: 'var(--font-display)',
                       borderColor: 'var(--color-border)',
