@@ -63,15 +63,8 @@ export default function HeroSection() {
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
                 AGIEL<br />
-                <span className="relative inline-block">
-                  {/* Shadow Clone */}
-                  <span className="absolute top-[4px] left-[4px] md:top-[5px] md:left-[5px] text-black" aria-hidden="true" style={{ color: '#000', zIndex: -1 }}>
-                    NAWAWI
-                  </span>
-                  {/* Main Text */}
-                  <span className="relative text-white" style={{ color: 'white', zIndex: 1 }}>
-                    NAWAWI
-                  </span>
+                <span style={{ color: 'var(--color-orange)' }}>
+                  NAWAWI
                 </span>
               </h1>
             </motion.div>

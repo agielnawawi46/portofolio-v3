@@ -64,15 +64,8 @@ export default function ContactSection() {
             style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
           >
             {language === 'en' ? "LET'S WORK" : 'MARI BEKERJA'}<br />
-            <span className="relative inline-block">
-              {/* Shadow Clone */}
-              <span className="absolute top-[3px] left-[3px] md:top-[4px] md:left-[4px] text-black" aria-hidden="true" style={{ color: '#000', zIndex: -1 }}>
-                {language === 'en' ? 'TOGETHER' : 'SAMA-SAMA'}
-              </span>
-              {/* Main Text */}
-              <span className="relative text-white" style={{ color: 'white', zIndex: 1 }}>
-                {language === 'en' ? 'TOGETHER' : 'SAMA-SAMA'}
-              </span>
+            <span style={{ color: 'var(--color-orange)' }}>
+              {language === 'en' ? 'TOGETHER' : 'SAMA-SAMA'}
             </span>
           </h2>
           <div className="mt-3 h-1.5 w-16 bg-black" />
