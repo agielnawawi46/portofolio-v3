@@ -41,9 +41,13 @@ export const portfolioData = {
   en: {
     personal: {
       name: "Agiel Nawawi",
-      tagline: "INFORMATICS STUDENT & WEB DEVELOPER",
+      tagline: "FULL-STACK WEB DEVELOPER",
       handle: "",
-      bio: "D3 Informatics Engineering student at Politeknik Negeri Batam (Semester 4) with strong interest in Web Development, Backend Development, Frontend Development and Software Engineering. Experienced in building projects with Laravel, Django, Node.js, PHP, Python, MySQL, and REST APIs.",
+      shortBio: "D3 Informatics Engineering student specializing in building end-to-end web applications. Seamlessly bridging responsive front-end interfaces using Next.js & Tailwind CSS with scalable back-end systems built on Laravel, Express.js, and Django.",
+      longBio: [
+        "I am a Full-Stack Web Developer and Informatics Engineering student at Politeknik Negeri Batam with a strong drive for complete web application development.",
+        "I specialize in creating end-to-end digital solutions—from crafting intuitive, interactive user interfaces with Next.js, Tailwind CSS, and Blade, to architecting robust RESTful APIs and relational database schemas with Laravel, Express.js, Django, MySQL, and PostgreSQL. I enjoy turning complex ideas into fully functional, scalable applications."
+      ],
       cvUrl: "/cv-agiel-nawawi.pdf",
       dateStamp: "JULY 2026",
       email: "agielnawawi46@gmail.com",
@@ -157,9 +161,13 @@ export const portfolioData = {
   id: {
     personal: {
       name: "Agiel Nawawi",
-      tagline: "MAHASISWA INFORMATIKA & PENGEMBANG WEB",
+      tagline: "PENGEMBANG WEB FULL-STACK",
       handle: "",
-      bio: "Mahasiswa D3 Teknik Informatika di Politeknik Negeri Batam (Semester 4) dengan minat kuat pada Pengembangan Web, Backend, Frontend, dan Rekayasa Perangkat Lunak. Berpengalaman membangun proyek menggunakan Laravel, Django, Node.js, PHP, Python, MySQL, dan REST API.",
+      shortBio: "Mahasiswa D3 Teknik Informatika yang berspesialisasi dalam membangun aplikasi web secara utuh. Menghubungkan antarmuka front-end responsif menggunakan Next.js & Tailwind CSS dengan sistem back-end tangguh menggunakan Laravel, Express.js, dan Django.",
+      longBio: [
+        "Saya adalah seorang Pengembang Web Full-Stack dan mahasiswa Teknik Informatika di Politeknik Negeri Batam dengan ketertarikan kuat pada pengembangan aplikasi web yang utuh.",
+        "Saya berspesialisasi dalam menciptakan solusi digital end-to-end—mulai dari merancang antarmuka pengguna interaktif menggunakan Next.js, Tailwind CSS, dan Blade, hingga merancang RESTful API yang andal dan skema database relasional menggunakan Laravel, Express.js, Django, MySQL, dan PostgreSQL. Saya senang mengubah ide-ide kompleks menjadi aplikasi fungsional yang skalabel."
+      ],
       cvUrl: "/cv-agiel-nawawi.pdf",
       dateStamp: "JULI 2026",
       email: "agielnawawi46@gmail.com",

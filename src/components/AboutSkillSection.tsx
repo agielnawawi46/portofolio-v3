@@ -227,13 +227,16 @@ export default function AboutSkillSection() {
                     {language === 'en' ? 'WHO AM I?' : 'SIAPA SAYA?'}
                   </h3>
                   <div className="w-10 h-1 bg-black mb-4 shrink-0" />
-                  <div className="flex-1 flex flex-col justify-center mb-5">
-                    <p
-                      className="text-base md:text-lg leading-relaxed text-gray-800"
-                      style={{ fontFamily: 'var(--font-body)' }}
-                    >
-                      {personal.bio}
-                    </p>
+                  <div className="flex-1 flex flex-col justify-center mb-5 gap-3">
+                    {personal.longBio.map((paragraph: string, idx: number) => (
+                      <p
+                        key={idx}
+                        className="text-base md:text-lg leading-relaxed text-gray-800"
+                        style={{ fontFamily: 'var(--font-body)' }}
+                      >
+                        {paragraph}
+                      </p>
+                    ))}
                   </div>
                   <div className="pt-4 border-t-2 border-dashed border-gray-200 flex flex-wrap gap-2 shrink-0">
                     {[personal.location, 'Web Development', language === 'en' ? 'Open to Work' : 'Siap Bekerja'].map(tag => (

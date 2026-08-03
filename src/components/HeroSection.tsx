@@ -58,7 +58,7 @@ export default function HeroSection() {
             {/* Handle & Bio */}
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full">
               <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
-                {personal.bio}
+                {personal.shortBio}
               </p>
             </motion.div>
 
