@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { MapPin, Mail, GitFork, Link2, Check, Phone } from 'lucide-react'
+import { MapPin, Mail, GitFork, Link2, Check, MessageCircle } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 
 const getContactItems = (personal: any, language: 'en' | 'id') => [
   { id: 'contact-email', icon: Mail, label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-  { id: 'contact-phone', icon: Phone, label: language === 'en' ? 'Phone' : 'Telepon', value: (personal as any).phone as string, href: `tel:${(personal as any).phone}` },
+  { id: 'contact-wa', icon: MessageCircle, label: 'WhatsApp', value: (personal as any).phone as string, href: `https://wa.me/${(personal as any).phone.replace(/\D/g, '')}` },
   { id: 'contact-location', icon: MapPin, label: language === 'en' ? 'Location' : 'Lokasi', value: personal.location, href: '#' },
   { id: 'contact-github', icon: GitFork, label: 'GitHub', value: 'agielnawawi46', href: personal.github },
   { id: 'contact-linkedin', icon: Link2, label: 'LinkedIn', value: 'agielnawawi46', href: personal.linkedin },
