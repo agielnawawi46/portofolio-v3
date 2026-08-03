@@ -65,7 +65,7 @@ export default function HeroSection() {
                   {personal.tagline}
                 </span>
               </div>
-              <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
+              <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl text-center mx-auto mt-4 md:mt-6" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                 {personal.shortBio}
               </p>
             </motion.div>
