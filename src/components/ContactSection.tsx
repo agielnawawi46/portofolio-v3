@@ -90,16 +90,7 @@ export default function ContactSection() {
             </div>
 
             {/* Contact items */}
-            <motion.div 
-              initial="hidden"
-              whileInView="visible"
-              viewport={vp}
-              variants={{
-                hidden: {},
-                visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } }
-              }}
-              className="flex flex-col gap-3"
-            >
+            <div className="flex flex-col gap-3">
               {contactItems.map((item, idx) => (
                 <motion.a
                   key={item.id}
@@ -107,10 +98,10 @@ export default function ContactSection() {
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  variants={{
-                    hidden: { opacity: 0, x: (idx % 2 === 0 ? -40 : 40) },
-                    visible: { opacity: 1, x: 0, transition: springBase }
-                  }}
+                  initial={{ opacity: 0, x: (idx % 2 === 0 ? -40 : 40) }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: false, margin: "-50px" }}
+                  transition={springBase}
                   className="flex items-center gap-5 border-2 border-black p-6 md:p-8 shadow-[6px_6px_0px_#000] hover:-translate-y-1 transition-transform"
                   style={{ background: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}
                   aria-label={`${item.label}: ${item.value}`}
@@ -128,7 +119,7 @@ export default function ContactSection() {
                   </div>
                 </motion.a>
               ))}
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Right — Form (7 cols) */}
