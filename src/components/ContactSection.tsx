@@ -157,19 +157,19 @@ export default function ContactSection() {
                       <label htmlFor="name" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#F472B6' }}>
                         <span style={{ color: '#94A3B8' }}>const</span> name <span style={{ color: '#94A3B8' }}>=</span>
                       </label>
-                      <div className="relative flex items-center">
-                        <span className="absolute left-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                      <div className="flex items-center border-b-2 border-[#1E293B] pb-1 focus-within:border-[#F472B6] transition-colors">
+                        <span className="text-[#7DD3FC] mr-1" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
                         <input
                           id="name"
                           type="text"
                           required
                           value={formState.name}
                           onChange={e => setFormState(s => ({ ...s, name: e.target.value }))}
-                          className="w-full bg-transparent border-b-2 border-[#1E293B] pb-1 px-3 text-sm md:text-base focus:outline-none focus:border-[#F472B6] transition-colors"
+                          className="w-full bg-transparent text-sm md:text-base focus:outline-none"
                           style={{ fontFamily: 'var(--font-mono)', color: '#22C55E' }}
                           placeholder="John Doe"
                         />
-                        <span className="absolute right-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                        <span className="text-[#7DD3FC] ml-1" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
                       </div>
                     </div>
 
@@ -178,19 +178,19 @@ export default function ContactSection() {
                       <label htmlFor="email" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#F472B6' }}>
                         <span style={{ color: '#94A3B8' }}>const</span> email <span style={{ color: '#94A3B8' }}>=</span>
                       </label>
-                      <div className="relative flex items-center">
-                        <span className="absolute left-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                      <div className="flex items-center border-b-2 border-[#1E293B] pb-1 focus-within:border-[#F472B6] transition-colors">
+                        <span className="text-[#7DD3FC] mr-1" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
                         <input
                           id="email"
                           type="email"
                           required
                           value={formState.email}
                           onChange={e => setFormState(s => ({ ...s, email: e.target.value }))}
-                          className="w-full bg-transparent border-b-2 border-[#1E293B] pb-1 px-3 text-sm md:text-base focus:outline-none focus:border-[#F472B6] transition-colors"
+                          className="w-full bg-transparent text-sm md:text-base focus:outline-none"
                           style={{ fontFamily: 'var(--font-mono)', color: '#22C55E' }}
                           placeholder="john@example.com"
                         />
-                        <span className="absolute right-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                        <span className="text-[#7DD3FC] ml-1" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
                       </div>
                     </div>
                   </div>
@@ -198,22 +198,19 @@ export default function ContactSection() {
                   {/* Message field */}
                   <div className="flex flex-col gap-2 flex-1 mt-2">
                     <label htmlFor="message" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#FBBF24' }}>
-                      <span style={{ color: '#94A3B8' }}>const</span> message <span style={{ color: '#94A3B8' }}>=</span>
+                      <span style={{ color: '#94A3B8' }}>const</span> message <span style={{ color: '#94A3B8' }}>=</span> <span className="text-[#7DD3FC]">`</span>
                     </label>
-                    <div className="relative flex-1 flex">
-                      <span className="absolute top-2 left-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>`</span>
-                      <textarea
-                        id="message"
-                        required
-                        rows={4}
-                        value={formState.message}
-                        onChange={e => setFormState(s => ({ ...s, message: e.target.value }))}
-                        className="w-full flex-1 bg-transparent border-2 border-[#1E293B] p-3 pl-4 text-sm md:text-base focus:outline-none focus:border-[#FBBF24] transition-colors resize-none"
-                        style={{ fontFamily: 'var(--font-mono)', color: '#22C55E', minHeight: '120px' }}
-                        placeholder={language === 'en' ? "Tell me about your project..." : "Ceritakan tentang proyek Anda..."}
-                      />
-                      <span className="absolute bottom-2 right-2 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>`</span>
-                    </div>
+                    <textarea
+                      id="message"
+                      required
+                      rows={4}
+                      value={formState.message}
+                      onChange={e => setFormState(s => ({ ...s, message: e.target.value }))}
+                      className="w-full flex-1 bg-transparent border-2 border-[#1E293B] p-3 mt-1 text-sm md:text-base focus:outline-none focus:border-[#FBBF24] transition-colors resize-none"
+                      style={{ fontFamily: 'var(--font-mono)', color: '#22C55E', minHeight: '120px' }}
+                      placeholder={language === 'en' ? "Tell me about your project..." : "Ceritakan tentang proyek Anda..."}
+                    />
+                    <div className="text-[#7DD3FC] font-bold text-[1rem]" style={{ fontFamily: 'var(--font-mono)' }}>`</div>
                   </div>
 
                   {/* Submit button */}
