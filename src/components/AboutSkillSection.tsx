@@ -79,7 +79,7 @@ export default function AboutSkillSection() {
           PART 1 — IDENTITY + BIO
       ══════════════════════════════════════════ */}
       <div className="relative z-10 flex flex-col justify-center items-center w-full py-28 md:py-36">
-        <div className="w-full max-w-6xl mx-auto px-6 md:px-10" style={{ marginBottom: '3.5rem' }}>
+        <div className="w-full max-w-6xl mx-auto px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
 
           {/* Section header — centered */}
           <motion.div
@@ -298,7 +298,7 @@ export default function AboutSkillSection() {
         }} />
 
         <div className="relative flex flex-col justify-center items-center w-full py-28 md:py-36">
-          <div className="w-full max-w-6xl mx-auto px-6 md:px-10" style={{ marginBottom: '3.5rem' }}>
+          <div className="w-full max-w-6xl mx-auto px-8 md:px-12" style={{ marginBottom: '3.5rem' }}>
 
             {/* Title + Filter Tabs — centered stack */}
             <motion.div
@@ -326,7 +326,7 @@ export default function AboutSkillSection() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className="px-8 md:px-12 py-3.5 md:py-5 text-sm md:text-base font-black uppercase tracking-widest border-2 border-black transition-transform duration-200 hover:-translate-y-1 hover:-translate-x-1"
+                    className="px-5 md:px-12 py-2.5 md:py-5 text-xs md:text-base font-black uppercase tracking-widest border-2 border-black transition-transform duration-200 hover:-translate-y-1 hover:-translate-x-1"
                     style={{
                       fontFamily: 'var(--font-mono)',
                       background: activeCategory === cat ? 'var(--color-orange)' : 'var(--color-canvas)',

@@ -33,7 +33,7 @@ export default function HeroSection() {
       </div>
 
       {/* Container Utama Centered */}
-      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto px-6 md:px-10 pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10 flex flex-col items-center justify-center text-center">
+      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto px-8 md:px-12 pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10 flex flex-col items-center justify-center text-center">
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

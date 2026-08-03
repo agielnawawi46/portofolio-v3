@@ -62,7 +62,7 @@ export default function Navbar() {
           Gunakan `w-full px-6 md:px-12` tanpa `max-w-7xl` agar lebar header konsisten 
           dengan batas tepi layar/section di bawahnya.
         */}
-        <div className="w-full px-6 md:px-10">
+        <div className="w-full px-8 md:px-12">
           <div className="flex items-center justify-between h-[72px]">
 
             {/* Logo Kiri */}

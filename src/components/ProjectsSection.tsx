@@ -5,25 +5,25 @@ import { portfolioData, type Project } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 import ProjectModal from './ProjectModal'
 
-const MOBILE_PER_PAGE  = 2
+const MOBILE_PER_PAGE = 2
 const DESKTOP_PER_PAGE = 6
 
 const categoryColors: Record<string, string> = {
-  'Web App':    'var(--color-lavender)',
+  'Web App': 'var(--color-lavender)',
   'E-Commerce': 'var(--color-orange)',
-  'Dashboard':  'var(--color-charcoal)',
-  'Blog':       'var(--color-lavender)',
-  'CLI Tool':   'var(--color-orange)',
+  'Dashboard': 'var(--color-charcoal)',
+  'Blog': 'var(--color-lavender)',
+  'CLI Tool': 'var(--color-orange)',
   'UI Library': 'var(--color-lavender)',
 }
 
 const spring = { type: 'spring' as const, stiffness: 65, damping: 18 }
-const vp     = { once: false, amount: 0.1 }
+const vp = { once: false, amount: 0.1 }
 
 const slideVariants = {
-  enter:  (d: number) => ({ opacity: 0, x: d > 0 ?  60 : -60 }),
+  enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
   center: { opacity: 1, x: 0 },
-  exit:   (d: number) => ({ opacity: 0, x: d > 0 ? -60 :  60 }),
+  exit: (d: number) => ({ opacity: 0, x: d > 0 ? -60 : 60 }),
 }
 
 // ── Shared Nav Controls ─────────────────────────────────
@@ -41,17 +41,17 @@ function PaginationControls({
   onDot: (i: number) => void
 }) {
   const btnBase: React.CSSProperties = {
-    display:       'flex',
-    alignItems:    'center',
-    gap:           '8px',
-    padding:       '10px 18px',
-    border:        '2px solid',
-    fontFamily:    'var(--font-mono)',
-    fontSize:      '11px',
-    fontWeight:    '700',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '8px',
+    padding: '10px 18px',
+    border: '2px solid',
+    fontFamily: 'var(--font-mono)',
+    fontSize: '11px',
+    fontWeight: '700',
     letterSpacing: '0.1em',
     textTransform: 'uppercase' as const,
-    transition:    'all 0.2s',
+    transition: 'all 0.2s',
   }
 
   const prevDisabled = page === 0
@@ -66,12 +66,12 @@ function PaginationControls({
           disabled={prevDisabled}
           style={{
             ...btnBase,
-            cursor:      prevDisabled ? 'not-allowed' : 'pointer',
-            opacity:     prevDisabled ? 0.3 : 1,
-            background:  prevDisabled ? 'transparent' : 'var(--color-orange)',
-            color:       prevDisabled ? 'rgba(255,255,255,0.5)' : '#0F172A',
+            cursor: prevDisabled ? 'not-allowed' : 'pointer',
+            opacity: prevDisabled ? 0.3 : 1,
+            background: prevDisabled ? 'transparent' : 'var(--color-orange)',
+            color: prevDisabled ? 'rgba(255,255,255,0.5)' : '#0F172A',
             borderColor: prevDisabled ? 'rgba(255,255,255,0.2)' : 'var(--color-orange)',
-            boxShadow:   prevDisabled ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
+            boxShadow: prevDisabled ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
           }}
           aria-label="Previous page"
         >
@@ -85,13 +85,13 @@ function PaginationControls({
               key={i}
               onClick={() => onDot(i)}
               style={{
-                width:      i === page ? '28px' : '10px',
-                height:     '10px',
+                width: i === page ? '28px' : '10px',
+                height: '10px',
                 background: i === page ? 'var(--color-orange)' : 'rgba(255,255,255,0.3)',
-                border:     'none',
-                cursor:     'pointer',
+                border: 'none',
+                cursor: 'pointer',
                 transition: 'all 0.2s',
-                padding:    0,
+                padding: 0,
               }}
               aria-label={`Page ${i + 1}`}
             />
@@ -104,12 +104,12 @@ function PaginationControls({
           disabled={nextDisabled}
           style={{
             ...btnBase,
-            cursor:      nextDisabled ? 'not-allowed' : 'pointer',
-            opacity:     nextDisabled ? 0.3 : 1,
-            background:  nextDisabled ? 'transparent' : 'var(--color-orange)',
-            color:       nextDisabled ? 'rgba(255,255,255,0.5)' : '#0F172A',
+            cursor: nextDisabled ? 'not-allowed' : 'pointer',
+            opacity: nextDisabled ? 0.3 : 1,
+            background: nextDisabled ? 'transparent' : 'var(--color-orange)',
+            color: nextDisabled ? 'rgba(255,255,255,0.5)' : '#0F172A',
             borderColor: nextDisabled ? 'rgba(255,255,255,0.2)' : 'var(--color-orange)',
-            boxShadow:   nextDisabled ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
+            boxShadow: nextDisabled ? 'none' : '4px 4px 0px rgba(0,0,0,0.5)',
           }}
           aria-label="Next page"
         >
@@ -119,10 +119,10 @@ function PaginationControls({
 
       {/* Counter */}
       <p style={{
-        fontSize:     '11px',
-        opacity:      0.4,
-        fontFamily:   'var(--font-mono)',
-        color:        'var(--color-canvas)',
+        fontSize: '11px',
+        opacity: 0.4,
+        fontFamily: 'var(--font-mono)',
+        color: 'var(--color-canvas)',
         letterSpacing: '0.1em',
       }}>
         {page + 1} / {totalPages}
@@ -261,16 +261,16 @@ export default function ProjectsSection() {
   const { language } = useLanguage()
   const { projects } = portfolioData[language]
 
-  const ref    = useRef(null)
+  const ref = useRef(null)
   const inView = useInView(ref, { once: false, margin: '-60px' })
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
-  const [isMobile, setIsMobile]               = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   // Separate page state per mode
-  const [mobilePage,  setMobilePage]  = useState(0)
+  const [mobilePage, setMobilePage] = useState(0)
   const [desktopPage, setDesktopPage] = useState(0)
-  const [direction,   setDirection]   = useState(1)
+  const [direction, setDirection] = useState(1)
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640)
@@ -281,12 +281,12 @@ export default function ProjectsSection() {
 
   // Mobile config
   const mTotalPages = Math.ceil(projects.length / MOBILE_PER_PAGE)
-  const mVisible    = projects.slice(mobilePage * MOBILE_PER_PAGE, mobilePage * MOBILE_PER_PAGE + MOBILE_PER_PAGE)
+  const mVisible = projects.slice(mobilePage * MOBILE_PER_PAGE, mobilePage * MOBILE_PER_PAGE + MOBILE_PER_PAGE)
 
   // Desktop config
-  const dTotalPages     = Math.ceil(projects.length / DESKTOP_PER_PAGE)
+  const dTotalPages = Math.ceil(projects.length / DESKTOP_PER_PAGE)
   const dNeedsPagination = projects.length > DESKTOP_PER_PAGE
-  const dVisible        = projects.slice(desktopPage * DESKTOP_PER_PAGE, desktopPage * DESKTOP_PER_PAGE + DESKTOP_PER_PAGE)
+  const dVisible = projects.slice(desktopPage * DESKTOP_PER_PAGE, desktopPage * DESKTOP_PER_PAGE + DESKTOP_PER_PAGE)
 
   function navigate(
     current: number,
@@ -315,7 +315,7 @@ export default function ProjectsSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative max-w-6xl mx-auto px-6 md:px-10 w-full z-10" style={{ marginBottom: '3.5rem' }}>
+        <div className="relative max-w-6xl mx-auto px-8 md:px-12 w-full z-10" style={{ marginBottom: '3.5rem' }}>
 
           {/* Header */}
           <motion.div
@@ -340,7 +340,7 @@ export default function ProjectsSection() {
           {isMobile ? (
             /* ── MOBILE: 2 per page ──────────── */
             <div>
-              <div>
+              <div style={{ overflow: 'hidden', padding: '24px', margin: '-24px' }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={mobilePage}
@@ -370,15 +370,15 @@ export default function ProjectsSection() {
                 page={mobilePage}
                 totalPages={mTotalPages}
                 onPrev={() => navigate(mobilePage, mTotalPages, -1, setMobilePage)}
-                onNext={() => navigate(mobilePage, mTotalPages,  1, setMobilePage)}
-                onDot={i  => { setDirection(i > mobilePage ? 1 : -1); setMobilePage(i) }}
+                onNext={() => navigate(mobilePage, mTotalPages, 1, setMobilePage)}
+                onDot={i => { setDirection(i > mobilePage ? 1 : -1); setMobilePage(i) }}
               />
             </div>
 
           ) : (
             /* ── DESKTOP: 6 per page, paginate only if > 6 ── */
             <div>
-              <div>
+              <div style={{ overflow: 'hidden', padding: '24px', margin: '-24px' }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={desktopPage}
@@ -389,9 +389,9 @@ export default function ProjectsSection() {
                     exit={dNeedsPagination ? 'exit' : { opacity: 0, y: -20 }}
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     style={{
-                      display:             'grid',
+                      display: 'grid',
                       gridTemplateColumns: 'repeat(3, 1fr)',
-                      gap:                 '32px',
+                      gap: '32px',
                     }}
                   >
                     {dVisible.map((project, i) => (
@@ -414,8 +414,8 @@ export default function ProjectsSection() {
                   page={desktopPage}
                   totalPages={dTotalPages}
                   onPrev={() => navigate(desktopPage, dTotalPages, -1, setDesktopPage)}
-                  onNext={() => navigate(desktopPage, dTotalPages,  1, setDesktopPage)}
-                  onDot={i  => { setDirection(i > desktopPage ? 1 : -1); setDesktopPage(i) }}
+                  onNext={() => navigate(desktopPage, dTotalPages, 1, setDesktopPage)}
+                  onDot={i => { setDirection(i > desktopPage ? 1 : -1); setDesktopPage(i) }}
                 />
               )}
             </div>
