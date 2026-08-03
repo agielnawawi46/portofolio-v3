@@ -37,7 +37,7 @@ export default function Navbar() {
       const sections = navLinks.map(l => l.href.replace('#', ''))
       for (const id of [...sections].reverse()) {
         const el = document.getElementById(id)
-        if (el && window.scrollY >= el.offsetTop - 120) {
+        if (el && el.getBoundingClientRect().top <= 120) {
           setActiveSection(id)
           break
         }
