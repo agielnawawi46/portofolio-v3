@@ -297,7 +297,7 @@ export default function AboutSkillSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative z-10 flex flex-col justify-center items-center w-full px-4 py-24 md:py-36">
+        <div className="relative z-10 flex flex-col justify-center items-center w-full px-4 pt-24 pb-32 md:pt-36 md:pb-48 lg:pb-56">
           <div className="w-full max-w-6xl mx-auto" style={{ marginBottom: '3.5rem' }}>
 
             {/* Title + Filter Tabs — centered stack */}
