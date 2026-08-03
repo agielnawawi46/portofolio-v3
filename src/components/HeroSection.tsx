@@ -58,7 +58,7 @@ export default function HeroSection() {
             {/* Sub-headline & Bio */}
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="flex flex-col items-center text-center w-full">
               <div
-                className="inline-block px-4 py-2 mb-4 sticker-box"
+                className="inline-block px-4 py-2 mb-6 md:mb-8 sticker-box"
                 style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
               >
                 <span className="font-bold text-xs md:text-sm lg:text-base tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
