@@ -350,6 +350,7 @@ export default function ProjectsSection() {
                     animate="center"
                     exit="exit"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    className="px-4 sm:px-0"
                     style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
                   >
                     {mVisible.map((project, i) => (

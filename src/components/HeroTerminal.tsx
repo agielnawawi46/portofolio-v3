@@ -128,7 +128,7 @@ export default function HeroTerminal() {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: false, amount: 0.1 }}
-        className="w-full grid grid-cols-2 gap-4 md:gap-5"
+        className="w-full grid grid-cols-2 gap-4 md:gap-5 px-4 sm:px-0"
       >
         <motion.div
           initial={{ opacity: 0, y: 20, x: -30 }}

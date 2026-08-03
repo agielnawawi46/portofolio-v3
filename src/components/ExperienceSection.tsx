@@ -45,7 +45,7 @@ export default function ExperienceSection() {
         </motion.div>
 
         {/* Timeline items - REVISI: Menghapus mt-6 agar tidak menambah spacing berlebih */}
-        <div className="flex flex-col gap-6 w-full">
+        <div className="flex flex-col gap-6 w-full px-4 sm:px-0">
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}

@@ -253,7 +253,7 @@ export default function AboutSkillSection() {
               </motion.div>
 
               {/* Stats Grid — 2 cols on mobile, 4 on sm+ */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 px-4 sm:px-0">
                 {getStatItems(language).map((s, i) => (
                   <motion.div
                     key={s.label}
@@ -346,7 +346,7 @@ export default function AboutSkillSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 px-4 sm:px-0"
             >
               {filteredSkills.map((skill, si) => (
                 <motion.div
