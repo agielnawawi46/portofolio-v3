@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, Mail } from 'lucide-react'
+import type { Variants } from 'framer-motion'
+import { ArrowRight, Mail, Star, Sparkles } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -12,6 +13,32 @@ const fadeUp = {
     y: 0,
     transition: { ...springSmooth, delay: i * 0.08 },
   }),
+}
+
+const marqueeVariants: Variants = {
+  animate: {
+    x: [0, -1000],
+    transition: {
+      x: {
+        repeat: Infinity,
+        repeatType: "loop",
+        duration: 15,
+        ease: "linear",
+      },
+    },
+  },
+}
+
+const floatingVariants: Variants = {
+  animate: (i: number) => ({
+    y: ["-5%", "5%", "-5%"],
+    rotate: [0, i % 2 === 0 ? 10 : -10, 0],
+    transition: {
+      duration: 4 + (i * 0.5),
+      repeat: Infinity,
+      ease: "easeInOut",
+    }
+  })
 }
 
 export default function HeroSection() {
@@ -31,6 +58,20 @@ export default function HeroSection() {
       <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 0, background: "var(--color-lavender)" }}>
         <div className="absolute inset-0 grid-bg opacity-40" />
       </div>
+
+      {/* Floating Neo-Brutalist Shapes */}
+      <motion.div custom={1} variants={floatingVariants} animate="animate" className="absolute top-[15%] left-[5%] md:left-[10%] hidden md:block opacity-60 z-0 pointer-events-none">
+        <Star size={64} strokeWidth={2.5} fill="var(--color-yellow)" color="var(--color-charcoal)" />
+      </motion.div>
+      <motion.div custom={2} variants={floatingVariants} animate="animate" className="absolute top-[60%] left-[8%] hidden lg:block opacity-60 z-0 pointer-events-none">
+        <div className="w-16 h-16 rounded-full border-4" style={{ background: "var(--color-blue)", borderColor: "var(--color-charcoal)", boxShadow: "4px 4px 0px var(--color-charcoal)" }} />
+      </motion.div>
+      <motion.div custom={3} variants={floatingVariants} animate="animate" className="absolute top-[20%] right-[10%] hidden md:block opacity-60 z-0 pointer-events-none">
+        <Sparkles size={72} strokeWidth={2} fill="var(--color-pink)" color="var(--color-charcoal)" />
+      </motion.div>
+      <motion.div custom={4} variants={floatingVariants} animate="animate" className="absolute bottom-[25%] right-[8%] hidden lg:block opacity-60 z-0 pointer-events-none">
+        <div className="w-12 h-12 rotate-45 border-4" style={{ background: "var(--color-green)", borderColor: "var(--color-charcoal)", boxShadow: "4px 4px 0px var(--color-charcoal)" }} />
+      </motion.div>
 
       {/* Container Utama */}
       <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10">
@@ -100,6 +141,20 @@ export default function HeroSection() {
           </div>
 
         </div>
+      </div>
+
+      {/* Scrolling Marquee Banner at Bottom */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden border-t-2 border-black flex items-center h-12 sm:h-14 md:h-16 z-20" style={{ background: "var(--color-charcoal)" }}>
+        <motion.div
+          className="flex whitespace-nowrap items-center text-white font-black text-xs sm:text-sm md:text-base tracking-widest uppercase"
+          variants={marqueeVariants}
+          animate="animate"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
+          {Array(8).fill("✦ FULL-STACK WEB DEVELOPMENT ✦ SCALABLE BACKEND ARCHITECTURE ✦ RESPONSIVE UI/UX ✦ CREATIVE PROBLEM SOLVING ").map((text, i) => (
+            <span key={i} className="mx-4">{text}</span>
+          ))}
+        </motion.div>
       </div>
     </section>
   )
