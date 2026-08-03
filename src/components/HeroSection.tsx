@@ -56,47 +56,53 @@ export default function HeroSection() {
         <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
 
           {/* KOLOM KIRI: Headline + Bio */}
-          <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2">
-            <motion.div custom={1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full">
-              <h1
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight"
-                style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
-              >
-                AGIEL<br />
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2"
+          >
+            <h1
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight w-full"
+              style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
+            >
+              <motion.div custom={1} variants={fadeUp}>AGIEL</motion.div>
+              <motion.div custom={2} variants={fadeUp}>
                 <span style={{ color: 'var(--color-orange)', textShadow: '4px 4px 0px #000' }}>
                   NAWAWI
                 </span>
-              </h1>
-            </motion.div>
+              </motion.div>
+            </h1>
 
-            <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full">
+            <motion.div custom={3} variants={fadeUp} className="w-full">
               <div
                 className="border-2 border-black bg-white p-6 md:p-8 relative flex flex-col justify-center text-left mt-2 lg:mt-4"
                 style={{ boxShadow: '8px 8px 0px #000' }}
               >
                 {/* Corner accent */}
-                <div className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-yellow-400 border-2 border-black">
+                <motion.div custom={4} variants={fadeUp} className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-yellow-400 border-2 border-black">
                   !
-                </div>
+                </motion.div>
                 
-                <h3
+                <motion.h3
+                  custom={5} variants={fadeUp}
                   className="text-lg md:text-xl font-black mb-2 uppercase shrink-0"
                   style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
                 >
                   {language === 'en' ? 'HELLO WORLD' : 'HALO DUNIA'}
-                </h3>
-                <div className="w-10 h-1 bg-black mb-4 shrink-0" />
+                </motion.h3>
+                <motion.div custom={6} variants={fadeUp} className="w-10 h-1 bg-black mb-4 shrink-0" />
                 
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed opacity-90" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
+                <motion.p custom={7} variants={fadeUp} className="text-sm md:text-base lg:text-lg leading-relaxed opacity-90" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                   {personal.shortBio}
-                </p>
+                </motion.p>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
 
           {/* KOLOM KANAN: Codeline Card */}
           <motion.div
-            custom={3}
+            custom={4}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
