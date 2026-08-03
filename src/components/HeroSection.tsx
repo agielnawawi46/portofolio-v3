@@ -68,9 +68,27 @@ export default function HeroSection() {
             </motion.div>
 
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full">
-              <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl lg:max-w-none mx-auto lg:mx-0" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
-                {personal.shortBio}
-              </p>
+              <div
+                className="border-2 border-black bg-white p-6 md:p-8 relative flex flex-col text-left mt-2 lg:mt-4"
+                style={{ boxShadow: '8px 8px 0px #000' }}
+              >
+                {/* Corner accent */}
+                <div className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-yellow-400 border-2 border-black">
+                  !
+                </div>
+                
+                <h3
+                  className="text-lg md:text-xl font-black mb-2 uppercase shrink-0"
+                  style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
+                >
+                  {language === 'en' ? 'HELLO WORLD' : 'HALO DUNIA'}
+                </h3>
+                <div className="w-10 h-1 bg-black mb-4 shrink-0" />
+                
+                <p className="text-sm md:text-base lg:text-lg leading-relaxed opacity-90" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
+                  {personal.shortBio}
+                </p>
+              </div>
             </motion.div>
           </div>
 
