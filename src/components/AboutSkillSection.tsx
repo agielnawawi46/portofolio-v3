@@ -164,7 +164,7 @@ export default function AboutSkillSection() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={vp}
                 transition={{ ...spring, delay: 0.6 }}
-                className="hidden lg:block absolute -right-6 -bottom-8 z-10"
+                className="hidden lg:block absolute -right-8 top-1/2 -translate-y-1/2 z-10"
               >
                 <div
                   className="w-44 border-2 border-black overflow-hidden"
@@ -199,8 +199,8 @@ export default function AboutSkillSection() {
                   </span>
                 </div>
 
-                {/* Code content — pb only on lg+ to make room for the photo overlay */}
-                <div className="code-terminal p-4 md:p-5 lg:p-6 lg:pb-48">
+                {/* Code content */}
+                <div className="code-terminal p-4 md:p-5 lg:p-6">
                   <div className="flex flex-col gap-1 md:gap-1.5">
                     {codeLines.map((line, idx) => (
                       <motion.div
