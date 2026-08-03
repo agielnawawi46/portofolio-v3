@@ -340,7 +340,7 @@ export default function ProjectsSection() {
           {isMobile ? (
             /* ── MOBILE: 2 per page ──────────── */
             <div>
-              <div style={{ overflow: 'hidden' }}>
+              <div style={{ overflow: 'hidden', padding: '24px', margin: '-24px' }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={mobilePage}
@@ -378,7 +378,7 @@ export default function ProjectsSection() {
           ) : (
             /* ── DESKTOP: 6 per page, paginate only if > 6 ── */
             <div>
-              <div style={{ overflow: 'hidden' }}>
+              <div style={{ overflow: 'hidden', padding: '24px', margin: '-24px' }}>
                 <AnimatePresence mode="wait" custom={direction}>
                   <motion.div
                     key={desktopPage}
