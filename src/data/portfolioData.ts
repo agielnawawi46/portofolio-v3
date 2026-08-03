@@ -42,7 +42,7 @@ export const portfolioData = {
     personal: {
       name: "Agiel Nawawi",
       tagline: "INFORMATICS STUDENT & WEB DEVELOPER",
-      handle: "@AGIEL.DEV",
+      handle: "",
       bio: "D3 Informatics Engineering student at Politeknik Negeri Batam (Semester 4) with strong interest in Web Development, Backend Development, Frontend Development and Software Engineering. Experienced in building projects with Laravel, Django, Node.js, PHP, Python, MySQL, and REST APIs.",
       cvUrl: "/cv-agiel-nawawi.pdf",
       dateStamp: "JULY 2026",
@@ -158,7 +158,7 @@ export const portfolioData = {
     personal: {
       name: "Agiel Nawawi",
       tagline: "MAHASISWA INFORMATIKA & PENGEMBANG WEB",
-      handle: "@AGIEL.DEV",
+      handle: "",
       bio: "Mahasiswa D3 Teknik Informatika di Politeknik Negeri Batam (Semester 4) dengan minat kuat pada Pengembangan Web, Backend, Frontend, dan Rekayasa Perangkat Lunak. Berpengalaman membangun proyek menggunakan Laravel, Django, Node.js, PHP, Python, MySQL, dan REST API.",
       cvUrl: "/cv-agiel-nawawi.pdf",
       dateStamp: "JULI 2026",
