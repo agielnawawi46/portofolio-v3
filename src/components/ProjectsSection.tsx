@@ -1,5 +1,5 @@
-import { useState, useRef, useEffect } from 'react'
-import { motion, AnimatePresence, useInView } from 'framer-motion'
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, GitFork, ChevronLeft, ChevronRight } from 'lucide-react'
 import { portfolioData, type Project } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
@@ -17,7 +17,7 @@ const categoryColors: Record<string, string> = {
   'UI Library': 'var(--color-lavender)',
 }
 
-const spring = { type: 'spring' as const, stiffness: 65, damping: 18 }
+const spring = { type: 'spring' as const, stiffness: 60, damping: 18 }
 const vp = { once: false, amount: 0.1 }
 
 const slideVariants = {
@@ -261,9 +261,6 @@ export default function ProjectsSection() {
   const { language } = useLanguage()
   const { projects } = portfolioData[language]
 
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: false, margin: '-60px' })
-
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -305,7 +302,6 @@ export default function ProjectsSection() {
     <>
       <section
         id="projects"
-        ref={ref}
         className="relative w-full flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 border-b-2 border-black px-6 sm:px-10 md:px-12"
         style={{ background: 'var(--color-charcoal)', color: 'var(--color-canvas)' }}
         aria-label="Projects section"
@@ -320,8 +316,9 @@ export default function ProjectsSection() {
           {/* Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={inView ? { ...spring } : {}}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={vp}
+            transition={{ ...spring }}
             className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
             style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
           >

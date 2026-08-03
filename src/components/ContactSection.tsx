@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Send, MapPin, Mail, GitFork, Link2, Check, Phone } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
@@ -17,10 +17,8 @@ export default function ContactSection() {
   const { personal } = portfolioData[language]
   const contactItems = getContactItems(personal, language)
 
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: false, margin: '-60px' })
-
-  const springBase = { type: 'spring' as const, stiffness: 65, damping: 18 }
+  const springBase = { type: 'spring' as const, stiffness: 60, damping: 18 }
+  const vp = { once: false, amount: 0.1 }
 
   const [formState, setFormState] = useState({ name: '', email: '', message: '' })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -41,7 +39,6 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      ref={ref}
       /* REVISI 1: Menyesuaikan padding & flex layout agar jarak elemen seimbang */
       className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 sm:px-10 md:px-12 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-lavender)' }}
@@ -53,9 +50,10 @@ export default function ContactSection() {
 
         {/* Header - REVISI 2: Menggunakan margin-bottom yang konsisten (mb-12 md:mb-16 lg:mb-20) */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={inView ? { ...springBase } : {}}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ ...springBase }}
           className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
           style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
         >
@@ -75,9 +73,10 @@ export default function ContactSection() {
 
           {/* Left — Info (5 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: -24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={inView ? { ...springBase, delay: 0.1 } : {}}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={vp}
+            transition={{ ...springBase, delay: 0.1 }}
             className="md:col-span-5 flex flex-col gap-4"
           >
             {/* Intro box */}
@@ -99,9 +98,10 @@ export default function ContactSection() {
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, x: (idx % 2 === 0 ? -30 : 30) }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={inView ? { ...springBase, delay: 0.1 + idx * 0.1 } : {}}
+                  initial={{ opacity: 0, x: (idx % 2 === 0 ? -40 : 40) }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={vp}
+                  transition={{ ...springBase, delay: 0.1 + idx * 0.1 }}
                   className="flex items-center gap-5 border-2 border-black p-6 md:p-8 shadow-[6px_6px_0px_#000] hover:-translate-y-1 transition-transform"
                   style={{ background: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}
                   aria-label={`${item.label}: ${item.value}`}
@@ -124,9 +124,10 @@ export default function ContactSection() {
 
           {/* Right — Form (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={inView ? { ...springBase, delay: 0.18 } : {}}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={vp}
+            transition={{ ...springBase, delay: 0.18 }}
             className="md:col-span-7 flex flex-col"
           >
             <div className="border-2 border-black p-8 md:p-12 shadow-[6px_6px_0px_#000] h-full flex flex-col" style={{ background: 'var(--color-canvas)' }}>

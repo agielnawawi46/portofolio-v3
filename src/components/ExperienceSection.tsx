@@ -1,5 +1,4 @@
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -7,15 +6,12 @@ export default function ExperienceSection() {
   const { language } = useLanguage()
   const { experiences } = portfolioData[language]
 
-  const ref = useRef(null)
-  const inView = useInView(ref, { once: false, margin: '-60px' })
-
-  const springBase = { type: 'spring' as const, stiffness: 65, damping: 18 }
+  const springBase = { type: 'spring' as const, stiffness: 60, damping: 18 }
+  const vp = { once: false, amount: 0.1 }
 
   return (
     <section
       id="experience"
-      ref={ref}
       className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 sm:px-10 md:px-12 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-canvas)' }}
       aria-label="Experience section"
@@ -26,9 +22,10 @@ export default function ExperienceSection() {
 
         {/* Section Header - REVISI: Mengubah mb-28 menjadi mb-12 md:mb-16 */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={inView ? { ...springBase } : {}}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={vp}
+          transition={{ ...springBase }}
           className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
           style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
         >
@@ -49,9 +46,10 @@ export default function ExperienceSection() {
           {experiences.map((exp, idx) => (
             <motion.div
               key={exp.id}
-              initial={{ opacity: 0, x: (idx % 2 === 0 ? -40 : 40), y: 20 }}
-              animate={inView ? { opacity: 1, x: 0, y: 0 } : {}}
-              transition={inView ? { ...springBase, delay: 0.15 + idx * 0.1 } : {}}
+              initial={{ opacity: 0, x: (idx % 2 === 0 ? -50 : 50) }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={vp}
+              transition={{ ...springBase, delay: 0.1 + idx * 0.1 }}
               className="border-2 border-black bg-white p-6 md:p-7 relative transition-transform hover:-translate-y-1 hover:-translate-x-1"
               style={{
                 boxShadow: '8px 8px 0px #000',
