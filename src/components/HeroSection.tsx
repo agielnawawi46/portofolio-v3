@@ -59,7 +59,7 @@ export default function HeroSection() {
           <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2">
             <motion.div custom={1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full">
               <h1
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-7xl xl:text-[6.5rem] font-black uppercase leading-[0.95] tracking-tight"
+                className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
                 AGIEL<br />
