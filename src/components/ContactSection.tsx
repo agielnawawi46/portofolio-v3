@@ -157,7 +157,7 @@ export default function ContactSection() {
                       <label htmlFor="name" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#F472B6' }}>
                         <span style={{ color: '#94A3B8' }}>const</span> name <span style={{ color: '#94A3B8' }}>=</span>
                       </label>
-                      <div className="flex items-center border-b-2 border-[#1E293B] pb-1 focus-within:border-[#F472B6] transition-colors">
+                      <div className="flex items-center pb-1 transition-colors">
                         <span className="text-[#7DD3FC] mr-1" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
                         <input
                           id="name"
@@ -178,7 +178,7 @@ export default function ContactSection() {
                       <label htmlFor="email" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#F472B6' }}>
                         <span style={{ color: '#94A3B8' }}>const</span> email <span style={{ color: '#94A3B8' }}>=</span>
                       </label>
-                      <div className="flex items-center border-b-2 border-[#1E293B] pb-1 focus-within:border-[#F472B6] transition-colors">
+                      <div className="flex items-center pb-1 transition-colors">
                         <span className="text-[#7DD3FC] mr-1" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
                         <input
                           id="email"
@@ -206,7 +206,7 @@ export default function ContactSection() {
                       rows={4}
                       value={formState.message}
                       onChange={e => setFormState(s => ({ ...s, message: e.target.value }))}
-                      className="w-full flex-1 bg-transparent border-2 border-[#1E293B] p-3 mt-1 text-sm md:text-base focus:outline-none focus:border-[#FBBF24] transition-colors resize-none"
+                      className="w-full flex-1 bg-transparent p-3 mt-1 text-sm md:text-base focus:outline-none transition-colors resize-none"
                       style={{ fontFamily: 'var(--font-mono)', color: '#22C55E', minHeight: '120px' }}
                       placeholder={language === 'en' ? "Tell me about your project..." : "Ceritakan tentang proyek Anda..."}
                     />
