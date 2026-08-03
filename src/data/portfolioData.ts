@@ -77,6 +77,7 @@ export const portfolioData = {
       { name: "Git & GitHub", level: 90, category: "Tools" },
       { name: "Postman", level: 85, category: "Tools" },
       { name: "VS Code", level: 95, category: "Tools" },
+      { name: "Antigravity", level: 99, category: "Tools" },
     ] as Skill[],
     projects: [
       {
@@ -197,6 +198,7 @@ export const portfolioData = {
       { name: "Git & GitHub", level: 90, category: "Tools" },
       { name: "Postman", level: 85, category: "Tools" },
       { name: "VS Code", level: 95, category: "Tools" },
+      { name: "Antigravity", level: 99, category: "Tools" },
     ] as Skill[],
     projects: [
       {

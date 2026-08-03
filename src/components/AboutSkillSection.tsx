@@ -23,7 +23,8 @@ const deviconMap: Record<string, string> = {
   'MySQL': 'devicon-mysql-plain',
   'Git & GitHub': 'devicon-github-original',
   'Postman': 'devicon-postman-plain',
-  'VS Code': 'devicon-vscode-plain'
+  'VS Code': 'devicon-vscode-plain',
+  'Antigravity': 'devicon-google-plain'
 }
 
 const categories = ['Frontend', 'Backend', 'Tools']
