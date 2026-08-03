@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Send, MapPin, Mail, GitFork, Link2, Check, Phone } from 'lucide-react'
+import { MapPin, Mail, GitFork, Link2, Check, Phone } from 'lucide-react'
 import { portfolioData } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -130,82 +130,113 @@ export default function ContactSection() {
             transition={{ ...springBase, delay: 0.18 }}
             className="md:col-span-7 flex flex-col"
           >
-            <div className="border-2 border-black p-8 md:p-12 shadow-[6px_6px_0px_#000] h-full flex flex-col" style={{ background: 'var(--color-canvas)' }}>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-5 flex-1 h-full">
+            <div className="border-2 border-black h-full flex flex-col overflow-hidden" style={{ background: '#0F172A', boxShadow: '8px 8px 0px #000' }}>
+              {/* Terminal Title Bar */}
+              <div
+                className="flex items-center gap-2 px-4 py-2.5 border-b-2 shrink-0 border-black"
+                style={{ background: '#1E293B' }}
+              >
+                <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#EF4444' }} />
+                <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#F59E0B' }} />
+                <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#22C55E' }} />
+                <span className="ml-2 text-xs opacity-60" style={{ fontFamily: 'var(--font-mono)', color: 'white' }}>
+                  ~/contact
+                </span>
+                <span className="ml-auto text-[10px] opacity-40" style={{ fontFamily: 'var(--font-mono)', color: '#7DD3FC' }}>
+                  send_message.sh
+                </span>
+              </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-5">
-                  {/* Name field */}
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="name" className="text-[0.7rem] font-bold tracking-widest uppercase opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
-                      {language === 'en' ? 'Name' : 'Nama'}
-                    </label>
-                    <input
-                      id="name"
-                      type="text"
-                      required
-                      value={formState.name}
-                      onChange={e => setFormState(s => ({ ...s, name: e.target.value }))}
-                      className="w-full bg-white border-2 border-black p-4 md:p-5 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-orange-500 transition-shadow"
-                      style={{ fontFamily: 'var(--font-body)' }}
-                      placeholder="John Doe"
-                    />
+              {/* Form Content */}
+              <div className="p-6 md:p-8 flex-1 flex flex-col">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-6 flex-1 h-full">
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    {/* Name field */}
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="name" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#F472B6' }}>
+                        <span style={{ color: '#94A3B8' }}>const</span> name <span style={{ color: '#94A3B8' }}>=</span>
+                      </label>
+                      <div className="relative flex items-center">
+                        <span className="absolute left-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                        <input
+                          id="name"
+                          type="text"
+                          required
+                          value={formState.name}
+                          onChange={e => setFormState(s => ({ ...s, name: e.target.value }))}
+                          className="w-full bg-transparent border-b-2 border-[#1E293B] pb-1 px-3 text-sm md:text-base focus:outline-none focus:border-[#F472B6] transition-colors"
+                          style={{ fontFamily: 'var(--font-mono)', color: '#22C55E' }}
+                          placeholder="John Doe"
+                        />
+                        <span className="absolute right-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                      </div>
+                    </div>
+
+                    {/* Email field */}
+                    <div className="flex flex-col gap-2">
+                      <label htmlFor="email" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#F472B6' }}>
+                        <span style={{ color: '#94A3B8' }}>const</span> email <span style={{ color: '#94A3B8' }}>=</span>
+                      </label>
+                      <div className="relative flex items-center">
+                        <span className="absolute left-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                        <input
+                          id="email"
+                          type="email"
+                          required
+                          value={formState.email}
+                          onChange={e => setFormState(s => ({ ...s, email: e.target.value }))}
+                          className="w-full bg-transparent border-b-2 border-[#1E293B] pb-1 px-3 text-sm md:text-base focus:outline-none focus:border-[#F472B6] transition-colors"
+                          style={{ fontFamily: 'var(--font-mono)', color: '#22C55E' }}
+                          placeholder="john@example.com"
+                        />
+                        <span className="absolute right-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>"</span>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Email field */}
-                  <div className="flex flex-col gap-1.5">
-                    <label htmlFor="email" className="text-[0.7rem] font-bold tracking-widest uppercase opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
-                      Email
+                  {/* Message field */}
+                  <div className="flex flex-col gap-2 flex-1 mt-2">
+                    <label htmlFor="message" className="text-[0.75rem] font-bold tracking-widest flex items-center gap-2" style={{ fontFamily: 'var(--font-mono)', color: '#FBBF24' }}>
+                      <span style={{ color: '#94A3B8' }}>const</span> message <span style={{ color: '#94A3B8' }}>=</span>
                     </label>
-                    <input
-                      id="email"
-                      type="email"
-                      required
-                      value={formState.email}
-                      onChange={e => setFormState(s => ({ ...s, email: e.target.value }))}
-                      className="w-full bg-white border-2 border-black p-4 md:p-5 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-orange-500 transition-shadow"
-                      style={{ fontFamily: 'var(--font-body)' }}
-                      placeholder="john@example.com"
-                    />
+                    <div className="relative flex-1 flex">
+                      <span className="absolute top-2 left-0 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>`</span>
+                      <textarea
+                        id="message"
+                        required
+                        rows={4}
+                        value={formState.message}
+                        onChange={e => setFormState(s => ({ ...s, message: e.target.value }))}
+                        className="w-full flex-1 bg-transparent border-2 border-[#1E293B] p-3 pl-4 text-sm md:text-base focus:outline-none focus:border-[#FBBF24] transition-colors resize-none"
+                        style={{ fontFamily: 'var(--font-mono)', color: '#22C55E', minHeight: '120px' }}
+                        placeholder={language === 'en' ? "Tell me about your project..." : "Ceritakan tentang proyek Anda..."}
+                      />
+                      <span className="absolute bottom-2 right-2 text-[#7DD3FC]" style={{ fontFamily: 'var(--font-mono)' }}>`</span>
+                    </div>
                   </div>
-                </div>
 
-                {/* Message field */}
-                <div className="flex flex-col gap-1.5 flex-1">
-                  <label htmlFor="message" className="text-[0.7rem] font-bold tracking-widest uppercase opacity-70" style={{ fontFamily: 'var(--font-mono)' }}>
-                    {language === 'en' ? 'Message' : 'Pesan'}
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    value={formState.message}
-                    onChange={e => setFormState(s => ({ ...s, message: e.target.value }))}
-                    className="w-full flex-1 bg-white border-2 border-black p-4 md:p-5 text-sm md:text-base focus:outline-none focus:ring-2 focus:ring-orange-500 transition-shadow resize-none"
-                    style={{ fontFamily: 'var(--font-body)', minHeight: '120px' }}
-                    placeholder={language === 'en' ? "Tell me about your project..." : "Ceritakan tentang proyek Anda..."}
-                  />
-                </div>
-
-                {/* Submit button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting || isSuccess}
-                  className="group relative w-full border-2 border-black py-6 md:py-7 px-5 flex items-center justify-center gap-2.5 transition-all disabled:opacity-80 mt-1"
-                  style={{
-                    background: isSuccess ? '#22C55E' : 'var(--color-orange)',
-                    color: 'var(--color-charcoal)',
-                    boxShadow: '4px 4px 0px #000',
-                  }}
-                  aria-live="polite"
-                >
-                  <span className="font-black text-sm md:text-base tracking-widest uppercase" style={{ fontFamily: 'var(--font-display)' }}>
-                    {isSubmitting ? (language === 'en' ? 'SENDING...' : 'MENGIRIM...') : isSuccess ? (language === 'en' ? 'SENT SUCCESSFULLY' : 'BERHASIL DIKIRIM') : (language === 'en' ? 'SEND MESSAGE' : 'KIRIM PESAN')}
-                  </span>
-                  {!isSubmitting && (
-                    isSuccess ? <Check size={20} /> : <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  )}
-                </button>
-              </form>
+                  {/* Submit button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || isSuccess}
+                    className="group relative w-full border-2 border-black py-4 md:py-5 px-5 flex items-center justify-center gap-2.5 transition-all disabled:opacity-80 mt-4"
+                    style={{
+                      background: isSuccess ? '#22C55E' : 'var(--color-orange)',
+                      color: 'var(--color-charcoal)',
+                    }}
+                    aria-live="polite"
+                  >
+                    <span className="font-bold text-sm md:text-base tracking-widest uppercase" style={{ fontFamily: 'var(--font-mono)' }}>
+                      <span className="opacity-50 mr-2">~/</span>
+                      {isSubmitting ? (language === 'en' ? 'EXECUTING...' : 'MENGEKSEKUSI...') : isSuccess ? (language === 'en' ? 'EXECUTION SUCCESS' : 'EKSEKUSI BERHASIL') : (language === 'en' ? './SEND.SH' : './KIRIM.SH')}
+                    </span>
+                    {!isSubmitting && (
+                      isSuccess ? <Check size={18} /> : <span className="font-bold opacity-50 group-hover:translate-x-1 transition-transform">_</span>
+                    )}
+                  </button>
+                </form>
+              </div>
             </div>
           </motion.div>
 
