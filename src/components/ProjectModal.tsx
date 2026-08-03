@@ -222,7 +222,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         >
                           Info
                         </p>
-                        <div className="space-y-2">
+                        <div className="grid grid-cols-2 gap-4">
                           <div>
                             <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>
                               {language === 'en' ? 'Category' : 'Kategori'}
@@ -233,10 +233,10 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                           </div>
                           <div>
                             <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>
-                              {language === 'en' ? 'Stack Count' : 'Jumlah Teknologi'}
+                              {language === 'en' ? 'Stack' : 'Jumlah'}
                             </span>
                             <p className="text-sm font-bold mt-0.5" style={{ fontFamily: 'var(--font-display)' }}>
-                              {project.techStack.length} {language === 'en' ? 'Technologies' : 'Teknologi'}
+                              {project.techStack.length} {language === 'en' ? 'Techs' : 'Teknologi'}
                             </p>
                           </div>
                         </div>
