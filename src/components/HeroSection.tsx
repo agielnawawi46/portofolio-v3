@@ -98,7 +98,7 @@ export default function HeroSection() {
             </div>
 
             {/* Terminal Content */}
-            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 p-6 md:p-8 w-full h-full">
+            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 px-6 py-12 md:px-8 md:py-16 w-full h-full">
               <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center">
                 <div
                   className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
