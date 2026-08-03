@@ -74,48 +74,66 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* KOLOM KANAN: Sub-headline + Core Stack + Buttons */}
-          <div className="flex flex-col items-center lg:items-start justify-between gap-8 md:gap-12 w-full lg:w-1/2">
-            <motion.div custom={3} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-start">
-              <div
-                className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
-                style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
-              >
-                <span className="font-bold text-sm md:text-base lg:text-xl tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
-                  {personal.tagline}
-                </span>
-              </div>
-            </motion.div>
+          {/* KOLOM KANAN: Codeline Card */}
+          <motion.div
+            custom={3}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: false, amount: 0.1 }}
+            className="w-full lg:w-1/2 flex flex-col border-2 border-black overflow-hidden sticker-box"
+            style={{ background: "var(--color-canvas)", boxShadow: "8px 8px 0px var(--color-charcoal)" }}
+          >
+            {/* Terminal Top Bar */}
+            <div className="w-full h-10 border-b-2 border-black flex items-center px-4 gap-2" style={{ background: "var(--color-lavender)" }}>
+              <div className="w-3.5 h-3.5 rounded-full border-2 border-black bg-red-400"></div>
+              <div className="w-3.5 h-3.5 rounded-full border-2 border-black bg-yellow-400"></div>
+              <div className="w-3.5 h-3.5 rounded-full border-2 border-black bg-green-400"></div>
+            </div>
 
-            <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-start">
-              <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-70 uppercase font-bold" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
-                {language === 'en' ? 'Core Stack:' : 'Teknologi Utama:'}
-              </p>
-              <div className="flex flex-wrap gap-2 md:gap-3 justify-center lg:justify-start">
-                {topSkills.map(skill => (
-                  <span key={skill.name} className="tech-tag text-xs md:text-sm lg:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold" style={{ background: "var(--color-canvas)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }}>
-                    {skill.name}
+            {/* Terminal Content */}
+            <div className="flex flex-col items-center lg:items-start gap-8 md:gap-12 p-6 md:p-8 w-full h-full">
+              <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-start">
+                <div
+                  className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
+                  style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
+                >
+                  <span className="font-bold text-sm md:text-base lg:text-xl tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
+                    {personal.tagline}
                   </span>
-                ))}
-              </div>
-            </motion.div>
+                </div>
+              </motion.div>
 
-            <motion.div
-              custom={5}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: false, amount: 0.1 }}
-              className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 w-full"
-            >
-              <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
-                {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={18} />
-              </a>
-              <a href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold" style={{ background: "var(--color-orange)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-contact">
-                {language === 'en' ? 'CONTACT ME' : 'HUBUNGI SAYA'} <Mail size={18} />
-              </a>
-            </motion.div>
-          </div>
+              <motion.div custom={5} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center lg:items-start">
+                <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-70 uppercase font-bold" style={{ fontFamily: "var(--font-mono)", color: "var(--color-charcoal)" }}>
+                  {language === 'en' ? 'Core Stack:' : 'Teknologi Utama:'}
+                </p>
+                <div className="flex flex-wrap gap-2 md:gap-3 justify-center lg:justify-start">
+                  {topSkills.map(skill => (
+                    <span key={skill.name} className="tech-tag text-xs md:text-sm lg:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold" style={{ background: "var(--color-orange)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }}>
+                      {skill.name}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+
+              <motion.div
+                custom={6}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: false, amount: 0.1 }}
+                className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3 w-full mt-auto"
+              >
+                <a href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "var(--color-charcoal)", color: "var(--color-canvas)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-projects">
+                  {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={18} />
+                </a>
+                <a href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "var(--color-canvas)", color: "var(--color-charcoal)", border: "2px solid var(--color-charcoal)" }} id="hero-cta-contact">
+                  {language === 'en' ? 'CONTACT ME' : 'HUBUNGI SAYA'} <Mail size={18} />
+                </a>
+              </motion.div>
+            </div>
+          </motion.div>
 
         </div>
       </div>
