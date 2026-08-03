@@ -80,10 +80,17 @@ export default function ContactSection() {
             className="md:col-span-5 flex flex-col gap-4"
           >
             {/* Intro box */}
-            <div className="border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_#000]" style={{ background: 'var(--color-canvas)' }}>
-              <h3 className="text-xl font-black uppercase mb-3" style={{ fontFamily: 'var(--font-display)' }}>
+            <div className="border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_#000] relative" style={{ background: 'var(--color-canvas)' }}>
+              {/* Corner accent */}
+              <div className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-orange-500 border-2 border-black">
+                ×
+              </div>
+              
+              <h3 className="text-xl md:text-2xl font-black uppercase mb-1 shrink-0" style={{ fontFamily: 'var(--font-display)' }}>
                 {language === 'en' ? 'GET IN TOUCH' : 'HUBUNGI SAYA'}
               </h3>
+              <div className="w-10 h-1 bg-black mb-4 shrink-0" />
+              
               <p className="text-sm md:text-base leading-relaxed opacity-80" style={{ fontFamily: 'var(--font-body)' }}>
                 {language === 'en' ? 'Interested in collaborating or have an interesting project? Send a message and I will respond within 1-2 business days.' : 'Tertarik untuk berkolaborasi atau memiliki proyek menarik? Kirim pesan dan saya akan merespons dalam 1-2 hari kerja.'}
               </p>
