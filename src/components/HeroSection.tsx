@@ -69,7 +69,7 @@ export default function HeroSection() {
 
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full">
               <div
-                className="border-2 border-black bg-white p-6 md:p-8 relative flex flex-col text-left mt-2 lg:mt-4"
+                className="border-2 border-black bg-white p-8 md:p-10 lg:p-12 relative flex flex-col justify-center text-left mt-2 lg:mt-4 min-h-[220px] md:min-h-[260px] lg:min-h-[300px]"
                 style={{ boxShadow: '8px 8px 0px #000' }}
               >
                 {/* Corner accent */}
