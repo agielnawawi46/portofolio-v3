@@ -53,7 +53,7 @@ export default function HeroSection() {
       {/* Container Utama */}
       <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10">
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-center lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
+        <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
 
           {/* KOLOM KIRI: Headline + Bio */}
           <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2">
@@ -116,7 +116,7 @@ export default function HeroSection() {
             </div>
 
             {/* Terminal Content */}
-            <div className="flex flex-col items-center justify-center gap-8 md:gap-10 p-8 md:p-10 w-full h-auto">
+            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 px-6 py-12 md:px-8 md:py-16 w-full h-full">
               <motion.div custom={4} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full flex flex-col items-center">
                 <div
                   className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
