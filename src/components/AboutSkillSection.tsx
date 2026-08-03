@@ -368,7 +368,7 @@ export default function AboutSkillSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-5"
             >
               {filteredSkills.map((skill, si) => (
                 <motion.div
@@ -377,7 +377,7 @@ export default function AboutSkillSection() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={vp}
                   transition={{ ...spring, delay: si * 0.05 }}
-                  className="group border-2 p-3 sm:p-4 relative overflow-hidden cursor-default w-full"
+                  className="group border-2 p-3 md:p-4 relative overflow-hidden cursor-default w-full flex items-center gap-3 md:gap-4"
                   style={{
                     background: '#1E293B',
                     borderColor: 'rgba(255,255,255,0.1)',
@@ -390,13 +390,27 @@ export default function AboutSkillSection() {
                     style={{ background: 'var(--color-orange)', zIndex: 0 }}
                   />
 
-                  <div className="relative z-10 w-full">
-                    <div className="flex justify-between items-center mb-3 gap-1">
+                  {/* LEFT: Logo Sub-card */}
+                  <div 
+                    className="relative z-10 w-12 h-12 md:w-14 md:h-14 shrink-0 border border-white/20 flex items-center justify-center group-hover:border-black/40 group-hover:bg-white/20 transition-all duration-300"
+                    style={{ background: 'rgba(0,0,0,0.4)' }}
+                  >
+                    {deviconMap[skill.name] ? (
+                      <i className={`${deviconMap[skill.name]} text-2xl md:text-3xl text-white group-hover:text-black transition-colors duration-300`}></i>
+                    ) : (
+                      <span className="text-white font-bold text-sm md:text-base group-hover:text-black transition-colors duration-300" style={{ fontFamily: 'var(--font-mono)' }}>
+                        {skill.name.substring(0, 2).toUpperCase()}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* RIGHT: Name & Progress */}
+                  <div className="relative z-10 flex-1 min-w-0 flex flex-col justify-center">
+                    <div className="flex justify-between items-center mb-2 gap-1">
                       <span
-                        className="text-[10px] sm:text-xs md:text-sm font-black uppercase tracking-tight group-hover:text-black transition-colors duration-200 truncate min-w-0 flex items-center gap-2"
+                        className="text-[11px] sm:text-xs md:text-sm font-black uppercase tracking-tight group-hover:text-black transition-colors duration-200 truncate min-w-0"
                         style={{ fontFamily: 'var(--font-display)', color: 'white' }}
                       >
-                        {deviconMap[skill.name] && <i className={`${deviconMap[skill.name]} text-lg md:text-xl`}></i>}
                         {skill.name}
                       </span>
                       <span
