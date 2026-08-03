@@ -22,8 +22,21 @@ const vp = { once: false, amount: 0.1 }
 
 const slideVariants = {
   enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
-  center: { opacity: 1, x: 0 },
+  center: { 
+    opacity: 1, 
+    x: 0,
+    transition: { type: 'spring' as const, stiffness: 300, damping: 30, staggerChildren: 0.1 }
+  },
   exit: (d: number) => ({ opacity: 0, x: d > 0 ? -60 : 60 }),
+}
+
+const noPaginateVariants = {
+  enter: { opacity: 0 },
+  center: { 
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  },
+  exit: { opacity: 0 }
 }
 
 // ── Shared Nav Controls ─────────────────────────────────
@@ -136,21 +149,20 @@ function ProjectCard({
   project,
   globalIndex,
   onOpen,
-  delay = 0,
   language,
 }: {
   project: Project
   globalIndex: number
   onOpen: (p: Project) => void
-  delay?: number
   language: 'en' | 'id'
 }) {
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={vp}
-      transition={{ ...spring, delay }}
+      variants={{
+        enter: { opacity: 0, y: 30 },
+        center: { opacity: 1, y: 0, transition: spring },
+        exit: { opacity: 0, y: -30 }
+      }}
       whileHover={{ y: -5, transition: { type: 'spring', stiffness: 300, damping: 20 } }}
       className="group cursor-pointer h-full"
       onClick={() => onOpen(project)}
@@ -346,7 +358,6 @@ export default function ProjectsSection() {
                     initial="enter"
                     animate="center"
                     exit="exit"
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}
                   >
                     {mVisible.map((project, i) => (
@@ -355,7 +366,6 @@ export default function ProjectsSection() {
                         project={project}
                         globalIndex={mobilePage * MOBILE_PER_PAGE + i}
                         onOpen={setSelectedProject}
-                        delay={i * 0.08}
                         language={language}
                       />
                     ))}
@@ -380,11 +390,11 @@ export default function ProjectsSection() {
                   <motion.div
                     key={desktopPage}
                     custom={direction}
-                    variants={dNeedsPagination ? slideVariants : undefined}
-                    initial={dNeedsPagination ? 'enter' : { opacity: 0, y: 20 }}
-                    animate={dNeedsPagination ? 'center' : { opacity: 1, y: 0 }}
-                    exit={dNeedsPagination ? 'exit' : { opacity: 0, y: -20 }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                    variants={dNeedsPagination ? slideVariants : noPaginateVariants}
+                    initial="enter"
+                    whileInView="center"
+                    viewport={vp}
+                    exit="exit"
                     className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
                   >
                     {dVisible.map((project, i) => (
@@ -393,7 +403,6 @@ export default function ProjectsSection() {
                         project={project}
                         globalIndex={desktopPage * DESKTOP_PER_PAGE + i}
                         onOpen={setSelectedProject}
-                        delay={i * 0.07}
                         language={language}
                       />
                     ))}
