@@ -52,21 +52,21 @@ export default function HeroSection() {
 
       {/* Container Utama */}
       <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10">
-        
+
         <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
-          
+
           {/* KOLOM KIRI: Headline + Bio */}
           <div className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2">
             <motion.div custom={1} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full">
               <h1
-                className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight"
+                className="text-6xl sm:text-7xl md:text-8xl lg:text-7xl xl:text-[7rem] font-black uppercase leading-[0.95] tracking-tight"
                 style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
               >
                 AGIEL<br />
                 NAWAWI
               </h1>
             </motion.div>
-            
+
             <motion.div custom={2} variants={fadeUp} initial="hidden" whileInView="visible" viewport={{ once: false, amount: 0.1 }} className="w-full">
               <p className="text-base md:text-lg lg:text-xl xl:text-2xl leading-relaxed opacity-90 max-w-2xl lg:max-w-none mx-auto lg:mx-0" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                 {personal.shortBio}
@@ -152,7 +152,7 @@ export default function HeroSection() {
           animate="animate"
           style={{ fontFamily: "var(--font-mono)" }}
         >
-          {Array(8).fill("✦ FULL-STACK WEB DEVELOPMENT ✦ SCALABLE BACKEND ARCHITECTURE ✦ RESPONSIVE UI/UX ✦ CREATIVE PROBLEM SOLVING ").map((text, i) => (
+          {Array(8).fill(" ✦ FULL-STACK WEB DEVELOPMENT ✦ SCALABLE BACKEND ARCHITECTURE ✦ RESPONSIVE UI/UX ✦ CREATIVE PROBLEM SOLVING ").map((text, i) => (
             <span key={i} className="mx-4">{text}</span>
           ))}
         </motion.div>
