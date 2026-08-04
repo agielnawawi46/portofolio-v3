@@ -9,12 +9,12 @@ const MOBILE_PER_PAGE = 2
 const DESKTOP_PER_PAGE = 6
 
 const categoryColors: Record<string, string> = {
-  'Web App': 'var(--color-lavender)',
+  'Web App': '#ffffff',
   'E-Commerce': 'var(--color-orange)',
   'Dashboard': 'var(--color-charcoal)',
-  'Blog': 'var(--color-lavender)',
+  'Blog': '#ffffff',
   'CLI Tool': 'var(--color-orange)',
-  'UI Library': 'var(--color-lavender)',
+  'UI Library': '#ffffff',
 }
 
 const spring = { type: 'spring' as const, stiffness: 60, damping: 18 }
@@ -177,28 +177,44 @@ function ProjectCard({
       >
         {/* Card header */}
         <div
-          className="relative h-44 flex items-center justify-center overflow-hidden flex-shrink-0"
+          className="relative h-44 flex items-center justify-center overflow-hidden flex-shrink-0 group-hover:scale-[1.02] transition-transform duration-500"
           style={{
-            background: categoryColors[project.category] || 'var(--color-lavender)',
+            backgroundColor: categoryColors[project.category] || '#ffffff',
             borderBottom: '2px solid #000',
           }}
         >
+          {/* Project Image */}
+          {project.image && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <img 
+                src={project.image} 
+                alt={project.title}
+                className="w-2/3 h-2/3 object-contain opacity-70 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-500"
+              />
+            </div>
+          )}
+
           <div className="absolute inset-0 pointer-events-none" style={{
-            backgroundImage: 'linear-gradient(rgba(15,23,42,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.06) 1px, transparent 1px)',
+            backgroundImage: 'linear-gradient(rgba(15,23,42,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.1) 1px, transparent 1px)',
             backgroundSize: '22px 22px',
           }} />
-          <div className="absolute top-3 left-3">
-            <span className="tech-tag" style={{ background: 'rgba(15,23,42,0.8)', border: 'none', color: 'white', fontSize: '0.6rem' }}>
+          
+          <div className="absolute top-3 left-3 z-10">
+            <span className="tech-tag" style={{ background: 'rgba(15,23,42,0.9)', border: 'none', color: 'white', fontSize: '0.6rem' }}>
               {project.category}
             </span>
           </div>
-          <span
-            className="text-6xl font-black opacity-15 select-none relative"
-            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
-          >
-            {String(globalIndex + 1).padStart(2, '0')}
-          </span>
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+          
+          {!project.image && (
+            <span
+              className="text-6xl font-black opacity-15 select-none relative z-10"
+              style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
+            >
+              {String(globalIndex + 1).padStart(2, '0')}
+            </span>
+          )}
+
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 z-20 bg-black/30 backdrop-blur-[2px]">
             <span
               className="px-3.5 py-2 text-[0.7rem] font-bold tracking-wider"
               style={{ background: 'var(--color-charcoal)', color: 'white', fontFamily: 'var(--font-display)', border: '2px solid rgba(255,255,255,0.7)' }}

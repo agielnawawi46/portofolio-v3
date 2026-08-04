@@ -69,18 +69,27 @@ export default function ContactSection() {
           <div className="mt-3 h-1.5 w-16 bg-black" />
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch">
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-stretch"
+          initial="hidden"
+          whileInView="visible"
+          viewport={vp}
+          variants={{
+            hidden: {},
+            visible: { transition: { staggerChildren: 0.15 } }
+          }}
+        >
 
           {/* Left — Info (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={vp}
-            transition={{ ...springBase, delay: 0.1 }}
-            className="md:col-span-5 flex flex-col gap-4"
-          >
+          <div className="md:col-span-5 flex flex-col gap-4">
             {/* Intro box */}
-            <div className="border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_#000] relative" style={{ background: 'var(--color-canvas)' }}>
+            <motion.div 
+              variants={{
+                hidden: { opacity: 0, x: -50 },
+                visible: { opacity: 1, x: 0, transition: springBase }
+              }}
+              className="border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_#000] relative" style={{ background: 'var(--color-canvas)' }}
+            >
               {/* Corner accent */}
               <div className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-orange-500 border-2 border-black">
                 ×
@@ -94,21 +103,21 @@ export default function ContactSection() {
               <p className="text-sm md:text-base leading-relaxed opacity-80" style={{ fontFamily: 'var(--font-body)' }}>
                 {language === 'en' ? 'Interested in collaborating or have an interesting project? Send a message and I will respond within 1-2 business days.' : 'Tertarik untuk berkolaborasi atau memiliki proyek menarik? Kirim pesan dan saya akan merespons dalam 1-2 hari kerja.'}
               </p>
-            </div>
+            </motion.div>
 
             {/* Contact items */}
             <div className="flex flex-col gap-3">
-              {contactItems.map((item, idx) => (
+              {contactItems.map((item) => (
                 <motion.a
                   key={item.id}
                   id={item.id}
                   href={item.href}
                   target={item.href.startsWith('http') ? '_blank' : undefined}
                   rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, x: (idx % 2 === 0 ? -40 : 40) }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={vp}
-                  transition={{ ...springBase, delay: 0.1 + idx * 0.1 }}
+                  variants={{
+                    hidden: { opacity: 0, x: -50 },
+                    visible: { opacity: 1, x: 0, transition: springBase }
+                  }}
                   className="flex items-center gap-5 border-2 border-black p-6 md:p-8 shadow-[6px_6px_0px_#000] hover:-translate-y-1 transition-transform"
                   style={{ background: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}
                   aria-label={`${item.label}: ${item.value}`}
@@ -127,14 +136,14 @@ export default function ContactSection() {
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Right — Form (7 cols) */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={vp}
-            transition={{ ...springBase, delay: 0.18 }}
+            variants={{
+              hidden: { opacity: 0, x: 50 },
+              visible: { opacity: 1, x: 0, transition: springBase }
+            }}
             className="md:col-span-7 flex flex-col"
           >
             <div className="border-2 border-black h-full flex flex-col overflow-hidden" style={{ background: '#0F172A', boxShadow: '8px 8px 0px #000' }}>
@@ -244,7 +253,7 @@ export default function ContactSection() {
             </div>
           </motion.div>
 
-        </div>
+        </motion.div>
       </div>
     </section>
   )
