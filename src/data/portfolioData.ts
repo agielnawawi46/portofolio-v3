@@ -8,6 +8,7 @@ export interface Project {
   wireframeUrl?: string;
   liveDemoUrl: string;
   githubUrl: string;
+  githubUrl2?: string;
   category: string;
 }
 
@@ -86,7 +87,7 @@ export const portfolioData = {
         description: "Responsive tourism website to promote marine destinations.",
         longDescription: "Developed a responsive full-stack web application to promote marine tourism destinations and interactive travel guides. Implemented backend data routing, dynamic content management, and database storage using Laravel and MySQL. Designed user-friendly, accessible UI interfaces adhering to responsive web design principles. Programmed interactive frontend features with JavaScript, including dynamic image galleries and interactive navigation.",
         techStack: ["Laravel", "HTML5", "CSS3", "JavaScript", "MySQL"],
-        image: "/projects/artboard.png",
+        image: "/pro3.jpg?v=2",
         liveDemoUrl: "#",
         githubUrl: "https://github.com/agielnawawi46",
         category: "Web App",
@@ -99,7 +100,8 @@ export const portfolioData = {
         techStack: ["Laravel", "Django", "REST API", "Tailwind CSS", "MySQL"],
         image: "/projects/nekoshop.png",
         liveDemoUrl: "#",
-        githubUrl: "https://github.com/agielnawawi46",
+        githubUrl: "https://github.com/johnrevorms/brandcloth.git",
+        githubUrl2: "https://github.com/agielnawawi46/db_arcanum.git",
         category: "Web App",
       },
       {
@@ -207,7 +209,7 @@ export const portfolioData = {
         description: "Website pariwisata responsif untuk mempromosikan destinasi wisata.",
         longDescription: "Mengembangkan aplikasi web full-stack responsif untuk mempromosikan destinasi wisata bahari dan panduan wisata interaktif. Mengimplementasikan perutean data backend, manajemen konten dinamis, dan penyimpanan database menggunakan Laravel dan MySQL. Merancang antarmuka UI yang ramah pengguna dan dapat diakses sesuai dengan prinsip desain web responsif. Memprogram fitur frontend interaktif dengan JavaScript, termasuk galeri gambar dinamis dan navigasi interaktif.",
         techStack: ["Laravel", "HTML5", "CSS3", "JavaScript", "MySQL"],
-        image: "/projects/artboard.png",
+        image: "/pro3.jpg?v=2",
         liveDemoUrl: "#",
         githubUrl: "https://github.com/agielnawawi46",
         category: "Web App",
@@ -220,7 +222,8 @@ export const portfolioData = {
         techStack: ["Laravel", "Django", "REST API", "Tailwind CSS", "MySQL"],
         image: "/projects/nekoshop.png",
         liveDemoUrl: "#",
-        githubUrl: "https://github.com/agielnawawi46",
+        githubUrl: "https://github.com/johnrevorms/brandcloth.git",
+        githubUrl2: "https://github.com/agielnawawi46/db_arcanum.git",
         category: "Web App",
       },
       {
@@ -231,7 +234,7 @@ export const portfolioData = {
         techStack: ["Next.js", "Express.js", "Node.js", "MySQL"],
         image: "/pro2.jpg",
         liveDemoUrl: "#",
-        githubUrl: "https://github.com/agielnawawi46",
+        githubUrl: "https://github.com/agielnawawi46/pemlat.git",
         category: "Web App",
       },
       {
@@ -242,7 +245,7 @@ export const portfolioData = {
         techStack: ["Laravel", "REST API", "MySQL"],
         image: "/pro1.jpg",
         liveDemoUrl: "#",
-        githubUrl: "https://github.com/agielnawawi46",
+        githubUrl: "https://github.com/agielnawawi46/danakarya-app.git",
         category: "Web App",
       }
     ] as Project[],

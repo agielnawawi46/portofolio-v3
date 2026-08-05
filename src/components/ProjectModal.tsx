@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Tag, ExternalLink, GitFork, X } from 'lucide-react'
+import { Tag, ExternalLink, GitFork, X, Rocket } from 'lucide-react'
 import type { Project } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -11,6 +11,20 @@ interface ProjectModalProps {
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   const { language } = useLanguage()
+  const [showToast, setShowToast] = useState(false)
+
+  const handleDemoClick = (e: React.MouseEvent, url: string) => {
+    if (url === '#') {
+      e.preventDefault()
+      setShowToast(true)
+    }
+  }
+
+  useEffect(() => {
+    if (!showToast) return
+    const t = setTimeout(() => setShowToast(false), 3500)
+    return () => clearTimeout(t)
+  }, [showToast])
 
   useEffect(() => {
     if (project) {
@@ -30,33 +44,34 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
   }, [onClose])
 
   return (
-    <AnimatePresence>
-      {project && (
-        <>
-          {/* Backdrop */}
-          <motion.div
-            key="backdrop"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 z-50"
-            style={{ background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(4px)' }}
-            aria-hidden="true"
-          />
+    <>
+      <AnimatePresence>
+        {project && (
+          <>
+            {/* Backdrop */}
+            <motion.div
+              key="backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={onClose}
+              className="fixed inset-0 z-50"
+              style={{ background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(4px)' }}
+              aria-hidden="true"
+            />
 
-          {/* Scroll container — allows modal to scroll on small screens */}
-          <motion.div
-            key="modal"
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${project.title} details`}
-            initial={{ opacity: 0, scale: 0.93, y: 24 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.93, y: 24 }}
-            transition={{ type: 'spring', stiffness: 350, damping: 30 }}
-            className="fixed inset-0 z-50 overflow-y-auto"
-          >
+            {/* Scroll container — allows modal to scroll on small screens */}
+            <motion.div
+              key="modal"
+              role="dialog"
+              aria-modal="true"
+              aria-label={`${project.title} details`}
+              initial={{ opacity: 0, scale: 0.93, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.93, y: 24 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+              className="fixed inset-0 z-50 overflow-y-auto"
+            >
             {/* Centering wrapper */}
             <div
               className="flex min-h-full items-center justify-center p-4 sm:p-8"
@@ -136,6 +151,75 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                         {project.category}
                       </span>
                     </div>
+
+                    {/* Coming Soon overlay inside grid */}
+                    <AnimatePresence>
+                      {showToast && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.8 }}
+                          transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+                          className="absolute inset-0 flex flex-col items-center justify-center z-10"
+                          style={{ background: 'rgba(15,23,42,0.75)', backdropFilter: 'blur(3px)' }}
+                        >
+                          <div style={{
+                            display: 'flex',
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                            gap: '16px',
+                            padding: '16px 24px',
+                            background: '#0F172A',
+                            border: '2px solid var(--color-orange)',
+                            boxShadow: '5px 5px 0px var(--color-orange)',
+                          }}>
+                            {/* Icon */}
+                            <div style={{ flexShrink: 0 }}>
+                              <Rocket size={24} color="var(--color-orange)" />
+                            </div>
+                            
+                            {/* Text */}
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+                              <p style={{
+                                fontFamily: 'var(--font-display)',
+                                fontWeight: '900',
+                                fontSize: '0.85rem',
+                                letterSpacing: '0.12em',
+                                textTransform: 'uppercase',
+                                color: 'var(--color-orange)',
+                                marginBottom: '2px',
+                              }}>
+                                {language === 'en' ? 'Coming Soon!' : 'Segera Hadir!'}
+                              </p>
+                              <p style={{
+                                fontFamily: 'var(--font-body)',
+                                fontSize: '0.7rem',
+                                color: 'rgba(226,232,240,0.65)',
+                              }}>
+                                {language === 'en'
+                                  ? 'Not deployed yet. Stay tuned!'
+                                  : 'Belum terdeploy. Pantau terus!'}
+                              </p>
+                            </div>
+                          </div>
+                          {/* Progress bar */}
+                          <motion.div
+                            initial={{ scaleX: 1 }}
+                            animate={{ scaleX: 0 }}
+                            transition={{ duration: 3.5, ease: 'linear' }}
+                            style={{
+                              position: 'absolute',
+                              bottom: 0,
+                              left: 0,
+                              height: '3px',
+                              width: '100%',
+                              background: 'var(--color-orange)',
+                              transformOrigin: 'left',
+                            }}
+                          />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -196,18 +280,44 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                             id={`modal-demo-${project.id}`}
                             className="sticker-btn sticker-btn-secondary w-full justify-center"
                             style={{ textAlign: 'center' }}
+                            onClick={(e) => handleDemoClick(e, project.liveDemoUrl)}
                           >
                             <ExternalLink size={14} /> DEMO
                           </a>
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            id={`modal-github-${project.id}`}
-                            className="sticker-btn sticker-btn-primary w-full justify-center"
-                          >
-                            <GitFork size={14} /> {language === 'en' ? 'SOURCE CODE' : 'KODE SUMBER'}
-                          </a>
+                          {project.githubUrl2 ? (
+                            <div className="flex gap-1">
+                              <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                id={`modal-github-${project.id}`}
+                                className="sticker-btn sticker-btn-primary flex-1 justify-center"
+                                style={{ fontSize: '0.6rem', letterSpacing: '0.05em' }}
+                              >
+                                <GitFork size={11} /> FRONTEND
+                              </a>
+                              <a
+                                href={project.githubUrl2}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                id={`modal-github2-${project.id}`}
+                                className="sticker-btn sticker-btn-primary flex-1 justify-center"
+                                style={{ fontSize: '0.6rem', letterSpacing: '0.05em' }}
+                              >
+                                <GitFork size={11} /> BACKEND
+                              </a>
+                            </div>
+                          ) : (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              id={`modal-github-${project.id}`}
+                              className="sticker-btn sticker-btn-primary w-full justify-center"
+                            >
+                              <GitFork size={14} /> {language === 'en' ? 'SOURCE CODE' : 'KODE SUMBER'}
+                            </a>
+                          )}
                         </div>
                       </div>
 
@@ -249,6 +359,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
           </motion.div>
         </>
       )}
-    </AnimatePresence>
+      </AnimatePresence>
+    </>
   )
 }

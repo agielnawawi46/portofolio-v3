@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ExternalLink, GitFork, ChevronLeft, ChevronRight } from 'lucide-react'
 import { portfolioData, type Project } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
 import ProjectModal from './ProjectModal'
+import ComingSoonToast from './ComingSoonToast'
 
 const MOBILE_PER_PAGE = 2
 const DESKTOP_PER_PAGE = 6
@@ -22,8 +23,8 @@ const vp = { once: false, amount: 0.1 }
 
 const slideVariants = {
   enter: (d: number) => ({ opacity: 0, x: d > 0 ? 60 : -60 }),
-  center: { 
-    opacity: 1, 
+  center: {
+    opacity: 1,
     x: 0,
     transition: { type: 'spring' as const, stiffness: 300, damping: 30, staggerChildren: 0.1 }
   },
@@ -32,7 +33,7 @@ const slideVariants = {
 
 const noPaginateVariants = {
   enter: { opacity: 0 },
-  center: { 
+  center: {
     opacity: 1,
     transition: { staggerChildren: 0.1 }
   },
@@ -150,11 +151,13 @@ function ProjectCard({
   globalIndex,
   onOpen,
   language,
+  onShowToast,
 }: {
   project: Project
   globalIndex: number
   onOpen: (p: Project) => void
   language: 'en' | 'id'
+  onShowToast: () => void
 }) {
   return (
     <motion.article
@@ -186,10 +189,10 @@ function ProjectCard({
           {/* Project Image */}
           {project.image && (
             <div className="absolute inset-0 flex items-center justify-center">
-              <img 
-                src={project.image} 
+              <img
+                src={project.image}
                 alt={project.title}
-                className="w-2/3 h-2/3 object-contain opacity-70 mix-blend-luminosity group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-500"
+                className="w-2/3 h-2/3 object-contain transition-all duration-500"
               />
             </div>
           )}
@@ -198,13 +201,13 @@ function ProjectCard({
             backgroundImage: 'linear-gradient(rgba(15,23,42,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.1) 1px, transparent 1px)',
             backgroundSize: '22px 22px',
           }} />
-          
+
           <div className="absolute top-3 left-3 z-10">
             <span className="tech-tag" style={{ background: 'rgba(15,23,42,0.9)', border: 'none', color: 'white', fontSize: '0.6rem' }}>
               {project.category}
             </span>
           </div>
-          
+
           {!project.image && (
             <span
               className="text-6xl font-black opacity-15 select-none relative z-10"
@@ -265,17 +268,40 @@ function ProjectCard({
                 style={{ color: 'var(--color-canvas)', fontFamily: 'var(--font-mono)' }}
                 id={`project-github-${project.id}`}
               >
-                <GitFork size={12} /> {language === 'en' ? 'CODE' : 'KODE'}
+                <GitFork size={12} /> {project.githubUrl2 ? 'FRONT' : (language === 'en' ? 'CODE' : 'KODE')}
               </a>
-              <a
-                href={project.liveDemoUrl}
-                target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-xs font-bold opacity-80 hover:opacity-100 transition-opacity"
-                style={{ color: 'var(--color-orange)', fontFamily: 'var(--font-mono)' }}
-                id={`project-demo-${project.id}`}
-              >
-                <ExternalLink size={12} /> DEMO
-              </a>
+              {project.githubUrl2 && (
+                <a
+                  href={project.githubUrl2}
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-xs font-bold opacity-60 hover:opacity-100 transition-opacity"
+                  style={{ color: 'var(--color-canvas)', fontFamily: 'var(--font-mono)' }}
+                  id={`project-github2-${project.id}`}
+                >
+                  <GitFork size={12} /> BACK
+                </a>
+              )}
+              {project.liveDemoUrl === '#' ? (
+                <a
+                  href="#"
+                  className="flex items-center gap-1.5 text-xs font-bold opacity-80 hover:opacity-100 transition-opacity"
+                  style={{ color: 'var(--color-orange)', fontFamily: 'var(--font-mono)' }}
+                  id={`project-demo-${project.id}`}
+                  onClick={(e) => { e.preventDefault(); onShowToast() }}
+                >
+                  <ExternalLink size={12} /> DEMO
+                </a>
+              ) : (
+                <a
+                  href={project.liveDemoUrl}
+                  target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-xs font-bold opacity-80 hover:opacity-100 transition-opacity"
+                  style={{ color: 'var(--color-orange)', fontFamily: 'var(--font-mono)' }}
+                  id={`project-demo-${project.id}`}
+                >
+                  <ExternalLink size={12} /> DEMO
+                </a>
+              )}
             </div>
           </div>
         </div>
@@ -291,6 +317,8 @@ export default function ProjectsSection() {
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const [showToast, setShowToast] = useState(false)
+  const closeToast = useCallback(() => setShowToast(false), [])
 
   // Separate page state per mode
   const [mobilePage, setMobilePage] = useState(0)
@@ -383,6 +411,7 @@ export default function ProjectsSection() {
                         globalIndex={mobilePage * MOBILE_PER_PAGE + i}
                         onOpen={setSelectedProject}
                         language={language}
+                        onShowToast={() => setShowToast(true)}
                       />
                     ))}
                   </motion.div>
@@ -420,6 +449,7 @@ export default function ProjectsSection() {
                         globalIndex={desktopPage * DESKTOP_PER_PAGE + i}
                         onOpen={setSelectedProject}
                         language={language}
+                        onShowToast={() => setShowToast(true)}
                       />
                     ))}
                   </motion.div>
@@ -442,6 +472,7 @@ export default function ProjectsSection() {
       </section>
 
       <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />
+      <ComingSoonToast visible={showToast} onClose={closeToast} language={language} />
     </>
   )
 }
