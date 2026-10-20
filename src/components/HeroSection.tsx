@@ -33,10 +33,7 @@ const marqueeVariants: Variants = {
 
 export default function HeroSection() {
   const { language } = useLanguage()
-  const { personal, skills } = portfolioData[language]
-
-  const coreStackNames = ['Laravel', 'Django', 'Node.js', 'Next.js', 'MySQL']
-  const topSkills = skills.filter(s => coreStackNames.includes(s.name))
+  const { personal } = portfolioData[language]
 
   return (
     <section
@@ -124,38 +121,14 @@ export default function HeroSection() {
             </div>
 
             {/* Terminal Content */}
-            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 px-6 py-12 md:px-8 md:py-16 size-full">
-              <motion.div custom={5} variants={fadeUp} className="w-full flex flex-col items-center">
-                <div
-                  className="inline-block px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 sticker-box max-w-full"
-                  style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
-                >
-                  <span className="font-bold text-xs sm:text-sm md:text-base lg:text-xl tracking-wider sm:tracking-widest uppercase block text-center" style={{ fontFamily: "var(--font-display)" }}>
-                    {personal.tagline}
-                  </span>
-                </div>
-              </motion.div>
-
-              <motion.div custom={6} variants={fadeUp} className="w-full flex flex-col items-center">
-                <p className="text-[0.65rem] md:text-xs tracking-widest mb-3 opacity-90 uppercase font-bold text-center" style={{ fontFamily: "var(--font-mono)", color: "#7DD3FC" }}>
-                  {language === 'en' ? 'Core Stack:' : 'Teknologi Utama:'}
-                </p>
-                <div className="flex flex-wrap gap-2 md:gap-3 justify-center">
-                  {topSkills.map((skill, idx) => (
-                    <motion.span custom={7 + idx} variants={fadeUp} key={skill.name} className="tech-tag text-xs md:text-sm lg:text-base px-3 md:px-4 py-1.5 md:py-2 font-bold" style={{ background: "#1E293B", color: "white", border: "2px solid #7DD3FC" }}>
-                      {skill.name}
-                    </motion.span>
-                  ))}
-                </div>
-              </motion.div>
-
+            <div className="flex flex-col items-center justify-center px-6 py-12 md:px-8 md:py-16 size-full">
               <motion.div
                 className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
               >
-                <motion.a custom={13} variants={fadeUp} href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "#7DD3FC", color: "#0F172A", border: "2px solid #7DD3FC" }} id="hero-cta-projects">
+                <motion.a custom={5} variants={fadeUp} href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "#7DD3FC", color: "#0F172A", border: "2px solid #7DD3FC" }} id="hero-cta-projects">
                   {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={18} />
                 </motion.a>
-                <motion.a custom={14} variants={fadeUp} href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "transparent", color: "white", border: "2px solid white" }} id="hero-cta-contact">
+                <motion.a custom={6} variants={fadeUp} href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "transparent", color: "white", border: "2px solid white" }} id="hero-cta-contact">
                   {language === 'en' ? 'CONTACT ME' : 'HUBUNGI SAYA'} <Mail size={18} />
                 </motion.a>
               </motion.div>
