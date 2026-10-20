@@ -47,18 +47,41 @@ export default function HeroSection() {
       </div>
 
 
-      {/* Container Utama */}
-      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto px-6 sm:px-10 md:px-12 pt-24 md:pt-32 lg:pt-36 pb-16 md:pb-20 relative z-10">
+      {/* Decorative Floating Stickers in Background */}
+      <div className="hidden xl:flex items-center gap-2 absolute top-24 right-12 z-0 opacity-70 rotate-3 pointer-events-none select-none">
+        <span className="px-3 py-1 bg-yellow-300 border-2 border-black font-black text-xs uppercase shadow-[3px_3px_0px_#000]" style={{ fontFamily: 'var(--font-mono)' }}>
+          ✦ 2026 EDITION
+        </span>
+      </div>
+      <div className="hidden xl:flex items-center gap-2 absolute top-24 left-12 z-0 opacity-70 -rotate-3 pointer-events-none select-none">
+        <span className="px-3 py-1 bg-white border-2 border-black font-black text-xs uppercase shadow-[3px_3px_0px_#000]" style={{ fontFamily: 'var(--font-mono)' }}>
+          ⚡ BUILD & SCALE
+        </span>
+      </div>
 
-        <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
+      {/* Container Utama */}
+      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto px-6 sm:px-10 md:px-12 pt-20 md:pt-24 lg:pt-28 pb-16 md:pb-20 relative z-10">
+
+        <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-10 lg:gap-14 w-full text-center lg:text-left">
 
           {/* KOLOM KIRI: Headline + Bio */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
-            className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2"
+            className="flex flex-col items-center lg:items-start gap-6 lg:gap-8 w-full lg:w-1/2"
           >
+            {/* Role Badge */}
+            <motion.div
+              custom={0.5}
+              variants={fadeUp}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 border-2 border-black font-bold text-xs uppercase tracking-wider bg-amber-300"
+              style={{ fontFamily: 'var(--font-mono)', boxShadow: '3px 3px 0px #000' }}
+            >
+              <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>{personal.tagline}</span>
+            </motion.div>
+
             <h1
               className="text-4xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight w-full"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
@@ -73,7 +96,7 @@ export default function HeroSection() {
 
             <motion.div custom={3} variants={fadeUp} className="w-full">
               <div
-                className="border-2 border-black bg-white p-6 md:p-8 relative flex flex-col justify-center text-left mt-2 lg:mt-4"
+                className="border-2 border-black bg-white p-6 md:p-7 relative flex flex-col justify-center text-left"
                 style={{ boxShadow: '8px 8px 0px #000' }}
               >
                 {/* Corner accent */}
@@ -88,50 +111,138 @@ export default function HeroSection() {
                 >
                   {language === 'en' ? 'HELLO WORLD' : 'HALO DUNIA'}
                 </motion.h3>
-                <motion.div custom={6} variants={fadeUp} className="w-10 h-1 bg-black mb-4 shrink-0" />
+                <motion.div custom={6} variants={fadeUp} className="w-10 h-1 bg-black mb-3 shrink-0" />
                 
-                <motion.p custom={7} variants={fadeUp} className="text-sm md:text-base lg:text-lg leading-relaxed opacity-90" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
+                <motion.p custom={7} variants={fadeUp} className="text-sm md:text-base leading-relaxed opacity-90" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                   {personal.shortBio}
                 </motion.p>
+
+                {/* Quick Info Chips */}
+                <motion.div custom={8} variants={fadeUp} className="flex flex-wrap gap-2 pt-3 mt-3 border-t border-slate-200">
+                  <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-slate-100 border border-black/20 text-slate-700">
+                    <span className="text-orange-500">📍</span> Batam, ID
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-slate-100 border border-black/20 text-slate-700">
+                    <span className="text-emerald-500 font-bold">●</span> {language === 'en' ? 'Open to Work' : 'Siap Berkolaborasi'}
+                  </span>
+                  <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-slate-100 border border-black/20 text-slate-700">
+                    <span className="text-sky-500 font-bold">⚡</span> D3 Informatics
+                  </span>
+                </motion.div>
               </div>
             </motion.div>
           </motion.div>
 
-          {/* KOLOM KANAN: Codeline Card */}
+          {/* KOLOM KANAN: Terminal Dev Console */}
           <motion.div
             custom={4}
             variants={fadeUp}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.1 }}
-            className="w-full lg:w-1/2 flex flex-col border-2 border-black overflow-hidden"
+            className="w-full lg:w-1/2 flex flex-col border-2 border-black overflow-hidden justify-between"
             style={{ background: "#0F172A", boxShadow: "10px 10px 0px #000" }}
           >
             {/* Terminal Top Bar */}
-            <div className="w-full h-10 border-b-2 flex items-center px-4 gap-2" style={{ background: "#1E293B", borderColor: "#0F172A" }}>
+            <div className="w-full h-10 border-b-2 flex items-center px-4 gap-2 shrink-0" style={{ background: "#1E293B", borderColor: "#0F172A" }}>
               <div className="size-3.5 rounded-full border border-black bg-red-500"></div>
               <div className="size-3.5 rounded-full border border-black bg-yellow-500"></div>
               <div className="size-3.5 rounded-full border border-black bg-green-500"></div>
               <span className="ml-2 text-xs opacity-80" style={{ fontFamily: 'var(--font-mono)', color: 'white' }}>
-                ~/agiel.dev
+                ~/agiel.dev/console
               </span>
-              <span className="ml-auto text-[10px] opacity-60" style={{ fontFamily: 'var(--font-mono)', color: '#7DD3FC' }}>
-                hero.tsx
-              </span>
+              <div className="ml-auto flex items-center gap-2">
+                <span className="size-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span className="text-[10px] font-bold text-emerald-400" style={{ fontFamily: 'var(--font-mono)' }}>
+                  ONLINE
+                </span>
+              </div>
             </div>
 
             {/* Terminal Content */}
-            <div className="flex flex-col items-center justify-center px-6 py-12 md:px-8 md:py-16 size-full">
-              <motion.div
-                className="flex flex-col sm:flex-row items-center justify-center gap-3 w-full"
-              >
-                <motion.a custom={5} variants={fadeUp} href="#projects" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "#7DD3FC", color: "#0F172A", border: "2px solid #7DD3FC" }} id="hero-cta-projects">
-                  {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={18} />
+            <div className="flex flex-col justify-between p-5 md:p-6 gap-4 text-left grow font-mono text-xs md:text-sm">
+              
+              {/* CLI Command & Spec Block */}
+              <div className="space-y-2.5">
+                <div className="flex items-center gap-2 text-xs text-slate-400">
+                  <span className="text-cyan-400 font-bold">agiel@dev</span>
+                  <span className="text-slate-500">:</span>
+                  <span className="text-amber-400 font-bold">~</span>
+                  <span className="text-slate-500">$</span>
+                  <span className="text-white font-medium">cat dev-spec.json</span>
+                </div>
+
+                <div className="bg-slate-900/90 border border-slate-700/80 p-3 rounded-sm space-y-2 text-xs leading-relaxed">
+                  <div className="flex flex-wrap items-baseline gap-x-2">
+                    <span className="text-cyan-300 font-bold">"specialization":</span>
+                    <span className="text-amber-300">
+                      {language === 'en' ? '"Full-Stack Web Architecture"' : '"Arsitektur Web Full-Stack"'}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-x-2 gap-y-1.5">
+                    <span className="text-cyan-300 font-bold">"core_stack":</span>
+                    <div className="flex flex-wrap gap-1.5">
+                      {['Laravel', 'Next.js', 'Django', 'Tailwind', 'MySQL'].map(tech => (
+                        <span
+                          key={tech}
+                          className="px-2 py-0.5 text-[11px] font-bold bg-slate-800 text-sky-300 border border-slate-700 rounded-sm hover:border-sky-400 hover:text-white transition-colors"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="flex flex-wrap items-baseline gap-x-2">
+                    <span className="text-cyan-300 font-bold">"focus":</span>
+                    <span className="text-emerald-300">
+                      {language === 'en' ? '"Scalable APIs & Clean Interactive UI"' : '"API Skalabel & UI Responsif Interaktif"'}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3 Mini Stat Cards */}
+              <div className="grid grid-cols-3 gap-2">
+                <div className="bg-slate-900/80 border border-slate-700 p-2 text-center transition-transform hover:-translate-y-0.5">
+                  <div className="text-base font-black text-amber-400" style={{ fontFamily: 'var(--font-display)' }}>10+</div>
+                  <div className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">{language === 'en' ? 'Projects' : 'Proyek'}</div>
+                </div>
+                <div className="bg-slate-900/80 border border-slate-700 p-2 text-center transition-transform hover:-translate-y-0.5">
+                  <div className="text-base font-black text-cyan-400" style={{ fontFamily: 'var(--font-display)' }}>100%</div>
+                  <div className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">{language === 'en' ? 'Commitment' : 'Komitmen'}</div>
+                </div>
+                <div className="bg-slate-900/80 border border-slate-700 p-2 text-center transition-transform hover:-translate-y-0.5">
+                  <div className="text-base font-black text-emerald-400" style={{ fontFamily: 'var(--font-display)' }}>End-to-End</div>
+                  <div className="text-[10px] text-slate-300 font-bold uppercase tracking-wider">{language === 'en' ? 'Workflow' : 'Alur Kerja'}</div>
+                </div>
+              </div>
+
+              {/* CTA Action Buttons */}
+              <div className="flex flex-col sm:flex-row items-center gap-3 pt-1 w-full">
+                <motion.a
+                  custom={9}
+                  variants={fadeUp}
+                  href="#projects"
+                  className="sticker-btn text-xs md:text-sm px-5 py-3 flex items-center justify-center gap-2 font-bold w-full sm:w-1/2"
+                  style={{ background: "#7DD3FC", color: "#0F172A", border: "2px solid #7DD3FC" }}
+                  id="hero-cta-projects"
+                >
+                  {language === 'en' ? 'VIEW PROJECTS' : 'LIHAT PROYEK'} <ArrowRight size={16} />
                 </motion.a>
-                <motion.a custom={6} variants={fadeUp} href="#contact" className="sticker-btn text-xs md:text-sm lg:text-base px-6 md:px-8 py-3.5 md:py-4 flex items-center justify-center gap-2 font-bold w-full sm:w-auto" style={{ background: "transparent", color: "white", border: "2px solid white" }} id="hero-cta-contact">
-                  {language === 'en' ? 'CONTACT ME' : 'HUBUNGI SAYA'} <Mail size={18} />
+                <motion.a
+                  custom={10}
+                  variants={fadeUp}
+                  href="#contact"
+                  className="sticker-btn text-xs md:text-sm px-5 py-3 flex items-center justify-center gap-2 font-bold w-full sm:w-1/2"
+                  style={{ background: "transparent", color: "white", border: "2px solid white" }}
+                  id="hero-cta-contact"
+                >
+                  {language === 'en' ? 'CONTACT ME' : 'HUBUNGI SAYA'} <Mail size={16} />
                 </motion.a>
-              </motion.div>
+              </div>
+
             </div>
           </motion.div>
 
