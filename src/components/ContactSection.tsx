@@ -86,7 +86,7 @@ export default function ContactSection() {
                 hidden: { opacity: 0, x: -50 },
                 visible: { opacity: 1, x: 0, transition: springBase }
               }}
-              className="border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_#000] relative" style={{ background: 'var(--color-canvas)' }}
+              className="border-2 border-black p-6 md:p-8 shadow-[8px_8px_0px_#000] relative" style={{ background: 'var(--color-canvas)' }}
             >
               {/* Corner accent */}
               <div className="absolute -top-3 -right-3 size-7 flex items-center justify-center font-black text-sm bg-orange-500 border-2 border-black">
@@ -116,7 +116,7 @@ export default function ContactSection() {
                     hidden: { opacity: 0, x: -50 },
                     visible: { opacity: 1, x: 0, transition: springBase }
                   }}
-                  className="flex items-center gap-5 border-2 border-black p-6 md:p-8 shadow-[6px_6px_0px_#000] hover:-translate-y-1 transition-transform"
+                  className="flex items-center gap-4 border-2 border-black p-4 md:p-5 shadow-[6px_6px_0px_#000] hover:-translate-y-1 transition-transform"
                   style={{ background: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}
                   aria-label={`${item.label}: ${item.value}`}
                 >

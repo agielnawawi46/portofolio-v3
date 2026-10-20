@@ -1,12 +1,22 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Tag, ExternalLink, GitFork, X, Rocket } from 'lucide-react'
+import { Tag, ExternalLink, GitFork, X, CheckCircle2, Layers } from 'lucide-react'
 import type { Project } from '../data/portfolioData'
 import { useLanguage } from '../context/LanguageContext'
+import ComingSoonToast from './ComingSoonToast'
 
 interface ProjectModalProps {
   project: Project | null
   onClose: () => void
+}
+
+const categoryColors: Record<string, string> = {
+  'Web App': '#ffffff',
+  'E-Commerce': '#ffffff',
+  'Dashboard': 'var(--color-charcoal)',
+  'Blog': '#ffffff',
+  'CLI Tool': 'var(--color-orange)',
+  'UI Library': '#ffffff',
 }
 
 export default function ProjectModal({ project, onClose }: ProjectModalProps) {
@@ -19,12 +29,6 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
       setShowToast(true)
     }
   }
-
-  useEffect(() => {
-    if (!showToast) return
-    const t = setTimeout(() => setShowToast(false), 3500)
-    return () => clearTimeout(t)
-  }, [showToast])
 
   useEffect(() => {
     if (project) {
@@ -45,6 +49,12 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
 
   return (
     <>
+      <ComingSoonToast
+        visible={showToast}
+        onClose={() => setShowToast(false)}
+        language={language}
+      />
+
       <AnimatePresence>
         {project && (
           <>
@@ -56,314 +66,364 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               exit={{ opacity: 0 }}
               onClick={onClose}
               className="fixed inset-0 z-50"
-              style={{ background: 'rgba(15,23,42,0.8)', backdropFilter: 'blur(4px)' }}
+              style={{ background: 'rgba(15,23,42,0.82)', backdropFilter: 'blur(6px)' }}
               aria-hidden="true"
             />
 
-            {/* Scroll container — allows modal to scroll on small screens */}
+            {/* Scroll container */}
             <motion.div
               key="modal"
               role="dialog"
               aria-modal="true"
               aria-label={`${project.title} details`}
-              initial={{ opacity: 0, scale: 0.93, y: 24 }}
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.93, y: 24 }}
+              exit={{ opacity: 0, scale: 0.94, y: 20 }}
               transition={{ type: 'spring', stiffness: 350, damping: 30 }}
               className="fixed inset-0 z-50 overflow-y-auto"
             >
               {/* Centering wrapper */}
-              <div className="flex min-h-full items-center justify-center p-4 sm:p-8">
+              <div className="flex min-h-full items-center justify-center p-3 sm:p-6 md:p-8">
                 {/* Accessible backdrop click dismiss */}
                 <button
                   type="button"
                   aria-label="Close modal backdrop"
                   tabIndex={-1}
                   onClick={onClose}
-                  className="fixed inset-0 w-full h-full cursor-default border-0 p-0 bg-transparent"
+                  className="fixed inset-0 size-full cursor-default border-0 p-0 bg-transparent"
                 />
 
-                {/* Modal box — height is purely auto / fit-content */}
+                {/* Modal box */}
                 <div
-                  className="relative z-10 w-full"
+                  className="relative z-10 w-full overflow-hidden"
                   style={{
                     background: 'var(--color-canvas)',
-                    border: '3px solid var(--color-border)',
-                    boxShadow: '8px 8px 0px var(--color-border)',
-                    maxWidth: '900px',
+                    border: '3px solid #000',
+                    boxShadow: '10px 10px 0px #000',
+                    maxWidth: '920px',
                   }}
                 >
-                {/* Modal Header */}
-                <div
-                  className="sticky top-0 z-10 flex items-center justify-between px-6 py-4"
-                  style={{
-                    background: 'var(--color-charcoal)',
-                    borderBottom: '3px solid var(--color-border)',
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <span
-                      className="text-xs tracking-widest font-bold"
-                      style={{ fontFamily: 'var(--font-mono)', color: 'rgba(226,232,240,0.5)' }}
-                    >
-                      {language === 'en' ? 'PROJECT DETAIL' : 'DETAIL PROYEK'}
-                    </span>
-                    <span
-                      className="h-4 w-px"
-                      style={{ background: 'rgba(226,232,240,0.2)' }}
-                    />
-                    <h2
-                      className="text-base font-black uppercase"
-                      style={{ fontFamily: 'var(--font-display)', color: 'var(--color-canvas)' }}
-                    >
-                      {project.title}
-                    </h2>
-                  </div>
-                  <button
-                    id="modal-close-btn"
-                    onClick={onClose}
-                    className="size-9 flex items-center justify-center transition-colors"
-                    style={{
-                      border: '2px solid rgba(226,232,240,0.3)',
-                      color: 'var(--color-canvas)',
-                      background: 'transparent',
-                    }}
-                    aria-label="Close modal"
-                  >
-                    <X size={16} />
-                  </button>
-                </div>
-
-                {/* Modal Content */}
-                <div className="p-6 sm:p-8">
-                  {/* Hero Color Block */}
+                  {/* Modal Header — Signature Terminal Top Bar */}
                   <div
-                    className="w-full h-48 sm:h-64 flex items-center justify-center relative overflow-hidden mb-8 sticker-box"
-                    style={{ background: 'var(--color-lavender)' }}
+                    className="sticky top-0 z-20 flex items-center justify-between px-4 sm:px-6 py-3 border-b-3 border-black"
+                    style={{ background: '#0F172A' }}
                   >
-                    <div className="absolute inset-0 grid-bg" />
-                    <div
-                      className="relative text-7xl sm:text-8xl font-black opacity-20 select-none"
-                      style={{ fontFamily: 'var(--font-display)' }}
-                    >
-                      {project.title.slice(0, 2).toUpperCase()}
+                    <div className="flex items-center gap-3 min-w-0">
+                      {/* Window Controls (Red, Yellow, Green) */}
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        <span className="size-3 rounded-full bg-red-500 border border-black inline-block" />
+                        <span className="size-3 rounded-full bg-yellow-500 border border-black inline-block" />
+                        <span className="size-3 rounded-full bg-green-500 border border-black inline-block" />
+                      </div>
+                      <span className="h-4 w-px bg-white/20 shrink-0" />
+                      <span
+                        className="text-xs tracking-widest font-bold text-white uppercase truncate"
+                        style={{ fontFamily: 'var(--font-mono)' }}
+                      >
+                        ~/projects/{project.id}.tsx
+                      </span>
                     </div>
-                    <div className="absolute bottom-4 left-4">
+
+                    {/* Neobrutalist Close Button */}
+                    <button
+                      id="modal-close-btn"
+                      onClick={onClose}
+                      className="size-8 shrink-0 flex items-center justify-center font-black text-black bg-orange-500 hover:bg-red-500 hover:text-white border-2 border-black transition-all cursor-pointer shadow-[2px_2px_0px_#000] active:translate-x-0.5 active:translate-y-0.5"
+                      aria-label="Close modal"
+                    >
+                      <X size={16} strokeWidth={3} />
+                    </button>
+                  </div>
+
+                  {/* Project Visual Showcase Banner */}
+                  {/* Project Visual Showcase Banner — EXACTLY LIKE CARD IN PROJECTS */}
+                  <div
+                    className="relative w-full h-56 sm:h-64 md:h-72 flex items-center justify-center overflow-hidden border-b-3 border-black"
+                    style={{
+                      backgroundColor: categoryColors[project.category] || '#ffffff',
+                    }}
+                  >
+                    {/* Grid Pattern Background exactly matching card in ProjectsSection */}
+                    <div
+                      className="absolute inset-0 pointer-events-none"
+                      style={{
+                        backgroundImage: 'linear-gradient(rgba(15,23,42,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,0.1) 1px, transparent 1px)',
+                        backgroundSize: '22px 22px',
+                      }}
+                    />
+
+                    {/* Category Badge - Top Left (matching Image 2) */}
+                    <div className="absolute top-3 left-3 z-10">
                       <span
                         className="tech-tag"
-                        style={{ background: 'var(--color-charcoal)', color: 'white' }}
+                        style={{
+                          background: 'rgba(15,23,42,0.9)',
+                          border: 'none',
+                          color: 'white',
+                          fontSize: '0.65rem',
+                          fontFamily: 'var(--font-mono)',
+                          padding: '3px 8px',
+                        }}
                       >
                         {project.category}
                       </span>
                     </div>
 
-                    {/* Coming Soon overlay inside grid */}
-                    <AnimatePresence>
-                      {showToast && (
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          exit={{ opacity: 0, scale: 0.8 }}
-                          transition={{ type: 'spring', stiffness: 400, damping: 28 }}
-                          className="absolute inset-0 flex flex-col items-center justify-center z-10"
-                          style={{ background: 'rgba(15,23,42,0.75)', backdropFilter: 'blur(3px)' }}
-                        >
-                          <div style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: '16px',
-                            padding: '16px 24px',
-                            background: '#0F172A',
-                            border: '2px solid var(--color-orange)',
-                            boxShadow: '5px 5px 0px var(--color-orange)',
-                          }}>
-                            {/* Icon */}
-                            <div style={{ flexShrink: 0 }}>
-                              <Rocket size={24} color="var(--color-orange)" />
-                            </div>
-                            
-                            {/* Text */}
-                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-                              <p style={{
-                                fontFamily: 'var(--font-display)',
-                                fontWeight: '900',
-                                fontSize: '0.85rem',
-                                letterSpacing: '0.12em',
-                                textTransform: 'uppercase',
-                                color: 'var(--color-orange)',
-                                marginBottom: '2px',
-                              }}>
-                                {language === 'en' ? 'Coming Soon!' : 'Segera Hadir!'}
-                              </p>
-                              <p style={{
-                                fontFamily: 'var(--font-body)',
-                                fontSize: '0.7rem',
-                                color: 'rgba(226,232,240,0.65)',
-                              }}>
-                                {language === 'en'
-                                  ? 'Not deployed yet. Stay tuned!'
-                                  : 'Belum terdeploy. Pantau terus!'}
-                              </p>
-                            </div>
-                          </div>
-                          {/* Progress bar */}
-                          <motion.div
-                            initial={{ scaleX: 1 }}
-                            animate={{ scaleX: 0 }}
-                            transition={{ duration: 3.5, ease: 'linear' }}
-                            style={{
-                              position: 'absolute',
-                              bottom: 0,
-                              left: 0,
-                              height: '3px',
-                              width: '100%',
-                              background: 'var(--color-orange)',
-                              transformOrigin: 'left',
-                            }}
-                          />
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Main Content */}
-                    <div className="lg:col-span-2">
-                      <h3
-                        className="text-2xl font-black uppercase mb-4"
-                        style={{ fontFamily: 'var(--font-display)' }}
+                    {/* Status Badge - Top Right */}
+                    <div className="absolute top-3 right-3 z-10">
+                      <span
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider border border-black/30"
+                        style={{
+                          background: project.liveDemoUrl !== '#' ? '#16A34A' : '#1E293B',
+                          color: 'white',
+                          fontFamily: 'var(--font-mono)',
+                        }}
                       >
-                        {project.title}
-                      </h3>
-                      <p
-                        className="text-sm leading-relaxed opacity-75 mb-6"
-                        style={{ fontFamily: 'var(--font-body)' }}
-                      >
-                        {project.longDescription}
-                      </p>
-
-                      {/* Tech Stack */}
-                      <div className="mb-6">
-                        <div className="flex items-center gap-2 mb-3">
-                          <Tag size={13} />
-                          <span
-                            className="text-xs font-bold tracking-widest uppercase"
-                            style={{ fontFamily: 'var(--font-mono)' }}
-                          >
-                            {language === 'en' ? 'Tech Stack' : 'Teknologi'}
-                          </span>
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {project.techStack.map(tech => (
-                            <span key={tech} className="tech-tag" style={{ fontSize: '0.7rem' }}>
-                              {tech}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
+                        <span className="size-1.5 rounded-full bg-white animate-pulse" />
+                        {project.liveDemoUrl !== '#'
+                          ? (language === 'en' ? 'LIVE NOW' : 'ONLINE')
+                          : (language === 'en' ? 'READY (LOCAL)' : 'SIAP (BELUM DEPLOY)')}
+                      </span>
                     </div>
 
-                    {/* Sidebar */}
-                    <div className="space-y-4">
-                      {/* Action Buttons */}
+                    {/* Project Logo / Screenshot without box background */}
+                    {project.image ? (
+                      <div className="relative z-10 size-full flex items-center justify-center p-8 sm:p-12">
+                        <img
+                          src={project.image}
+                          alt={project.title}
+                          className="max-h-full max-w-[80%] object-contain"
+                        />
+                      </div>
+                    ) : (
                       <div
-                        className="sticker-box p-4"
-                        style={{ background: 'var(--color-canvas)' }}
+                        className="relative text-7xl sm:text-8xl font-black opacity-20 select-none"
+                        style={{ fontFamily: 'var(--font-display)' }}
                       >
-                        <p
-                          className="text-xs font-bold tracking-widest mb-3 uppercase opacity-50"
-                          style={{ fontFamily: 'var(--font-mono)' }}
+                        {project.title.slice(0, 2).toUpperCase()}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Modal Body */}
+                  <div className="p-6 sm:p-8 md:p-10 flex flex-col gap-8">
+                    {/* Title + Action Buttons Row */}
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-6 border-b-2 border-dashed border-black/20">
+                      <div className="min-w-0">
+                        <h2
+                          className="text-2xl sm:text-3xl md:text-4xl font-black uppercase tracking-tight"
+                          style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
                         >
-                          {language === 'en' ? 'Links' : 'Tautan'}
+                          {project.title}
+                        </h2>
+                        <p
+                          className="text-sm sm:text-base font-medium mt-1 text-gray-700"
+                          style={{ fontFamily: 'var(--font-body)' }}
+                        >
+                          {project.description}
                         </p>
-                        <div className="flex flex-col gap-2">
-                          <a
-                            href={project.liveDemoUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            id={`modal-demo-${project.id}`}
-                            className="sticker-btn sticker-btn-secondary w-full justify-center"
-                            style={{ textAlign: 'center' }}
-                            onClick={(e) => handleDemoClick(e, project.liveDemoUrl)}
-                          >
-                            <ExternalLink size={14} /> DEMO
-                          </a>
-                          {project.githubUrl2 ? (
-                            <div className="flex gap-1">
-                              <a
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                id={`modal-github-${project.id}`}
-                                className="sticker-btn sticker-btn-primary flex-1 justify-center"
-                                style={{ fontSize: '0.6rem', letterSpacing: '0.05em' }}
-                              >
-                                <GitFork size={11} /> FRONTEND
-                              </a>
-                              <a
-                                href={project.githubUrl2}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                id={`modal-github2-${project.id}`}
-                                className="sticker-btn sticker-btn-primary flex-1 justify-center"
-                                style={{ fontSize: '0.6rem', letterSpacing: '0.05em' }}
-                              >
-                                <GitFork size={11} /> BACKEND
-                              </a>
-                            </div>
-                          ) : (
+                      </div>
+
+                      {/* Primary Actions */}
+                      <div className="flex items-center gap-2.5 flex-wrap shrink-0">
+                        {/* Demo Link */}
+                        <a
+                          href={project.liveDemoUrl}
+                          target={project.liveDemoUrl !== '#' ? '_blank' : undefined}
+                          rel={project.liveDemoUrl !== '#' ? 'noopener noreferrer' : undefined}
+                          id={`modal-demo-${project.id}`}
+                          onClick={(e) => handleDemoClick(e, project.liveDemoUrl)}
+                          className="inline-flex items-center gap-2 px-5 py-2.5 text-xs sm:text-sm font-black uppercase tracking-wider border-2 border-black transition-all hover:-translate-y-0.5 active:translate-y-0 cursor-pointer"
+                          style={{
+                            background: 'var(--color-orange)',
+                            color: 'var(--color-charcoal)',
+                            boxShadow: '4px 4px 0px #000',
+                            fontFamily: 'var(--font-mono)',
+                          }}
+                        >
+                          <ExternalLink size={14} /> {language === 'en' ? 'LIVE DEMO' : 'LIHAT DEMO'}
+                        </a>
+
+                        {/* GitHub Buttons */}
+                        {project.githubUrl2 ? (
+                          <>
                             <a
                               href={project.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               id={`modal-github-${project.id}`}
-                              className="sticker-btn sticker-btn-primary w-full justify-center"
+                              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider border-2 border-black bg-white hover:bg-gray-100 transition-all hover:-translate-y-0.5 active:translate-y-0 text-black"
+                              style={{
+                                boxShadow: '4px 4px 0px #000',
+                                fontFamily: 'var(--font-mono)',
+                              }}
                             >
-                              <GitFork size={14} /> {language === 'en' ? 'SOURCE CODE' : 'KODE SUMBER'}
+                              <GitFork size={13} /> FRONTEND
                             </a>
-                          )}
+                            <a
+                              href={project.githubUrl2}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              id={`modal-github2-${project.id}`}
+                              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider border-2 border-black bg-white hover:bg-gray-100 transition-all hover:-translate-y-0.5 active:translate-y-0 text-black"
+                              style={{
+                                boxShadow: '4px 4px 0px #000',
+                                fontFamily: 'var(--font-mono)',
+                              }}
+                            >
+                              <GitFork size={13} /> BACKEND
+                            </a>
+                          </>
+                        ) : (
+                          <a
+                            href={project.githubUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            id={`modal-github-${project.id}`}
+                            className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs sm:text-sm font-bold uppercase tracking-wider border-2 border-black bg-white hover:bg-gray-100 transition-all hover:-translate-y-0.5 active:translate-y-0 text-black"
+                            style={{
+                              boxShadow: '4px 4px 0px #000',
+                              fontFamily: 'var(--font-mono)',
+                            }}
+                          >
+                            <GitFork size={14} /> {language === 'en' ? 'SOURCE CODE' : 'KODE SUMBER'}
+                          </a>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Detailed Content Columns */}
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                      {/* Left Column: Long Description & Highlights (7 cols) */}
+                      <div className="lg:col-span-7 flex flex-col gap-6">
+                        <div>
+                          <h3
+                            className="text-base sm:text-lg font-black uppercase tracking-wider flex items-center gap-2 mb-3"
+                            style={{ fontFamily: 'var(--font-display)', color: 'var(--color-charcoal)' }}
+                          >
+                            <span className="size-2 bg-orange-500 border border-black inline-block" />
+                            {language === 'en' ? 'PROJECT OVERVIEW' : 'TENTANG PROYEK'}
+                          </h3>
+                          <p
+                            className="text-sm sm:text-base leading-relaxed text-gray-800"
+                            style={{ fontFamily: 'var(--font-body)' }}
+                          >
+                            {project.longDescription}
+                          </p>
+                        </div>
+
+                        {/* Key Highlights Card */}
+                        <div
+                          className="p-5 border-2 border-black bg-white"
+                          style={{ boxShadow: '6px 6px 0px #000' }}
+                        >
+                          <h4
+                            className="text-xs font-black uppercase tracking-widest text-black mb-3 flex items-center gap-2"
+                            style={{ fontFamily: 'var(--font-mono)' }}
+                          >
+                            <CheckCircle2 size={14} color="var(--color-orange)" />
+                            {language === 'en' ? 'KEY FOCUS & ARCHITECTURE' : 'FOKUS UTAMA & ARSITEKTUR'}
+                          </h4>
+                          <ul className="space-y-2.5 text-xs sm:text-sm text-gray-700">
+                            <li className="flex items-start gap-2.5">
+                              <span className="size-1.5 mt-1.5 bg-orange-500 border border-black shrink-0" />
+                              <span>
+                                {language === 'en'
+                                  ? 'Clean, modular application design with clear separation of concerns.'
+                                  : 'Desain aplikasi modular dan terstruktur dengan pemisahan komponen yang bersih.'}
+                              </span>
+                            </li>
+                            <li className="flex items-start gap-2.5">
+                              <span className="size-1.5 mt-1.5 bg-orange-500 border border-black shrink-0" />
+                              <span>
+                                {language === 'en'
+                                  ? 'Robust database schema and optimized query processing.'
+                                  : 'Struktur relasi database yang rapi serta eksekusi query data yang efisien.'}
+                              </span>
+                            </li>
+                            <li className="flex items-start gap-2.5">
+                              <span className="size-1.5 mt-1.5 bg-orange-500 border border-black shrink-0" />
+                              <span>
+                                {language === 'en'
+                                  ? 'Fully responsive UI tailored with interactive user experience.'
+                                  : 'Tampilan UI sepenuhnya responsif di semua perangkat dengan UX interaktif.'}
+                              </span>
+                            </li>
+                          </ul>
                         </div>
                       </div>
 
-                      {/* Project Meta */}
-                      <div
-                        className="sticker-box p-4"
-                        style={{ background: 'var(--color-canvas)' }}
-                      >
-                        <p
-                          className="text-xs font-bold tracking-widest mb-3 uppercase opacity-50"
-                          style={{ fontFamily: 'var(--font-mono)' }}
+                      {/* Right Column: Tech Stack & Specifications (5 cols) */}
+                      <div className="lg:col-span-5 flex flex-col gap-6">
+                        {/* Technologies Box */}
+                        <div
+                          className="p-5 border-2 border-black bg-white"
+                          style={{ boxShadow: '6px 6px 0px #000' }}
                         >
-                          Info
-                        </p>
-                        <div className="grid grid-cols-2 lg:grid-cols-1 gap-4 lg:gap-2">
-                          <div>
-                            <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>
-                              {language === 'en' ? 'Category' : 'Kategori'}
-                            </span>
-                            <p className="text-sm font-bold mt-0.5" style={{ fontFamily: 'var(--font-display)' }}>
-                              {project.category}
-                            </p>
+                          <h3
+                            className="text-xs font-black uppercase tracking-widest text-black mb-3 flex items-center gap-2"
+                            style={{ fontFamily: 'var(--font-mono)' }}
+                          >
+                            <Tag size={13} color="var(--color-orange)" />
+                            {language === 'en' ? 'TECH STACK' : 'TEKNOLOGI DIGUNAKAN'}
+                          </h3>
+                          <div className="flex flex-wrap gap-2">
+                            {project.techStack.map(tech => (
+                              <span
+                                key={tech}
+                                className="px-3 py-1 text-xs font-bold border-2 border-black"
+                                style={{
+                                  fontFamily: 'var(--font-mono)',
+                                  background: 'var(--color-canvas)',
+                                  color: 'var(--color-charcoal)',
+                                  boxShadow: '2px 2px 0px #000',
+                                }}
+                              >
+                                {tech}
+                              </span>
+                            ))}
                           </div>
-                          <div>
-                            <span className="text-xs opacity-40" style={{ fontFamily: 'var(--font-mono)' }}>
-                              {language === 'en' ? 'Stack Count' : 'Jumlah Teknologi'}
-                            </span>
-                            <p className="text-sm font-bold mt-0.5" style={{ fontFamily: 'var(--font-display)' }}>
-                              {project.techStack.length} {language === 'en' ? 'Technologies' : 'Teknologi'}
-                            </p>
+                        </div>
+
+                        {/* Project Specs Box */}
+                        <div
+                          className="p-5 border-2 border-black"
+                          style={{ background: '#0F172A', boxShadow: '6px 6px 0px #000', color: 'white' }}
+                        >
+                          <h3
+                            className="text-xs font-black uppercase tracking-widest text-orange-400 mb-4 flex items-center gap-2"
+                            style={{ fontFamily: 'var(--font-mono)' }}
+                          >
+                            <Layers size={13} />
+                            {language === 'en' ? 'SPECIFICATIONS' : 'SPESIFIKASI'}
+                          </h3>
+                          <div className="grid grid-cols-2 gap-y-4 gap-x-2 text-xs" style={{ fontFamily: 'var(--font-mono)' }}>
+                            <div>
+                              <span className="text-gray-400 uppercase text-[10px] block">CATEGORY</span>
+                              <span className="font-bold text-white text-xs mt-0.5 block">{project.category}</span>
+                            </div>
+                            <div>
+                              <span className="text-gray-400 uppercase text-[10px] block">PLATFORM</span>
+                              <span className="font-bold text-white text-xs mt-0.5 block">Full-Stack Web</span>
+                            </div>
+                            <div>
+                              <span className="text-gray-400 uppercase text-[10px] block">STACK SIZE</span>
+                              <span className="font-bold text-white text-xs mt-0.5 block">{project.techStack.length} {language === 'en' ? 'Technologies' : 'Teknologi'}</span>
+                            </div>
+                            <div>
+                              <span className="text-gray-400 uppercase text-[10px] block">DEVELOPER</span>
+                              <span className="font-bold text-white text-xs mt-0.5 block">Agiel Nawawi</span>
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>{/* end modal box */}
-            </div>{/* end centering wrapper */}
-          </motion.div>
-        </>
-      )}
+                </div>{/* end modal box */}
+              </div>{/* end centering wrapper */}
+            </motion.div>
+          </>
+        )}
       </AnimatePresence>
     </>
   )

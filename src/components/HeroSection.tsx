@@ -173,7 +173,11 @@ export default function HeroSection() {
           animate="animate"
           style={{ fontFamily: "var(--font-mono)" }}
         >
-          {Array(8).fill(" ✦ FULL-STACK WEB DEVELOPMENT ✦ SCALABLE BACKEND ARCHITECTURE ✦ RESPONSIVE UI/UX ✦ CREATIVE PROBLEM SOLVING ").map((text, i) => (
+          {Array(8).fill(
+            language === 'en'
+              ? " ✦ FULL-STACK WEB DEVELOPMENT ✦ SCALABLE BACKEND ARCHITECTURE ✦ RESPONSIVE UI/UX ✦ CREATIVE PROBLEM SOLVING "
+              : " ✦ PENGEMBANGAN WEB FULL-STACK ✦ ARSITEKTUR BACKEND SKALABEL ✦ UI/UX RESPONSIF ✦ SOLUSI KREATIF "
+          ).map((text, i) => (
             <span key={i} className="mx-4">{text}</span>
           ))}
         </motion.div>

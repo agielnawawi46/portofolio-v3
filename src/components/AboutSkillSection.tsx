@@ -343,17 +343,17 @@ export default function AboutSkillSection() {
               <div className="mt-3 h-1.5 w-16 bg-white" />
 
               {/* Category Tabs */}
-              <div className="flex gap-3 md:gap-4 flex-wrap justify-center mt-6 mb-4">
+              <div className="flex flex-nowrap items-center justify-center gap-2 sm:gap-4 md:gap-6 mt-6 mb-4 w-full">
                 {categories.map(cat => (
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className="px-6 sm:px-10 md:px-14 py-3 sm:py-4 md:py-5 text-sm sm:text-base md:text-lg lg:text-xl font-black uppercase tracking-widest border-2 md:border-4 border-black transition-transform duration-200 hover:-translate-y-1.5 hover:-translate-x-1.5"
+                    className="px-3.5 sm:px-8 md:px-12 py-2 sm:py-3.5 md:py-4 text-xs sm:text-base md:text-lg lg:text-xl font-black uppercase tracking-wider sm:tracking-widest border-2 md:border-4 border-black transition-transform duration-200 hover:-translate-y-1 hover:-translate-x-1 whitespace-nowrap cursor-pointer"
                     style={{
                       fontFamily: 'var(--font-mono)',
                       background: activeCategory === cat ? 'var(--color-orange)' : 'var(--color-canvas)',
                       color: 'var(--color-charcoal)',
-                      boxShadow: '6px 6px 0px #000',
+                      boxShadow: '4px 4px 0px #000',
                     }}
                   >
                     {cat}
