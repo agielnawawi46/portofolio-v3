@@ -79,7 +79,7 @@ export default function HeroTerminal() {
             <img
               src="/foto.jpg"
               alt="Agiel Nawawi"
-              className="w-full h-full object-cover object-[center_30%] lg:object-top"
+              className="size-full object-cover object-[center_30%] lg:object-top"
             />
           </div>
         </motion.div>
@@ -91,9 +91,9 @@ export default function HeroTerminal() {
             className="flex items-center gap-2 px-4 py-2.5 border-b-2"
             style={{ background: "#1E293B", borderColor: "var(--color-charcoal)" }}
           >
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#EF4444" }} />
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#F59E0B" }} />
-            <span className="w-2.5 h-2.5 rounded-full" style={{ background: "#22C55E" }} />
+            <span className="size-2.5 rounded-full" style={{ background: "#EF4444" }} />
+            <span className="size-2.5 rounded-full" style={{ background: "#F59E0B" }} />
+            <span className="size-2.5 rounded-full" style={{ background: "#22C55E" }} />
             <span className="ml-2 text-xs opacity-60" style={{ fontFamily: "var(--font-mono)", color: "white" }}>
               ~/agiel.dev
             </span>

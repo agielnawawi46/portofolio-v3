@@ -72,22 +72,27 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
               transition={{ type: 'spring', stiffness: 350, damping: 30 }}
               className="fixed inset-0 z-50 overflow-y-auto"
             >
-            {/* Centering wrapper */}
-            <div
-              className="flex min-h-full items-center justify-center p-4 sm:p-8"
-              onClick={onClose}
-            >
-              {/* Modal box — height is purely auto / fit-content */}
-              <div
-                className="relative w-full"
-                style={{
-                  background: 'var(--color-canvas)',
-                  border: '3px solid var(--color-border)',
-                  boxShadow: '8px 8px 0px var(--color-border)',
-                  maxWidth: '900px',
-                }}
-                onClick={e => e.stopPropagation()}
-              >
+              {/* Centering wrapper */}
+              <div className="flex min-h-full items-center justify-center p-4 sm:p-8">
+                {/* Accessible backdrop click dismiss */}
+                <button
+                  type="button"
+                  aria-label="Close modal backdrop"
+                  tabIndex={-1}
+                  onClick={onClose}
+                  className="fixed inset-0 w-full h-full cursor-default border-0 p-0 bg-transparent"
+                />
+
+                {/* Modal box — height is purely auto / fit-content */}
+                <div
+                  className="relative z-10 w-full"
+                  style={{
+                    background: 'var(--color-canvas)',
+                    border: '3px solid var(--color-border)',
+                    boxShadow: '8px 8px 0px var(--color-border)',
+                    maxWidth: '900px',
+                  }}
+                >
                 {/* Modal Header */}
                 <div
                   className="sticky top-0 z-10 flex items-center justify-between px-6 py-4"
@@ -117,7 +122,7 @@ export default function ProjectModal({ project, onClose }: ProjectModalProps) {
                   <button
                     id="modal-close-btn"
                     onClick={onClose}
-                    className="w-9 h-9 flex items-center justify-center transition-colors"
+                    className="size-9 flex items-center justify-center transition-colors"
                     style={{
                       border: '2px solid rgba(226,232,240,0.3)',
                       color: 'var(--color-canvas)',

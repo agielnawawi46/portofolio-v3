@@ -41,7 +41,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="px-6 sm:px-10 md:px-12 relative min-h-screen w-full flex flex-col items-center justify-center border-b-2 border-black overflow-hidden"
+      className="relative min-h-screen w-full flex flex-col items-center justify-center border-b-2 border-black overflow-hidden"
       aria-label="Hero section"
     >
       {/* Background Lavender */}
@@ -51,7 +51,7 @@ export default function HeroSection() {
 
 
       {/* Container Utama */}
-      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto pt-32 md:pt-40 lg:pt-48 pb-24 md:pb-32 relative z-10">
+      <div className="w-full max-w-5xl xl:max-w-7xl mx-auto px-6 sm:px-10 md:px-12 pt-24 md:pt-32 lg:pt-36 pb-16 md:pb-20 relative z-10">
 
         <div className="flex flex-col lg:flex-row items-center lg:items-stretch lg:justify-between gap-12 lg:gap-16 w-full text-center lg:text-left">
 
@@ -63,7 +63,7 @@ export default function HeroSection() {
             className="flex flex-col items-center lg:items-start gap-8 lg:gap-10 w-full lg:w-1/2"
           >
             <h1
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight w-full"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-6xl xl:text-7xl font-black uppercase leading-[0.95] tracking-tight w-full"
               style={{ fontFamily: "var(--font-display)", color: "var(--color-charcoal)" }}
             >
               <motion.div custom={1} variants={fadeUp}>AGIEL</motion.div>
@@ -80,7 +80,7 @@ export default function HeroSection() {
                 style={{ boxShadow: '8px 8px 0px #000' }}
               >
                 {/* Corner accent */}
-                <motion.div custom={4} variants={fadeUp} className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-yellow-400 border-2 border-black">
+                <motion.div custom={4} variants={fadeUp} className="absolute -top-3 -right-3 size-7 flex items-center justify-center font-black text-sm bg-yellow-400 border-2 border-black">
                   !
                 </motion.div>
                 
@@ -112,9 +112,9 @@ export default function HeroSection() {
           >
             {/* Terminal Top Bar */}
             <div className="w-full h-10 border-b-2 flex items-center px-4 gap-2" style={{ background: "#1E293B", borderColor: "#0F172A" }}>
-              <div className="w-3.5 h-3.5 rounded-full border border-black bg-red-500"></div>
-              <div className="w-3.5 h-3.5 rounded-full border border-black bg-yellow-500"></div>
-              <div className="w-3.5 h-3.5 rounded-full border border-black bg-green-500"></div>
+              <div className="size-3.5 rounded-full border border-black bg-red-500"></div>
+              <div className="size-3.5 rounded-full border border-black bg-yellow-500"></div>
+              <div className="size-3.5 rounded-full border border-black bg-green-500"></div>
               <span className="ml-2 text-xs opacity-80" style={{ fontFamily: 'var(--font-mono)', color: 'white' }}>
                 ~/agiel.dev
               </span>
@@ -124,13 +124,13 @@ export default function HeroSection() {
             </div>
 
             {/* Terminal Content */}
-            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 px-6 py-12 md:px-8 md:py-16 w-full h-full">
+            <div className="flex flex-col items-center justify-center gap-8 md:gap-12 px-6 py-12 md:px-8 md:py-16 size-full">
               <motion.div custom={5} variants={fadeUp} className="w-full flex flex-col items-center">
                 <div
-                  className="inline-block px-6 py-3 lg:px-8 lg:py-4 sticker-box"
+                  className="inline-block px-4 py-2.5 sm:px-6 sm:py-3 lg:px-8 lg:py-4 sticker-box max-w-full"
                   style={{ background: "var(--color-orange)", color: "var(--color-charcoal)" }}
                 >
-                  <span className="font-bold text-sm md:text-base lg:text-xl tracking-widest uppercase" style={{ fontFamily: "var(--font-display)" }}>
+                  <span className="font-bold text-xs sm:text-sm md:text-base lg:text-xl tracking-wider sm:tracking-widest uppercase block text-center" style={{ fontFamily: "var(--font-display)" }}>
                     {personal.tagline}
                   </span>
                 </div>

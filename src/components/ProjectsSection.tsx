@@ -192,7 +192,7 @@ function ProjectCard({
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-2/3 h-2/3 object-contain transition-all duration-500"
+                className="size-2/3 object-contain transition-all duration-500"
               />
             </div>
           )}
@@ -259,7 +259,6 @@ function ProjectCard({
             <div
               className="flex gap-4 pt-3"
               style={{ borderTop: '1px solid rgba(226,232,240,0.12)' }}
-              onClick={e => e.stopPropagation()}
             >
               <a
                 href={project.githubUrl}
@@ -267,6 +266,7 @@ function ProjectCard({
                 className="flex items-center gap-1.5 text-xs font-bold opacity-60 hover:opacity-100 transition-opacity"
                 style={{ color: 'var(--color-canvas)', fontFamily: 'var(--font-mono)' }}
                 id={`project-github-${project.id}`}
+                onClick={e => e.stopPropagation()}
               >
                 <GitFork size={12} /> {project.githubUrl2 ? 'FRONT' : (language === 'en' ? 'CODE' : 'KODE')}
               </a>
@@ -277,20 +277,21 @@ function ProjectCard({
                   className="flex items-center gap-1.5 text-xs font-bold opacity-60 hover:opacity-100 transition-opacity"
                   style={{ color: 'var(--color-canvas)', fontFamily: 'var(--font-mono)' }}
                   id={`project-github2-${project.id}`}
+                  onClick={e => e.stopPropagation()}
                 >
                   <GitFork size={12} /> BACK
                 </a>
               )}
               {project.liveDemoUrl === '#' ? (
-                <a
-                  href="#"
-                  className="flex items-center gap-1.5 text-xs font-bold opacity-80 hover:opacity-100 transition-opacity"
+                <button
+                  type="button"
+                  className="flex items-center gap-1.5 text-xs font-bold opacity-80 hover:opacity-100 transition-opacity cursor-pointer bg-transparent border-0 p-0"
                   style={{ color: 'var(--color-orange)', fontFamily: 'var(--font-mono)' }}
                   id={`project-demo-${project.id}`}
-                  onClick={(e) => { e.preventDefault(); onShowToast() }}
+                  onClick={(e) => { e.stopPropagation(); onShowToast() }}
                 >
                   <ExternalLink size={12} /> DEMO
-                </a>
+                </button>
               ) : (
                 <a
                   href={project.liveDemoUrl}
@@ -298,6 +299,7 @@ function ProjectCard({
                   className="flex items-center gap-1.5 text-xs font-bold opacity-80 hover:opacity-100 transition-opacity"
                   style={{ color: 'var(--color-orange)', fontFamily: 'var(--font-mono)' }}
                   id={`project-demo-${project.id}`}
+                  onClick={e => e.stopPropagation()}
                 >
                   <ExternalLink size={12} /> DEMO
                 </a>
@@ -358,7 +360,7 @@ export default function ProjectsSection() {
     <>
       <section
         id="projects"
-        className="relative w-full flex flex-col justify-center items-center overflow-hidden py-20 md:py-28 border-b-2 border-black px-6 sm:px-10 md:px-12"
+        className="relative w-full flex flex-col justify-center items-center overflow-hidden py-14 md:py-20 border-b-2 border-black px-6 sm:px-10 md:px-12"
         style={{ background: 'var(--color-charcoal)', color: 'var(--color-canvas)' }}
         aria-label="Projects section"
       >
@@ -367,7 +369,7 @@ export default function ProjectsSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative max-w-6xl mx-auto w-full z-10" style={{ marginBottom: '3.5rem' }}>
+        <div className="relative max-w-6xl mx-auto w-full z-10">
 
           {/* Header */}
           <motion.div
@@ -375,8 +377,7 @@ export default function ProjectsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={vp}
             transition={{ ...spring }}
-            className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
-            style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
+            className="mb-8 md:mb-12 flex flex-col items-center text-center w-full"
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"

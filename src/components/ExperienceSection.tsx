@@ -12,22 +12,21 @@ export default function ExperienceSection() {
   return (
     <section
       id="experience"
-      className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 sm:px-10 md:px-12 overflow-hidden border-b-2 border-black"
+      className="relative w-full flex flex-col justify-center items-center py-14 md:py-20 px-6 sm:px-10 md:px-12 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-canvas)' }}
       aria-label="Experience section"
     >
       <div className="absolute inset-0 grid-bg pointer-events-none opacity-40" />
 
-      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center" style={{ marginBottom: '3.5rem' }}>
+      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center">
 
-        {/* Section Header - REVISI: Mengubah mb-28 menjadi mb-12 md:mb-16 */}
+        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={vp}
           transition={{ ...springBase }}
-          className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
-          style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
+          className="mb-8 md:mb-12 flex flex-col items-center text-center w-full"
         >
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
@@ -82,7 +81,7 @@ export default function ExperienceSection() {
               <div className="grid grid-cols-1 gap-y-2">
                 {exp.highlights.map((hl, hi) => (
                   <div key={hi} className="flex items-start gap-2.5">
-                    <span className="mt-1.5 w-1.5 h-1.5 flex-shrink-0 bg-orange-500 border border-black" />
+                    <span className="mt-1.5 size-1.5 shrink-0 bg-orange-500 border border-black" />
                     <p className="text-xs md:text-sm leading-relaxed text-gray-600 font-medium">{hl}</p>
                   </div>
                 ))}

@@ -24,7 +24,7 @@ export default function Footer() {
       aria-label="Footer"
     >
       {/* Main */}
-      <div className="w-full px-6 md:px-12 lg:px-16 py-16 md:py-20">
+      <div className="w-full px-6 sm:px-10 md:px-12 lg:px-16 py-16 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-8 justify-between items-start">
 
           {/* Brand - Rata Tengah di Mobile, Kiri di Desktop */}
@@ -63,7 +63,7 @@ export default function Footer() {
                 <a
                   key={id} id={id} href={href}
                   target="_blank" rel="noopener noreferrer"
-                  className="w-11 h-11 flex items-center justify-center transition-all hover:-translate-y-1"
+                  className="size-11 flex items-center justify-center transition-all hover:-translate-y-1"
                   style={{ border: '2px solid rgba(226,232,240,0.15)', color: 'var(--color-canvas)' }}
                   aria-label={label}
                 >
@@ -80,7 +80,7 @@ export default function Footer() {
 
       {/* Bottom bar */}
       <div className="border-t-2 border-slate-800 w-full">
-        <div className="w-full px-6 md:px-12 lg:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="w-full px-6 sm:px-10 md:px-12 lg:px-16 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs md:text-sm text-center md:text-left" style={{ fontFamily: 'var(--font-mono)' }}>
             © {new Date().getFullYear()} Agiel Nawawi — {language === 'en' ? 'Built with React + ❤️' : 'Dibuat dengan React + ❤️'}
           </p>
@@ -99,7 +99,7 @@ export default function Footer() {
             exit={{ opacity: 0, y: 20 }}
             id="floating-scroll-to-top"
             onClick={scrollTop}
-            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 w-12 h-12 flex items-center justify-center hover:-translate-y-1 hover:shadow-lg transition-transform sticker-box"
+            className="fixed bottom-6 right-6 md:bottom-8 md:right-8 z-50 size-12 flex items-center justify-center hover:-translate-y-1 hover:shadow-lg transition-transform sticker-box"
             style={{ 
               border: '2px solid black', 
               color: 'var(--color-charcoal)', 

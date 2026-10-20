@@ -92,7 +92,7 @@ export default function AboutSkillSection() {
   return (
     <section
       id="about"
-      className="relative w-full flex flex-col border-b-2 border-black overflow-hidden px-6 sm:px-10 md:px-12"
+      className="relative w-full flex flex-col border-b-2 border-black overflow-hidden"
       style={{ background: 'var(--color-canvas)' }}
       aria-label="About and Skills section"
     >
@@ -102,8 +102,8 @@ export default function AboutSkillSection() {
       {/* ══════════════════════════════════════════
           PART 1 — IDENTITY + BIO
       ══════════════════════════════════════════ */}
-      <div className="relative z-10 flex flex-col justify-center items-center w-full py-28 md:py-36">
-        <div className="w-full max-w-6xl mx-auto" style={{ marginBottom: '3.5rem' }}>
+      <div className="relative z-10 flex flex-col justify-center items-center w-full pt-16 pb-12 md:pt-24 md:pb-16">
+        <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 md:px-12">
 
           {/* Section header — centered */}
           <motion.div
@@ -111,8 +111,7 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={vp}
             transition={{ ...spring }}
-            className="mb-12 lg:mb-16 flex flex-col items-center text-center w-full"
-            style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
+            className="mb-8 md:mb-12 flex flex-col items-center text-center w-full"
           >
             <h2
               className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight leading-none"
@@ -132,8 +131,7 @@ export default function AboutSkillSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={vp}
             transition={{ ...spring, delay: 0.1 }}
-            className="lg:hidden flex justify-center w-full"
-            style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
+            className="lg:hidden flex justify-center w-full mb-8"
           >
             <div
               className="w-40 sm:w-48 border-2 border-black overflow-hidden"
@@ -142,7 +140,7 @@ export default function AboutSkillSection() {
               <img
                 src="/foto.jpg"
                 alt="Agiel Nawawi"
-                className="w-full h-full object-cover object-[center_30%]"
+                className="size-full object-cover object-[center_30%]"
               />
             </div>
           </motion.div>
@@ -173,14 +171,14 @@ export default function AboutSkillSection() {
                   <img
                     src="/foto.jpg"
                     alt="Agiel Nawawi"
-                    className="w-full h-full object-cover object-[center_30%] lg:object-top"
+                    className="size-full object-cover object-[center_30%] lg:object-top"
                   />
                 </div>
               </motion.div>
 
               {/* Terminal window */}
               <div
-                className="border-2 border-black overflow-hidden w-full h-full flex flex-col"
+                className="border-2 border-black overflow-hidden size-full flex flex-col"
                 style={{ background: '#0F172A', boxShadow: '10px 10px 0px #000' }}
               >
                 {/* Title bar */}
@@ -188,9 +186,9 @@ export default function AboutSkillSection() {
                   className="flex items-center gap-2 px-4 py-2.5 border-b-2 shrink-0"
                   style={{ background: '#1E293B', borderColor: '#0F172A' }}
                 >
-                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#EF4444' }} />
-                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#F59E0B' }} />
-                  <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#22C55E' }} />
+                  <span className="size-2.5 rounded-full" style={{ background: '#EF4444' }} />
+                  <span className="size-2.5 rounded-full" style={{ background: '#F59E0B' }} />
+                  <span className="size-2.5 rounded-full" style={{ background: '#22C55E' }} />
                   <span className="ml-2 text-xs opacity-60" style={{ fontFamily: 'var(--font-mono)', color: 'white' }}>
                     ~/agiel.dev
                   </span>
@@ -240,7 +238,7 @@ export default function AboutSkillSection() {
                   style={{ boxShadow: '8px 8px 0px #000' }}
                 >
                   {/* Corner accent */}
-                  <div className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-orange-500 border-2 border-black">
+                  <div className="absolute -top-3 -right-3 size-7 flex items-center justify-center font-black text-sm bg-orange-500 border-2 border-black">
                     ×
                   </div>
 
@@ -322,8 +320,8 @@ export default function AboutSkillSection() {
           backgroundSize: '44px 44px',
         }} />
 
-        <div className="relative z-10 flex flex-col justify-center items-center w-full px-4 pt-24 pb-32 md:pt-36 md:pb-48 lg:pb-56">
-          <div className="w-full max-w-6xl mx-auto" style={{ marginBottom: '3.5rem' }}>
+        <div className="relative z-10 flex flex-col justify-center items-center w-full py-12 md:py-16">
+          <div className="w-full max-w-6xl mx-auto px-6 sm:px-10 md:px-12">
 
             {/* Title + Filter Tabs — centered stack */}
             <motion.div
@@ -331,8 +329,7 @@ export default function AboutSkillSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={vp}
               transition={{ ...spring }}
-              className="flex flex-col items-center text-center"
-              style={{ marginTop: '2.5rem', marginBottom: '1.5rem' }}
+              className="mb-6 md:mb-8 flex flex-col items-center text-center"
             >
               <h3
                 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-none text-white"
@@ -346,7 +343,7 @@ export default function AboutSkillSection() {
               <div className="mt-3 h-1.5 w-16 bg-white" />
 
               {/* Category Tabs */}
-              <div className="flex gap-3 md:gap-4 flex-wrap justify-center" style={{ marginTop: '1.5rem', marginBottom: '1.5rem' }}>
+              <div className="flex gap-3 md:gap-4 flex-wrap justify-center mt-6 mb-4">
                 {categories.map(cat => (
                   <button
                     key={cat}
@@ -401,7 +398,7 @@ export default function AboutSkillSection() {
 
                   {/* LEFT: Logo Sub-card */}
                   <div 
-                    className="relative z-10 w-10 h-10 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 shrink-0 border border-white/20 flex items-center justify-center group-hover:border-black/40 group-hover:bg-white/20 transition-all duration-300"
+                    className="relative z-10 size-10 sm:size-14 md:size-16 lg:size-20 shrink-0 border border-white/20 flex items-center justify-center group-hover:border-black/40 group-hover:bg-white/20 transition-all duration-300"
                     style={{ background: 'rgba(0,0,0,0.4)' }}
                   >
                     {deviconMap[skill.name] ? (

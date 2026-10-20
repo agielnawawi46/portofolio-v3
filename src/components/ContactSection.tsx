@@ -39,23 +39,21 @@ export default function ContactSection() {
   return (
     <section
       id="contact"
-      /* REVISI 1: Menyesuaikan padding & flex layout agar jarak elemen seimbang */
-      className="relative w-full flex flex-col justify-center items-center py-20 md:py-28 px-6 sm:px-10 md:px-12 overflow-hidden border-b-2 border-black"
+      className="relative w-full flex flex-col justify-center items-center py-14 md:py-20 px-6 sm:px-10 md:px-12 overflow-hidden border-b-2 border-black"
       style={{ background: 'var(--color-lavender)' }}
       aria-label="Contact section"
     >
       <div className="absolute inset-0 grid-bg opacity-30 pointer-events-none" />
 
-      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center" style={{ marginBottom: '3.5rem' }}>
+      <div className="relative max-w-6xl mx-auto w-full z-10 flex flex-col justify-center">
 
-        {/* Header - REVISI 2: Menggunakan margin-bottom yang konsisten (mb-12 md:mb-16 lg:mb-20) */}
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={vp}
           transition={{ ...springBase }}
-          className="mb-12 md:mb-16 flex flex-col items-center text-center w-full"
-          style={{ marginTop: '2.5rem', marginBottom: '3.5rem' }}
+          className="mb-8 md:mb-12 flex flex-col items-center text-center w-full"
         >
           <h2
             className="text-3xl sm:text-4xl md:text-5xl font-black uppercase leading-tight tracking-tight"
@@ -91,7 +89,7 @@ export default function ContactSection() {
               className="border-2 border-black p-8 md:p-12 shadow-[8px_8px_0px_#000] relative" style={{ background: 'var(--color-canvas)' }}
             >
               {/* Corner accent */}
-              <div className="absolute -top-3 -right-3 w-7 h-7 flex items-center justify-center font-black text-sm bg-orange-500 border-2 border-black">
+              <div className="absolute -top-3 -right-3 size-7 flex items-center justify-center font-black text-sm bg-orange-500 border-2 border-black">
                 ×
               </div>
               
@@ -122,7 +120,7 @@ export default function ContactSection() {
                   style={{ background: 'var(--color-canvas)', color: 'var(--color-charcoal)' }}
                   aria-label={`${item.label}: ${item.value}`}
                 >
-                  <div className="w-11 h-11 flex items-center justify-center flex-shrink-0 bg-orange-500 border-2 border-black text-black">
+                  <div className="size-11 flex items-center justify-center shrink-0 bg-orange-500 border-2 border-black text-black">
                     <item.icon size={20} />
                   </div>
                   <div className="min-w-0">
@@ -152,9 +150,9 @@ export default function ContactSection() {
                 className="flex items-center gap-2 px-4 py-2.5 border-b-2 shrink-0 border-black"
                 style={{ background: '#1E293B' }}
               >
-                <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#EF4444' }} />
-                <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#F59E0B' }} />
-                <span className="w-2.5 h-2.5 rounded-full" style={{ background: '#22C55E' }} />
+                <span className="size-2.5 rounded-full" style={{ background: '#EF4444' }} />
+                <span className="size-2.5 rounded-full" style={{ background: '#F59E0B' }} />
+                <span className="size-2.5 rounded-full" style={{ background: '#22C55E' }} />
                 <span className="ml-2 text-xs opacity-60" style={{ fontFamily: 'var(--font-mono)', color: 'white' }}>
                   ~/contact
                 </span>

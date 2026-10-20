@@ -45,7 +45,7 @@ export default function Navbar() {
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [navLinks])
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Navbar() {
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: 'spring', stiffness: 80, damping: 20 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled
             ? 'bg-[var(--color-canvas)]/95 backdrop-blur-sm border-b-2 border-[var(--color-border)]'
             : 'bg-[var(--color-canvas)] border-b-2 border-[var(--color-border)]'
           }`}
@@ -65,12 +65,12 @@ export default function Navbar() {
           dengan batas tepi layar/section di bawahnya.
         */}
         <div className="w-full px-6 sm:px-10 md:px-12">
-          <div className="flex items-center justify-between h-[72px]">
+          <div className="flex items-center justify-between h-18">
 
             {/* Logo Kiri */}
             <a
               href="#hero"
-              className="font-display font-800 text-lg tracking-tight flex items-center gap-2 shrink-0"
+              className="font-display font-extrabold text-lg tracking-tight flex items-center gap-2 shrink-0"
               style={{ fontFamily: 'var(--font-display)' }}
               aria-label="Go to top"
             >
@@ -98,7 +98,7 @@ export default function Navbar() {
               antara logo kiri dan action button kanan.
             */}
             <nav
-              className="hidden md:flex items-center justify-center flex-1 gap-8 px-4"
+              className="hidden md:flex items-center justify-center flex-1 gap-5 lg:gap-8 px-4"
               aria-label="Main navigation"
             >
               {navLinks.map(link => {
@@ -119,7 +119,7 @@ export default function Navbar() {
                     {isActive && (
                       <motion.span
                         layoutId="nav-indicator"
-                        className="absolute bottom-0 left-0 right-0 h-0.5"
+                        className="absolute bottom-0 inset-x-0 h-0.5"
                         style={{ background: 'var(--color-orange)' }}
                         transition={{ type: 'spring', stiffness: 500, damping: 40 }}
                       />
@@ -135,7 +135,7 @@ export default function Navbar() {
               {/* Language Toggle */}
               <button
                 onClick={toggleLanguage}
-                className="flex w-9 h-9 items-center justify-center sticker-box font-bold text-xs"
+                className="flex size-9 items-center justify-center sticker-box font-bold text-xs"
                 style={{
                   background: 'var(--color-canvas)',
                   border: '2px solid var(--color-border)',
@@ -150,7 +150,7 @@ export default function Navbar() {
               {/* Mobile Menu Toggle */}
               <button
                 id="mobile-menu-toggle"
-                className="md:hidden w-9 h-9 flex items-center justify-center sticker-box"
+                className="md:hidden size-9 flex items-center justify-center sticker-box"
                 style={{
                   background: 'var(--color-canvas)',
                   border: '2px solid var(--color-border)',
@@ -175,7 +175,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed top-[72px] left-0 right-0 z-40 border-b-2"
+            className="fixed top-18 inset-x-0 z-40 border-b-2"
             style={{
               background: 'var(--color-canvas)',
               borderColor: 'var(--color-border)',
@@ -190,7 +190,7 @@ export default function Navbar() {
                     key={link.href}
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className="px-8 py-5 text-base font-bold tracking-widest border-b flex items-center gap-2"
+                    className="px-8 py-3.5 text-sm sm:text-base font-bold tracking-widest border-b flex items-center gap-2"
                     style={{
                       fontFamily: 'var(--font-display)',
                       borderColor: 'var(--color-border)',
@@ -200,7 +200,7 @@ export default function Navbar() {
                   >
                     {isActive && (
                       <span
-                        className="w-1.5 h-1.5 rounded-full inline-block"
+                        className="size-1.5 rounded-full inline-block"
                         style={{ background: 'var(--color-orange)' }}
                       />
                     )}
