@@ -116,19 +116,6 @@ export default function HeroSection() {
                 <motion.p custom={7} variants={fadeUp} className="text-sm md:text-base leading-relaxed opacity-90" style={{ fontFamily: "var(--font-body)", color: "var(--color-charcoal)" }}>
                   {personal.shortBio}
                 </motion.p>
-
-                {/* Quick Info Chips */}
-                <motion.div custom={8} variants={fadeUp} className="flex flex-wrap gap-2 pt-3 mt-3 border-t border-slate-200">
-                  <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-slate-100 border border-black/20 text-slate-700">
-                    <span className="text-orange-500">📍</span> Batam, ID
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-slate-100 border border-black/20 text-slate-700">
-                    <span className="text-emerald-500 font-bold">●</span> {language === 'en' ? 'Open to Work' : 'Siap Berkolaborasi'}
-                  </span>
-                  <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-slate-100 border border-black/20 text-slate-700">
-                    <span className="text-sky-500 font-bold">⚡</span> D3 Informatics
-                  </span>
-                </motion.div>
               </div>
             </motion.div>
           </motion.div>
